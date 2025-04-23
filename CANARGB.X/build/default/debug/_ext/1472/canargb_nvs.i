@@ -39417,8 +39417,11 @@ static const Colour defaultColours [16] = {
 
 
 uint8_t APP_nvDefault(uint8_t index) {
+    if (index == 49) {
+        return 3;
+    }
     index--;
-    if (index < 48) {
+    if (index < 49) {
         switch (index%3) {
             case 0:
                 return defaultColours[index/3].red;

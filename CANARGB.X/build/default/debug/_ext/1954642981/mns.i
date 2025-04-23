@@ -39644,7 +39644,7 @@ static Processed mnsProcessMessage(Message * m) {
             case OPC_RQNP:
                 sendMessage7(OPC_PARAMS, MANU_MERG, 'a',
                         MTYP_VLCB, 255, 252,
-                        48, 1);
+                        49, 1);
                 return PROCESSED;
             case OPC_RQMN:
                 sendMessage7(OPC_NAME, name[0], name[1], name[2], name[3],
@@ -39726,7 +39726,8 @@ static Processed mnsProcessMessage(Message * m) {
             return PROCESSED;
         case OPC_NNRSM:
             previousNN.word = nn.word;
-            factoryReset();
+
+            writeNVM(EEPROM_NVM_TYPE, 0x3FA, 0xFF);
             if (previousNN.word != 0) {
                 sendMessage2(OPC_NNREL, previousNN.bytes.hi, previousNN.bytes.lo);
                 transport->waitForTxQueueToDrain();
@@ -40026,7 +40027,7 @@ static void mnsPoll(void) {
             }
     }
 }
-# 806 "../../VLCBlib_PIC/mns.c"
+# 807 "../../VLCBlib_PIC/mns.c"
 static DiagnosticVal * mnsGetDiagnostic(uint8_t index) {
     if (index > 6) {
         return ((void*)0);
@@ -40074,7 +40075,7 @@ static uint8_t getParameter(uint8_t idx) {
     case PAR_EVNUM:
         return 252;
     case PAR_NVNUM:
-        return 48;
+        return 49;
     case PAR_MAJVER:
         return 1;
     case PAR_FLAGS:
@@ -40112,7 +40113,7 @@ static uint8_t getParameter(uint8_t idx) {
         return 0;
     }
 }
-# 900 "../../VLCBlib_PIC/mns.c"
+# 901 "../../VLCBlib_PIC/mns.c"
 TimedResponseResult mnsTRserviceDiscoveryCallback(uint8_t type, uint8_t serviceIndex, uint8_t step) {
     if (step >= 6) {
         return TIMED_RESPONSE_RESULT_FINISHED;
@@ -40122,7 +40123,7 @@ TimedResponseResult mnsTRserviceDiscoveryCallback(uint8_t type, uint8_t serviceI
 
     return TIMED_RESPONSE_RESULT_NEXT;
 }
-# 919 "../../VLCBlib_PIC/mns.c"
+# 920 "../../VLCBlib_PIC/mns.c"
 TimedResponseResult mnsTRallDiagnosticsCallback(uint8_t type, uint8_t serviceIndex, uint8_t step) {
     if (services[serviceIndex]->getDiagnostic == ((void*)0)) {
         sendMessage6(OPC_DGN, nn.bytes.hi, nn.bytes.lo, serviceIndex+1, 0, 0, 0);
@@ -40137,7 +40138,7 @@ TimedResponseResult mnsTRallDiagnosticsCallback(uint8_t type, uint8_t serviceInd
     sendMessage6(OPC_DGN, nn.bytes.hi, nn.bytes.lo, serviceIndex+1, step, d->asBytes.hi, d->asBytes.lo);
     return TIMED_RESPONSE_RESULT_NEXT;
 }
-# 942 "../../VLCBlib_PIC/mns.c"
+# 943 "../../VLCBlib_PIC/mns.c"
 TimedResponseResult mnsTRrqnpnCallback(uint8_t type, uint8_t serviceIndex, uint8_t step) {
     if (step >= 20) {
         return TIMED_RESPONSE_RESULT_FINISHED;

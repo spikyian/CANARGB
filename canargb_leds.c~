@@ -1,0 +1,292 @@
+/*
+  This work is licensed under the:
+      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+   To view a copy of this license, visit:
+      http://creativecommons.org/licenses/by-nc-sa/4.0/
+   or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+   License summary:
+    You are free to:
+      Share, copy and redistribute the material in any medium or format
+      Adapt, remix, transform, and build upon the material
+
+    The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+    Attribution : You must give appropriate credit, provide a link to the license,
+                   and indicate if changes were made. You may do so in any reasonable manner,
+                   but not in any way that suggests the licensor endorses you or your use.
+
+    NonCommercial : You may not use the material for commercial purposes. **(see note below)
+
+    ShareAlike : If you remix, transform, or build upon the material, you must distribute
+                  your contributions under the same license as the original.
+
+    No additional restrictions : You may not apply legal terms or technological measures that
+                                  legally restrict others from doing anything the license permits.
+
+   ** For commercial use, please contact the original copyright holder(s) to agree licensing terms
+
+    This software is distributed in the hope that it will be useful, but WITHOUT ANY
+    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
+ */
+/**
+ *	The CANILED program.
+ *
+ * @author Ian Hogg 
+ * @date April 2025
+ * 
+ */ 
+#include <xc.h>
+#include "module.h"
+
+#include "canargb_leds.h"
+
+typedef struct Colours {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+} Colours;
+static Colours leds[MAX_LEDS];
+
+
+PaletteIndex ledPaletteIndexes[MAX_LEDS];
+
+static uint8_t flashState;
+static uint8_t refreshRequired;
+
+#define FAST_MODE
+
+void initARGB(void) {
+    uint8_t ledno;
+    
+    flashState = 0;
+    refreshRequired = 0;
+    
+    for (ledno=0; ledno <MAX_LEDS; ledno++) {
+        leds[ledno].r = 0;    // black (off)
+        leds[ledno].g = 0;    // black (off)
+        leds[ledno].b = 0;    // black (off)
+        ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex = 0;   // probably black
+        ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex = 0;  // probably black
+    }
+    
+    /* Now set up the peripherals to drive the WS2811 signal.
+     * We'll use SPI as a host/master, a PWM as a pulse generator and CLC to
+     * combine the 2 signals. 
+     * Although considered using the ideas from Microchip AN1606 this actually
+     * seems rather lax on the signal timing and I think this approach performs
+     * better.
+     * Optionally uses "fast mode" with #define FAST_MODE
+     * Loading SSP1BUF register sends that data byte to the DSM peripheral.
+     * The SPI clock out is used to trigger the two monostable timers TMR2 and TMR4.
+     * TMR2 is used for the longer logic 1 pulse 0.4us (0.8us slow mode).
+     * TMR4 is used for the shorter logic 0 pulse 0.225us (0.45us slow mode).
+     * Unfortunately the TMR2 and TMR4 cannot be triggered directly from SPI-CLK-OUT
+     * but we can trigger via a CLC.
+     * The DSM selects between the long or short pulse based upon the SPI data. 
+     * DMA?
+     * 
+     * DMA----->SPI-----------
+     *           |ck         |
+     *           |           v mux
+     *           v          DSM---------> PPS ---> PORTC0
+     *          CLC1       ^H  ^L
+     *           |         |   |
+     *           |         |   |
+     *           |        CLC2 |
+     *           |         | CLC4
+     *           |         |   |
+     *           ---TMR2----   |
+     *           |             |
+     *           ---TMR4--------
+     *           
+     */
+    
+    // Set up SPI as host
+    SPI1CON0 = 0x03;    // SPI Host and every byte is 8 bits, MSB first, transmit only
+    SPI1CON1 = 0;
+    SPI1CON2 = 2;       // Data required for a transfer
+    SPI1CLK = 0;        // Fosc clock
+#ifdef FAST_MODE
+    SPI1BAUD = 39;      // Freq = Fosc/80
+#else
+    SPI1BAUD = 79;      // Freq = Fosc/160
+#endif
+    SPI1TCNTH = 3;      // RGB for each LED
+    SPI1TCNTL = 0;      // Total of 3*256 bytes
+    
+    SPI1TWIDTH = 0;     // 8 bits
+    
+    // Set up CLC1 as a nop gate with input from SPI CK
+    CLCSELECT = 0;      // CLC1
+    CLCnCON = 0x80;     // ENABLED, No interrupts and Cell is AND-OR
+    CLCnPOL = 0;        // No inversion
+    CLCnSEL0 = 0x41;    // select SPI1 SCK
+    CLCnSEL1 = 0x41;    // select SPI1 SCK
+    CLCnSEL2 = 0x41;    // select SPI1 SCK
+    CLCnSEL3 = 0x41;    // select SPI1 SCK
+    CLCnGLS0 = 2;       // Use Gate 1 non inverted
+    CLCnGLS1 = 2;       // No inputs to Gate 2
+    CLCnGLS2 = 2;       // No inputs to Gate 3
+    CLCnGLS3 = 2;       // No inputs to Gate 4
+
+    // Set up Timer2 period for desired monostable long pulse
+    T2CON = 0x0;        // 1:1 prescalar, 1:1 postscalar
+    T2CLKCON = 0x02;    // Fosc clock source
+    T2HLT = 0x11;       // Monostable with trigger on rising edge
+    T2RST = 0x12;       // reset from CLC1
+#ifdef FAST_MODE
+    T2PR = 26;          // Period of 26
+#else
+    T2PR = 51;          // Period of 51
+#endif
+    
+    // Set up Timer4 period for desired monostable short pulse
+    T4CON = 0x0;        // 1:1 prescalar, 1:1 postscalar
+    T4CLKCON = 0x02;    // Fosc clock source
+    T4HLT = 0x11;       // Monostable with trigger on rising edge
+    T4RST = 0x12;       // reset from CLC1
+#ifdef FAST_MODE
+    T4PR = 14;          // Period of 14
+#else
+    T4PR = 29;          // Period of 29
+#endif
+    
+    // Set up CLC2 as a nop gate for connection between TMR2 and DSM H input
+    CLCSELECT = 1;      // CLC2
+    CLCnCON = 0x80;     // ENABLED, No interrupts and Cell is AND-OR
+    CLCnPOL = 0;        // No inversion
+    CLCnSEL0 = 0x14;    // select TMR2
+    CLCnSEL1 = 0x14;    // select SPI1 SCK
+    CLCnSEL2 = 0x14;    // select SPI1 SCK
+    CLCnSEL3 = 0x14;    // select SPI1 SCK
+    CLCnGLS0 = 2;       // Use Gate 1 non inverted
+    CLCnGLS1 = 2;       // No inputs to Gate 2
+    CLCnGLS2 = 2;       // No inputs to Gate 3
+    CLCnGLS3 = 2;       // No inputs to Gate 4
+    
+    // Set up CLC4 as a nop gate for connection between TMR4 and DSM L input
+    CLCSELECT = 3;      // CLC4
+    CLCnCON = 0x80;     // ENABLED, No interrupts and Cell is AND-OR
+    CLCnPOL = 0;        // No inversion
+    CLCnSEL0 = 0x16;    // select SPI1 SCK
+    CLCnSEL1 = 0x16;    // select SPI1 SCK
+    CLCnSEL2 = 0x16;    // select SPI1 SCK
+    CLCnSEL3 = 0x16;    // select SPI1 SCK
+    CLCnGLS0 = 2;       // Use Gate 1 non inverted
+    CLCnGLS1 = 2;       // No inputs to Gate 2
+    CLCnGLS2 = 2;       // No inputs to Gate 3
+    CLCnGLS3 = 2;       // No inputs to Gate 4
+    
+    // Set up DSM to select correct pulse length based upon SPI SO output]
+    MD1CON0 = 0;        // normal polarity
+    MD1CON1 = 0;        // no synchronisation
+    MD1CARH = 0x10;     // CLC2
+    MD1CARL = 0x14;     // CLC4
+    MD1SRC = 0x1F;      // SPI1_SDO
+
+    // Main Output on RC0 other to help debug
+    TRISC = 0;
+    RC0PPS = 0x43;      // DSM1
+    RC1PPS = 0x32;      // SPI1_SDO
+    RC2PPS = 0x31;      // SPI1_SCK
+    RC3PPS = 0x01;      // CLC1
+    RC4PPS = 0x02;      // CLC2 (TMR2)
+    RC5PPS = 0x04;      // CLC4 (TMR4)
+    
+
+    // Set up DMA to transfer 3 x 256 bytes to SPI1TXB
+    DMASELECT = 0;
+    DMAnCON0 = 0x40;    // Hardware trigger can start transfer
+    DMAnSSA = (volatile __uint24)&leds;    // the array of byes for the LEDs
+    DMAnDSA = (volatile unsigned short)&SPI1TXB; // SPI1 transmit buffer
+    DMAnCON1 = 0x03;    // Destination address unchanged, source address incremented
+    DMAnSSZ = 1;        // 3 x 256 number of LED colour bytes
+    DMAnSCNT = 0x300;   // 3 x 256 LEDs
+    DMAnDSZ = 1;        // 1 byte of SPI1TXR
+    DMAnDCNT = 1;       // 1 byte
+    DMAnSIRQ = 0x19;    // The SPI1 TX
+    DMAnAIRQ = 0;       // No abort
+
+    // Update the DMA bus access priority
+    // PRLOCK = 0x55;
+    // PRLOCK = 0xAA;
+    // PRLOCKbits.PRLOCKED = 0; // Allow changing priority settings;
+    // DMA1PR = ??;      // Do we need to set DMA priority?
+    // PRLOCK = 0x55;
+    // PRLOCK = 0xAA;
+    // PRLOCKbits.PRLOCKED = 1; // Grant memory access to peripherals;
+    
+    
+    // Enable everything
+    DMAnCON0bits.EN = 1;
+    SPI1CON0bits.EN = 1;
+    T2CONbits.ON = 1;
+    T4CONbits.ON = 1;
+    MD1CON0bits.EN = 1;
+}
+
+/** Update a range of LEDs in the leds array based upon the request range and colour index pair.
+ * The pair is made up of an upper nibble and a lower nibble. Flashing alternates between these two
+ * indexes. The index is the offset into the palette.
+ */ 
+void updateLedRange(uint8_t start_ledno, uint8_t end_ledno, PaletteIndex colourIndexPair) {
+    uint8_t ledno;
+    
+    // update the LED array using the 2 nibbles of the new colour. a value of 0 is no change
+    for(ledno=start_ledno; ledno<=end_ledno; ledno++) {
+        ledPaletteIndexes[ledno] = colourIndexPair;
+    }
+}
+
+/**
+ * Schedule a refresh of the LEDs.
+ */
+void updateRGB(void) {
+    refreshRequired = 1;
+}
+
+/**
+ * Toggle between flashStates of flashOn and flashOff. Update the led colours
+ * based by looking up from the palette. 
+ */
+void doFlash(void) {
+    uint8_t ledno;
+    
+    flashState = 1-flashState;
+    
+    for (ledno=0; ledno < MAX_LEDS; ledno++) {
+        if (flashState) {
+            leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+            leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+            leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+        } else {
+            leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+            leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+            leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+        }
+    }
+    refreshRequired = 1;
+}
+
+/**
+ * Refresh the string of LEDs by outputting the LED data according to WS2811 spec.
+ * This sends the data for each LED in turn, starting with the one nearest the module.
+ * Each LED had 24 bits, made up of 8 red, 8 green, 8 blue bits. Each colour byte 
+ * is sent MSB first with a 1 as a 0.8us logic 1 followed by a 0.45us logic 0. 
+ * A 0 bit is a 0.45us logic 1 followed by a 0.8us logic 0. The end of the entire
+ * 256 LED frame is indicated by at least 50us at logic 0.  
+ */
+void refreshString(void) {
+    uint8_t ledno;
+    
+    // if a transfer is already in progress then wait
+    if (DMAnCON0bits.DGO) return;
+    
+    if (refreshRequired) {
+        refreshRequired = 0;
+
+        // Start a transfer
+        DMAnCON0bits.DGO = 1;
+    }
+}

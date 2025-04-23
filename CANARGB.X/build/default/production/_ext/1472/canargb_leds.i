@@ -39351,11 +39351,6 @@ extern void leds_poll(void);
 extern void showStatus(StatusDisplay s);
 # 10 "../module.h" 2
 # 41 "../canargb_leds.c" 2
-
-# 1 "../canargb_leds.h" 1
-# 39 "../canargb_leds.h"
-# 1 "../canargb_nvs.h" 1
-# 40 "../canargb_nvs.h"
 # 1 "../../VLCBlib_PIC/nv.h" 1
 # 86 "../../VLCBlib_PIC/nv.h"
 extern const Service nvService;
@@ -39390,7 +39385,11 @@ extern uint8_t setNV(uint8_t index, uint8_t value);
 
 
 extern void loadNvCache(void);
-# 41 "../canargb_nvs.h" 2
+# 42 "../canargb_leds.c" 2
+
+# 1 "../canargb_leds.h" 1
+# 39 "../canargb_leds.h"
+# 1 "../canargb_nvs.h" 1
 # 40 "../canargb_leds.h" 2
 # 50 "../canargb_leds.h"
 typedef union PaletteIndex {
@@ -39407,7 +39406,7 @@ extern void initARGB(void);
 extern void doFlash(void);
 extern void updateRGB(void);
 extern PaletteIndex ledPaletteIndexes[255];
-# 43 "../canargb_leds.c" 2
+# 44 "../canargb_leds.c" 2
 
 typedef struct Colours {
     uint8_t r;
@@ -39428,7 +39427,6 @@ void initARGB(void) {
     uint8_t ledno;
 
     flashState = 0;
-    refreshRequired = 0;
 
     for (ledno=0; ledno <255; ledno++) {
         leds[ledno].r = 0;
@@ -39459,6 +39457,7 @@ void initARGB(void) {
         SPI1CON1bits.SMP=0;
         SPI1CON1bits.CKE=1;
         SPI1CON1bits.CKP=0;
+        SPI1CON1bits.SDIP=1;
 
         SPI1CON2bits.SSET=0;
         SPI1CON1bits.SSP=1;
@@ -39551,51 +39550,17 @@ void initARGB(void) {
 
     {
         MD1CON0 = 0;
-        MD1CON1 = 0;
-        MD1CARH = 0x10;
-        MD1CARL = 0x12;
+        MD1CON1 = 0x00;
+        MD1CARH = 0x12;
+        MD1CARL = 0x10;
         MD1SRC = 0x1F;
     }
-
-
-    {
-        DMASELECT=0;
-        DMAnCON1bits.DMODE=0b00;
-        DMAnCON1bits.SMR=0b00;
-        DMAnCON1bits.SMODE=0b01;
-        DMAnCON1bits.SSTP=1;
-        DMAnSSZ=0x300;
-        DMAnSSA=(__uint24)&leds;
-        DMAnDSZ=1;
-        DMAnDSA=(uint16_t)&SPI1TXB;
-        DMAnSIRQ=0x19;
-        DMAnAIRQ=0;
-
-
-
-
-
-
-    }
-
-
+# 251 "../canargb_leds.c"
     T2CONbits.ON = 1;
     T4CONbits.ON = 1;
     MD1CON0bits.EN = 1;
-}
 
-static uint16_t offset = 0;
-static uint8_t first = 1;
-void sendByte(void) {
-    uint8_t * p = (uint8_t *)leds;
-    if (first || (PIR3bits.SPI1TXIF == 1)) {
-        first = 0;
-        SPI1TXB = p[offset];
-        offset++;
-        if (offset == 0x2FF) {
-            offset = 0;
-        }
-    }
+    refreshRequired = 1;
 }
 
 
@@ -39624,35 +39589,105 @@ void updateRGB(void) {
 
 void doFlash(void) {
     uint8_t ledno;
+    uint8_t order;
 
     flashState = 1-flashState;
+    order = (uint8_t)getNV(49);
 
     for (ledno=0; ledno < 255; ledno++) {
         if (flashState) {
-            leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3));
-            leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3+1));
-            leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3+2));
+            switch (order) {
+                case 1:
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+                    break;
+                case 2:
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+                    break;
+                case 4:
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+                    break;
+                case 6:
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+                    break;
+                case 5:
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+                    break;
+                default:
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+                    break;
+            }
+
         } else {
-            leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3));
-            leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3+1));
-            leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3+2));
+            switch (order) {
+                case 1:
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+                    break;
+                case 2:
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+                    break;
+                case 4:
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+                    break;
+                case 6:
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+                    break;
+                case 5:
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+                    break;
+                default:
+                    leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+                    leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+                    leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+                    break;
+            }
+
         }
     }
     refreshRequired = 1;
 }
-# 317 "../canargb_leds.c"
+# 371 "../canargb_leds.c"
 void refreshString(void) {
-    uint8_t ledno;
+    uint16_t offset;
 
 
 
-    sendByte();
+
     if (refreshRequired) {
         refreshRequired = 0;
 
 
 
 
+
+        offset = 0;
+        while (offset < 3*255) {
+            if (PIR3bits.SPI1TXIF) {
+                SPI1TXB = *(offset+(uint8_t *)leds);
+                offset++;
+            }
+        }
 
 
 LATCbits.LATC6 = flashState;

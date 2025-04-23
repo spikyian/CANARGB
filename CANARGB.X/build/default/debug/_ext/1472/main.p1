@@ -130,17 +130,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "202 ../../VLCBlib_PIC/vlcb.h
 [; ;../../VLCBlib_PIC/vlcb.h: 202: extern void setTimedResponseDelay(uint8_t delay);
 [v _setTimedResponseDelay `(v ~T0 @X0 0 ef1`uc ]
-"62 ../canargb_leds.h
-[; ;../canargb_leds.h: 62: extern void updateRGB(void);
-[v _updateRGB `(v ~T0 @X0 0 ef ]
-"61
+"61 ../canargb_leds.h
 [; ;../canargb_leds.h: 61: extern void doFlash(void);
 [v _doFlash `(v ~T0 @X0 0 ef ]
 "59
 [; ;../canargb_leds.h: 59: extern void refreshString(void);
 [v _refreshString `(v ~T0 @X0 0 ef ]
-"255 ../main.c
-[; ;../main.c: 255: ValidTime APP_isSuitableTimeToWriteFlash(void){
+"286 ../main.c
+[; ;../main.c: 286: ValidTime APP_isSuitableTimeToWriteFlash(void){
 [c E23231 0 1 .. ]
 [n E23231 ValidTime BAD_TIME GOOD_TIME  ]
 "8663 C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h
@@ -3976,60 +3973,166 @@ Version 4.0 HI-TECH Software Intermediate Code
 "229
 [; ;../main.c: 229:     flashTime.val = tickGet();
 [e = . _flashTime 0 ( _tickGet ..  ]
-"230
-[; ;../main.c: 230:     updateLedRange(0, 255 -1, (PaletteIndex)(uint8_t)1);
-[e ( _updateLedRange (3 , , -> -> 0 `i `uc -> - -> 255 `i -> 1 `i `uc -> -> -> 1 `i `uc `S3302 ]
 "231
-[; ;../main.c: 231:     updateRGB();
-[e ( _updateRGB ..  ]
+[; ;../main.c: 231:     updateLedRange(0, 22, (PaletteIndex)(uint8_t)0x00);
+[e ( _updateLedRange (3 , , -> -> 0 `i `uc -> -> 22 `i `uc -> -> -> 0 `i `uc `S3302 ]
 "232
-[; ;../main.c: 232: }
+[; ;../main.c: 232:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"233
+[; ;../main.c: 233:     updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);
+[e ( _updateLedRange (3 , , -> -> 3 `i `uc -> -> 5 `i `uc -> -> -> 17 `i `uc `S3302 ]
+"234
+[; ;../main.c: 234:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"235
+[; ;../main.c: 235:     updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x22);
+[e ( _updateLedRange (3 , , -> -> 6 `i `uc -> -> 8 `i `uc -> -> -> 34 `i `uc `S3302 ]
+"236
+[; ;../main.c: 236:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"237
+[; ;../main.c: 237:     updateLedRange(9, 11, (PaletteIndex)(uint8_t)0x33);
+[e ( _updateLedRange (3 , , -> -> 9 `i `uc -> -> 11 `i `uc -> -> -> 51 `i `uc `S3302 ]
+"238
+[; ;../main.c: 238:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"239
+[; ;../main.c: 239:     updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x44);
+[e ( _updateLedRange (3 , , -> -> 12 `i `uc -> -> 14 `i `uc -> -> -> 68 `i `uc `S3302 ]
+"240
+[; ;../main.c: 240:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"241
+[; ;../main.c: 241:     updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x55);
+[e ( _updateLedRange (3 , , -> -> 15 `i `uc -> -> 17 `i `uc -> -> -> 85 `i `uc `S3302 ]
+"242
+[; ;../main.c: 242:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"243
+[; ;../main.c: 243:     updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x66);
+[e ( _updateLedRange (3 , , -> -> 18 `i `uc -> -> 20 `i `uc -> -> -> 102 `i `uc `S3302 ]
+"244
+[; ;../main.c: 244:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"245
+[; ;../main.c: 245:     updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x77);
+[e ( _updateLedRange (3 , , -> -> 21 `i `uc -> -> 23 `i `uc -> -> -> 119 `i `uc `S3302 ]
+"246
+[; ;../main.c: 246:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"247
+[; ;../main.c: 247:     updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x88);
+[e ( _updateLedRange (3 , , -> -> 24 `i `uc -> -> 26 `i `uc -> -> -> 136 `i `uc `S3302 ]
+"248
+[; ;../main.c: 248:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"249
+[; ;../main.c: 249:     updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x99);
+[e ( _updateLedRange (3 , , -> -> 27 `i `uc -> -> 29 `i `uc -> -> -> 153 `i `uc `S3302 ]
+"250
+[; ;../main.c: 250:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"251
+[; ;../main.c: 251:     updateLedRange(30, 32, (PaletteIndex)(uint8_t)0xAA);
+[e ( _updateLedRange (3 , , -> -> 30 `i `uc -> -> 32 `i `uc -> -> -> 170 `i `uc `S3302 ]
+"252
+[; ;../main.c: 252:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"253
+[; ;../main.c: 253:     updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xBB);
+[e ( _updateLedRange (3 , , -> -> 33 `i `uc -> -> 35 `i `uc -> -> -> 187 `i `uc `S3302 ]
+"254
+[; ;../main.c: 254:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"255
+[; ;../main.c: 255:     updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xCC);
+[e ( _updateLedRange (3 , , -> -> 36 `i `uc -> -> 38 `i `uc -> -> -> 204 `i `uc `S3302 ]
+"256
+[; ;../main.c: 256:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"257
+[; ;../main.c: 257:     updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xDD);
+[e ( _updateLedRange (3 , , -> -> 39 `i `uc -> -> 41 `i `uc -> -> -> 221 `i `uc `S3302 ]
+"258
+[; ;../main.c: 258:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"259
+[; ;../main.c: 259:     updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xEE);
+[e ( _updateLedRange (3 , , -> -> 42 `i `uc -> -> 44 `i `uc -> -> -> 238 `i `uc `S3302 ]
+"260
+[; ;../main.c: 260:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"261
+[; ;../main.c: 261:     updateLedRange(45, 48, (PaletteIndex)(uint8_t)0xFF);
+[e ( _updateLedRange (3 , , -> -> 45 `i `uc -> -> 48 `i `uc -> -> -> 255 `i `uc `S3302 ]
+"262
+[; ;../main.c: 262:     doFlash();refreshString();
+[e ( _doFlash ..  ]
+[e ( _refreshString ..  ]
+"263
+[; ;../main.c: 263: }
 [e :UE 3325 ]
 }
-"234
-[; ;../main.c: 234: void loop(void) {
+"265
+[; ;../main.c: 265: void loop(void) {
 [v _loop `(v ~T0 @X0 1 ef ]
 {
 [e :U _loop ]
 [f ]
-"236
-[; ;../main.c: 236:     if ((tickGet() - flashTime.val) > (62500/2)) {
+"267
+[; ;../main.c: 267:     if ((tickGet() - flashTime.val) > (62500/2)) {
 [e $ ! > - ( _tickGet ..  . _flashTime 0 -> / -> 62500 `l -> -> 2 `i `l `ul 3327  ]
 {
-"237
-[; ;../main.c: 237:         doFlash();
+"268
+[; ;../main.c: 268:         doFlash();
 [e ( _doFlash ..  ]
-"238
-[; ;../main.c: 238:         flashTime.val = tickGet();
+"269
+[; ;../main.c: 269:         flashTime.val = tickGet();
 [e = . _flashTime 0 ( _tickGet ..  ]
-"239
-[; ;../main.c: 239:     }
+"270
+[; ;../main.c: 270:     }
 }
 [e :U 3327 ]
-"241
-[; ;../main.c: 241:     refreshString();
+"272
+[; ;../main.c: 272:     refreshString();
 [e ( _refreshString ..  ]
-"242
-[; ;../main.c: 242: }
+"273
+[; ;../main.c: 273: }
 [e :UE 3326 ]
 }
-"255
-[; ;../main.c: 255: ValidTime APP_isSuitableTimeToWriteFlash(void){
+"286
+[; ;../main.c: 286: ValidTime APP_isSuitableTimeToWriteFlash(void){
 [v _APP_isSuitableTimeToWriteFlash `(E23231 ~T0 @X0 1 ef ]
 {
 [e :U _APP_isSuitableTimeToWriteFlash ]
 [f ]
-"256
-[; ;../main.c: 256:     if (DMAnCON0bits.DGO) return BAD_TIME;
+"287
+[; ;../main.c: 287:     if (DMAnCON0bits.DGO) return BAD_TIME;
 [e $ ! != -> . . _DMAnCON0bits 0 4 `i -> 0 `i 3329  ]
 [e ) . `E23231 0 ]
 [e $UE 3328  ]
 [e :U 3329 ]
-"257
-[; ;../main.c: 257:     return GOOD_TIME;
+"288
+[; ;../main.c: 288:     return GOOD_TIME;
 [e ) . `E23231 1 ]
 [e $UE 3328  ]
-"258
-[; ;../main.c: 258: }
+"289
+[; ;../main.c: 289: }
 [e :UE 3328 ]
 }

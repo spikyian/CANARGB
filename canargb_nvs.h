@@ -89,8 +89,16 @@
 #define NV_COLOUR_15_R          46
 #define NV_COLOUR_15_G          47
 #define NV_COLOUR_15_B          48
+#define NV_COLOUR_ORDER         49
 
-#define RED(c)          ((uint8_t)getNV((c)*3))
-#define GREEN(c)        ((uint8_t)getNV((c)*3+1))
-#define BLUE(c)         ((uint8_t)getNV((c)*3+2))
+#define RED(c)          ((uint8_t)getNV((c)*3 + 1))
+#define GREEN(c)        ((uint8_t)getNV((c)*3 + 2))
+#define BLUE(c)         ((uint8_t)getNV((c)*3 + 3))
+
+#define ORDER_RGB   1
+#define ORDER_RBG   2
+#define ORDER_GRB   3
+#define ORDER_GBR   4
+#define ORDER_BGR   5
+#define ORDER_BRG   6
 

@@ -3,8 +3,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../canargb_nvs.c: 45: typedef struct {uint8_t red,green,blue;} Colour;
 [s S3301 `uc 1 `uc 1 `uc 1 ]
 [n S3301 . red green blue ]
-"89
-[; ;../canargb_nvs.c: 89: NvValidation APP_nvValidate(uint8_t index, uint8_t value) {
+"92
+[; ;../canargb_nvs.c: 92: NvValidation APP_nvValidate(uint8_t index, uint8_t value) {
 [c E23468 0 1 .. ]
 [n E23468 NvValidation INVALID VALID  ]
 "306 C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h
@@ -3537,44 +3537,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 :U ..
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+..
+:U ..
+-> -> 7 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+-> -> 0 `i `uc
+-> -> 7 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 7 `i `uc
+..
+:U ..
 -> -> 63 `i `uc
--> -> 63 `i `uc
--> -> 63 `i `uc
-..
-:U ..
--> -> 127 `i `uc
--> -> 0 `i `uc
+-> -> 31 `i `uc
 -> -> 0 `i `uc
 ..
 :U ..
+-> -> 39 `i `uc
 -> -> 0 `i `uc
--> -> 127 `i `uc
--> -> 0 `i `uc
+-> -> 39 `i `uc
 ..
 :U ..
 -> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 127 `i `uc
+-> -> 39 `i `uc
+-> -> 39 `i `uc
 ..
 :U ..
--> -> 250 `i `uc
--> -> 127 `i `uc
--> -> 0 `i `uc
-..
-:U ..
--> -> 156 `i `uc
--> -> 0 `i `uc
--> -> 156 `i `uc
-..
-:U ..
--> -> 0 `i `uc
--> -> 156 `i `uc
--> -> 156 `i `uc
-..
-:U ..
--> -> 127 `i `uc
--> -> 127 `i `uc
--> -> 127 `i `uc
+-> -> 15 `i `uc
+-> -> 15 `i `uc
+-> -> 15 `i `uc
 ..
 :U ..
 -> -> 255 `i `uc
@@ -3621,77 +3621,89 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _index `uc ~T0 @X0 1 r1 ]
 [f ]
 "71
-[; ;../canargb_nvs.c: 71:     index--;
-[e -- _index -> -> 1 `i `uc ]
+[; ;../canargb_nvs.c: 71:     if (index == 49) {
+[e $ ! == -> _index `i -> 49 `i 3303  ]
+{
 "72
-[; ;../canargb_nvs.c: 72:     if (index < 48) {
-[e $ ! < -> _index `i -> 48 `i 3303  ]
-{
+[; ;../canargb_nvs.c: 72:         return 3;
+[e ) -> -> 3 `i `uc ]
+[e $UE 3302  ]
 "73
-[; ;../canargb_nvs.c: 73:         switch (index%3) {
-[e $U 3305  ]
-{
-"74
-[; ;../canargb_nvs.c: 74:             case 0:
-[e :U 3306 ]
-"75
-[; ;../canargb_nvs.c: 75:                 return defaultColours[index/3].red;
-[e ) . *U + &U _defaultColours * -> -> / -> _index `i -> 3 `i `ui `ux -> -> # *U &U _defaultColours `ui `ux 0 ]
-[e $UE 3302  ]
-"76
-[; ;../canargb_nvs.c: 76:             case 1:
-[e :U 3307 ]
-"77
-[; ;../canargb_nvs.c: 77:                 return defaultColours[index/3].green;
-[e ) . *U + &U _defaultColours * -> -> / -> _index `i -> 3 `i `ui `ux -> -> # *U &U _defaultColours `ui `ux 1 ]
-[e $UE 3302  ]
-"78
-[; ;../canargb_nvs.c: 78:             case 2:
-[e :U 3308 ]
-"79
-[; ;../canargb_nvs.c: 79:                 return defaultColours[index/3].blue;
-[e ) . *U + &U _defaultColours * -> -> / -> _index `i -> 3 `i `ui `ux -> -> # *U &U _defaultColours `ui `ux 2 ]
-[e $UE 3302  ]
-"80
-[; ;../canargb_nvs.c: 80:         }
-}
-[e $U 3304  ]
-[e :U 3305 ]
-[e [\ % -> _index `i -> 3 `i , $ -> 0 `i 3306
- , $ -> 1 `i 3307
- , $ -> 2 `i 3308
- 3304 ]
-[e :U 3304 ]
-"81
-[; ;../canargb_nvs.c: 81:     }
+[; ;../canargb_nvs.c: 73:     }
 }
 [e :U 3303 ]
+"74
+[; ;../canargb_nvs.c: 74:     index--;
+[e -- _index -> -> 1 `i `uc ]
+"75
+[; ;../canargb_nvs.c: 75:     if (index < 49) {
+[e $ ! < -> _index `i -> 49 `i 3304  ]
+{
+"76
+[; ;../canargb_nvs.c: 76:         switch (index%3) {
+[e $U 3306  ]
+{
+"77
+[; ;../canargb_nvs.c: 77:             case 0:
+[e :U 3307 ]
+"78
+[; ;../canargb_nvs.c: 78:                 return defaultColours[index/3].red;
+[e ) . *U + &U _defaultColours * -> -> / -> _index `i -> 3 `i `ui `ux -> -> # *U &U _defaultColours `ui `ux 0 ]
+[e $UE 3302  ]
+"79
+[; ;../canargb_nvs.c: 79:             case 1:
+[e :U 3308 ]
+"80
+[; ;../canargb_nvs.c: 80:                 return defaultColours[index/3].green;
+[e ) . *U + &U _defaultColours * -> -> / -> _index `i -> 3 `i `ui `ux -> -> # *U &U _defaultColours `ui `ux 1 ]
+[e $UE 3302  ]
+"81
+[; ;../canargb_nvs.c: 81:             case 2:
+[e :U 3309 ]
 "82
-[; ;../canargb_nvs.c: 82:     return 0;
-[e ) -> -> 0 `i `uc ]
+[; ;../canargb_nvs.c: 82:                 return defaultColours[index/3].blue;
+[e ) . *U + &U _defaultColours * -> -> / -> _index `i -> 3 `i `ui `ux -> -> # *U &U _defaultColours `ui `ux 2 ]
 [e $UE 3302  ]
 "83
-[; ;../canargb_nvs.c: 83: }
+[; ;../canargb_nvs.c: 83:         }
+}
+[e $U 3305  ]
+[e :U 3306 ]
+[e [\ % -> _index `i -> 3 `i , $ -> 0 `i 3307
+ , $ -> 1 `i 3308
+ , $ -> 2 `i 3309
+ 3305 ]
+[e :U 3305 ]
+"84
+[; ;../canargb_nvs.c: 84:     }
+}
+[e :U 3304 ]
+"85
+[; ;../canargb_nvs.c: 85:     return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 3302  ]
+"86
+[; ;../canargb_nvs.c: 86: }
 [e :UE 3302 ]
 }
-"89
-[; ;../canargb_nvs.c: 89: NvValidation APP_nvValidate(uint8_t index, uint8_t value) {
+"92
+[; ;../canargb_nvs.c: 92: NvValidation APP_nvValidate(uint8_t index, uint8_t value) {
 [v _APP_nvValidate `(E23468 ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _APP_nvValidate ]
 [v _index `uc ~T0 @X0 1 r1 ]
 [v _value `uc ~T0 @X0 1 r2 ]
 [f ]
-"90
-[; ;../canargb_nvs.c: 90:     return VALID;
+"93
+[; ;../canargb_nvs.c: 93:     return VALID;
 [e ) . `E23468 1 ]
-[e $UE 3309  ]
-"91
-[; ;../canargb_nvs.c: 91: }
-[e :UE 3309 ]
+[e $UE 3310  ]
+"94
+[; ;../canargb_nvs.c: 94: }
+[e :UE 3310 ]
 }
-"97
-[; ;../canargb_nvs.c: 97: void APP_nvValueChanged(uint8_t index, uint8_t value, uint8_t oldValue) {
+"100
+[; ;../canargb_nvs.c: 100: void APP_nvValueChanged(uint8_t index, uint8_t value, uint8_t oldValue) {
 [v _APP_nvValueChanged `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 {
 [e :U _APP_nvValueChanged ]
@@ -3699,7 +3711,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _value `uc ~T0 @X0 1 r2 ]
 [v _oldValue `uc ~T0 @X0 1 r3 ]
 [f ]
-"98
-[; ;../canargb_nvs.c: 98: }
-[e :UE 3310 ]
+"101
+[; ;../canargb_nvs.c: 101: }
+[e :UE 3311 ]
 }

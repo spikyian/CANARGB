@@ -38,6 +38,7 @@
  */ 
 #include <xc.h>
 #include "module.h"
+#include "nv.h"
 
 #include "canargb_leds.h"
 
@@ -60,7 +61,6 @@ void initARGB(void) {
     uint8_t ledno;
     
     flashState = 0;
-    refreshRequired = 0;
     
     for (ledno=0; ledno <MAX_LEDS; ledno++) {
         leds[ledno].r = 0;    // black (off)
@@ -124,6 +124,7 @@ void initARGB(void) {
         SPI1CON1bits.SMP=0;         // 0 => Sample in the middle of data output time
         SPI1CON1bits.CKE=1;         // 1 => output changes Active to Idle clock state
         SPI1CON1bits.CKP=0;         // 1 => Idle state for SCK is low
+        SPI1CON1bits.SDIP=1;        // 1 => SDO polarity
 
         SPI1CON2bits.SSET=0;        // 0 => Master: SS_out is driven to the Active state while the transmit counter is not zero
         SPI1CON1bits.SSP=1;         // 1 => SS is active low
@@ -216,22 +217,24 @@ void initARGB(void) {
     // Set up DSM to select correct pulse length based upon SPI SO output
     {
         MD1CON0 = 0;        // normal polarity
-        MD1CON1 = 0;        // no synchronisation, no inversion
-        MD1CARH = 0x10;     // CLC2
-        MD1CARL = 0x12;     // CLC4
+        MD1CON1 = 0x00;     // no synchronisation, Modulator signal inverted inversion
+        MD1CARH = 0x12;     // CLC2
+        MD1CARL = 0x10;     // CLC4
         MD1SRC = 0x1F;      // SPI1_SDO
     }
 
     // Set up DMA1 to transfer 3 x 256 bytes to SPI1TXB
+    // DMA transaction = 1 byte. DMA message = 0x300 bytes.
+#ifdef DMA
     {
         DMASELECT=0; // Select DMA1
         DMAnCON1bits.DMODE=0b00;    // 0b00 => Destination Pointer (DMADPTR) remains unchanged after each transfer
         DMAnCON1bits.SMR=0b00;      // 0b00 => SFR/GPR data space is DMA source memory
         DMAnCON1bits.SMODE=0b01;    // 0b01 => Source pointer increments
         DMAnCON1bits.SSTP=1;        // 1 => Clear SIRQEN once all data transferred
-        DMAnSSZ=0x300;              // 3 x 256 number of LED colour bytes
+        DMAnSSZ=3*MAX_LEDS;         // 3 x number of LED for the total number of colour bytes
         DMAnSSA=(__uint24)&leds;    // the array of byes for the LEDs
-        DMAnDSZ=1;                  // 1 byte of SPI1TXR
+        DMAnDSZ=3*MAX_LEDS;         // 1 byte of SPI1TXR
         DMAnDSA=(uint16_t)&SPI1TXB; // SPI1 transmit buffer
         DMAnSIRQ=0x19;              // 0x19 => SPI1TX
         DMAnAIRQ=0;                 // No abort
@@ -239,28 +242,17 @@ void initARGB(void) {
         //DMA1PR = 0x01;            // Change the priority only if needed
         //PRLOCK = 0x55;            // This sequence
         //PRLOCK = 0xAA;            // is mandatory
-        //PRLOCKbits.PRLOCKED = 1;  // for DMA operation    
-//        DMAnCON0bits.EN=1;      
+        //PRLOCKbits.PRLOCKED = 1;  // for DMA operation   
+        DMAnCON0bits.SIRQEN = 0;    // not ready to transfer data yet
+        DMAnCON0bits.EN=1;      
     }
-    
+#endif
 
     T2CONbits.ON = 1;
     T4CONbits.ON = 1;
     MD1CON0bits.EN = 1;
-}
-
-static uint16_t offset = 0;
-static uint8_t first = 1;
-void sendByte(void) {
-    uint8_t * p = (uint8_t *)leds;
-    if (first || (PIR3bits.SPI1TXIF == 1)) {
-        first = 0;
-        SPI1TXB = p[offset];
-        offset++;
-        if (offset == 0x2FF) {
-            offset = 0;
-        }
-    }
+    
+    refreshRequired = 1;
 }
 
 /** Update a range of LEDs in the leds array based upon the request range and colour index pair.
@@ -289,18 +281,80 @@ void updateRGB(void) {
  */
 void doFlash(void) {
     uint8_t ledno;
+    uint8_t order;
     
     flashState = 1-flashState;
+    order = (uint8_t)getNV(NV_COLOUR_ORDER);
     
     for (ledno=0; ledno < MAX_LEDS; ledno++) {
         if (flashState) {
-            leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-            leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-            leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+            switch (order) {
+                case ORDER_RGB:
+                    leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    break;
+                case ORDER_RBG:
+                    leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    break;
+                case ORDER_GBR:
+                    leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    break;
+                case ORDER_BRG:
+                    leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    break;
+                case ORDER_BGR:
+                    leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    break;
+                default: // case ORDER_GRB:
+                    leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                    break;
+            }
+            
         } else {
-            leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-            leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-            leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+            switch (order) {
+                case ORDER_RGB:
+                    leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    break;
+                case ORDER_RBG:
+                    leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    break;
+                case ORDER_GBR:
+                    leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    break;
+                case ORDER_BRG:
+                    leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    break;
+                case ORDER_BGR:
+                    leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    break;
+                default: // case ORDER_GRB:
+                    leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                    break;
+            }
+            
         }
     }
     refreshRequired = 1;
@@ -315,19 +369,27 @@ void doFlash(void) {
  * 256 LED frame is indicated by at least 50us at logic 0.  
  */
 void refreshString(void) {
-    uint8_t ledno;
+    uint16_t offset;
     
     // if a transfer is already in progress then wait
     //if (DMAnCON0bits.DGO) return;
-    sendByte();
+//    sendByte();
     if (refreshRequired) {
         refreshRequired = 0;
-
+#ifdef DMA
         // Start a transfer
-//        PIR2bits.DMA1DCNTIF = 0;
-//        SPI1TCNT = 0x300;
-//        DMAnCON0bits.SIRQEN = 1;
-        //DMAnCON0bits.DGO = 1;
+        DMAnCON0bits.SIRQEN = 1;
+#else       
+        // do a transfer
+        offset = 0;
+        while (offset < 3*MAX_LEDS) {
+            if (PIR3bits.SPI1TXIF) {
+                SPI1TXB = *(offset+(uint8_t *)leds);
+                offset++;
+            }
+        }
+#endif 
+
 LATCbits.LATC6 = flashState;
     }
 }

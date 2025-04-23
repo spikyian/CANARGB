@@ -39702,8 +39702,39 @@ void setup(void) {
 
     (INTCON0bits.GIE = 1);
     flashTime.val = tickGet();
-    updateLedRange(0, 255 -1, (PaletteIndex)(uint8_t)1);
-    updateRGB();
+
+    updateLedRange(0, 22, (PaletteIndex)(uint8_t)0x00);
+    doFlash();refreshString();
+    updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);
+    doFlash();refreshString();
+    updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x22);
+    doFlash();refreshString();
+    updateLedRange(9, 11, (PaletteIndex)(uint8_t)0x33);
+    doFlash();refreshString();
+    updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x44);
+    doFlash();refreshString();
+    updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x55);
+    doFlash();refreshString();
+    updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x66);
+    doFlash();refreshString();
+    updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x77);
+    doFlash();refreshString();
+    updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x88);
+    doFlash();refreshString();
+    updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x99);
+    doFlash();refreshString();
+    updateLedRange(30, 32, (PaletteIndex)(uint8_t)0xAA);
+    doFlash();refreshString();
+    updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xBB);
+    doFlash();refreshString();
+    updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xCC);
+    doFlash();refreshString();
+    updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xDD);
+    doFlash();refreshString();
+    updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xEE);
+    doFlash();refreshString();
+    updateLedRange(45, 48, (PaletteIndex)(uint8_t)0xFF);
+    doFlash();refreshString();
 }
 
 void loop(void) {
@@ -39715,7 +39746,7 @@ void loop(void) {
 
     refreshString();
 }
-# 255 "../main.c"
+# 286 "../main.c"
 ValidTime APP_isSuitableTimeToWriteFlash(void){
     if (DMAnCON0bits.DGO) return BAD_TIME;
     return GOOD_TIME;
