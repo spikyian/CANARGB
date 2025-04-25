@@ -228,21 +228,21 @@ void initARGB(void) {
 #ifdef DMA
     {
         DMASELECT=0; // Select DMA1
-        DMAnCON1bits.DMODE=0b00;    // 0b00 => Destination Pointer (DMADPTR) remains unchanged after each transfer
-        DMAnCON1bits.SMR=0b00;      // 0b00 => SFR/GPR data space is DMA source memory
-        DMAnCON1bits.SMODE=0b01;    // 0b01 => Source pointer increments
+        DMAnCON1bits.DMODE=0;       // 0 => Destination Pointer (DMADPTR) remains unchanged after each transfer
+        DMAnCON1bits.SMR=0;         // 0 => SFR/GPR data space is DMA source memory
+        DMAnCON1bits.SMODE=1;       // 1 => Source pointer increments
         DMAnCON1bits.SSTP=1;        // 1 => Clear SIRQEN once all data transferred
         DMAnSSZ=3*MAX_LEDS;         // 3 x number of LED for the total number of colour bytes
-        DMAnSSA=(__uint24)&leds;    // the array of byes for the LEDs
-        DMAnDSZ=3*MAX_LEDS;         // 1 byte of SPI1TXR
+        DMAnSSA=(__uint24)leds;     // the array of byes for the LEDs
+        DMAnDSZ=1;                  // 1 byte of SPI1TXR
         DMAnDSA=(uint16_t)&SPI1TXB; // SPI1 transmit buffer
         DMAnSIRQ=0x19;              // 0x19 => SPI1TX
         DMAnAIRQ=0;                 // No abort
         //Change arbiter priority if needed and perform lock operation
-        //DMA1PR = 0x01;            // Change the priority only if needed
-        //PRLOCK = 0x55;            // This sequence
-        //PRLOCK = 0xAA;            // is mandatory
-        //PRLOCKbits.PRLOCKED = 1;  // for DMA operation   
+        DMA1PR = 0x01;            // Change the priority only if needed
+        PRLOCK = 0x55;            // This sequence
+        PRLOCK = 0xAA;            // is mandatory
+        PRLOCKbits.PRLOCKED = 1;  // for DMA operation
         DMAnCON0bits.SIRQEN = 0;    // not ready to transfer data yet
         DMAnCON0bits.EN=1;      
     }
@@ -378,6 +378,7 @@ void refreshString(void) {
         refreshRequired = 0;
 #ifdef DMA
         // Start a transfer
+        SPI1TCNT = 3 * MAX_LEDS;
         DMAnCON0bits.SIRQEN = 1;
 #else       
         // do a transfer

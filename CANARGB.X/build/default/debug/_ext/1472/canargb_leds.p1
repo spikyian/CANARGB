@@ -327,18 +327,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "116 ../../VLCBlib_PIC/nv.h
 [; ;../../VLCBlib_PIC/nv.h: 116: extern int16_t getNV(uint8_t index);
 [v _getNV `(s ~T0 @X0 0 ef1`uc ]
-"1415 C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h
-[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 1415: typedef union {
-[s S3080 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3080 . SPI1RXIF SPI1TXIF SPI1IF TMR2IF TMR1IF TMR1GIF CCP1IF TMR0IF ]
-"1414
-[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 1414: 
-[u S3079 `S3080 1 ]
-[n S3079 . . ]
-"1426
-[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 1426: } PMD2bits_t;
-[v _PIR3bits `VS3079 ~T0 @X0 0 e@1201 ]
-"2330
+"2330 C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h
 [s S3110 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3110 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
 "2329
@@ -4181,68 +4170,69 @@ Version 4.0 HI-TECH Software Intermediate Code
 "224
 [; ;../canargb_leds.c: 224:     }
 }
-"228
-[; ;../canargb_leds.c: 228:     if (0) {
-[e $ ! != -> 0 `i -> 0 `i 3308  ]
-{
 "229
-[; ;../canargb_leds.c: 229:         DMASELECT=0;
-[e = _DMASELECT -> -> 0 `i `uc ]
+[; ;../canargb_leds.c: 229:     {
+{
 "230
-[; ;../canargb_leds.c: 230:         DMAnCON1bits.DMODE=0b00;
-[e = . . _DMAnCON1bits 0 4 -> -> 0 `i `uc ]
+[; ;../canargb_leds.c: 230:         DMASELECT=0;
+[e = _DMASELECT -> -> 0 `i `uc ]
 "231
-[; ;../canargb_leds.c: 231:         DMAnCON1bits.SMR=0b00;
-[e = . . _DMAnCON1bits 0 2 -> -> 0 `i `uc ]
+[; ;../canargb_leds.c: 231:         DMAnCON1bits.DMODE=0;
+[e = . . _DMAnCON1bits 0 4 -> -> 0 `i `uc ]
 "232
-[; ;../canargb_leds.c: 232:         DMAnCON1bits.SMODE=0b01;
-[e = . . _DMAnCON1bits 0 1 -> -> 1 `i `uc ]
+[; ;../canargb_leds.c: 232:         DMAnCON1bits.SMR=0;
+[e = . . _DMAnCON1bits 0 2 -> -> 0 `i `uc ]
 "233
-[; ;../canargb_leds.c: 233:         DMAnCON1bits.SSTP=1;
-[e = . . _DMAnCON1bits 0 0 -> -> 1 `i `uc ]
+[; ;../canargb_leds.c: 233:         DMAnCON1bits.SMODE=1;
+[e = . . _DMAnCON1bits 0 1 -> -> 1 `i `uc ]
 "234
-[; ;../canargb_leds.c: 234:         DMAnSSZ=0x300;
-[e = _DMAnSSZ -> -> 768 `i `us ]
+[; ;../canargb_leds.c: 234:         DMAnCON1bits.SSTP=1;
+[e = . . _DMAnCON1bits 0 0 -> -> 1 `i `uc ]
 "235
-[; ;../canargb_leds.c: 235:         DMAnSSA=(__uint24)&leds;
-[e = _DMAnSSA -> &U _leds `um ]
+[; ;../canargb_leds.c: 235:         DMAnSSZ=3*255;
+[e = _DMAnSSZ -> * -> 3 `i -> 255 `i `us ]
 "236
-[; ;../canargb_leds.c: 236:         DMAnDSZ=1;
-[e = _DMAnDSZ -> -> 1 `i `us ]
+[; ;../canargb_leds.c: 236:         DMAnSSA=(__uint24)&leds;
+[e = _DMAnSSA -> &U _leds `um ]
 "237
-[; ;../canargb_leds.c: 237:         DMAnDSA=(uint16_t)&SPI1TXB;
-[e = _DMAnDSA -> &U _SPI1TXB `us ]
+[; ;../canargb_leds.c: 237:         DMAnDSZ=3*255;
+[e = _DMAnDSZ -> * -> 3 `i -> 255 `i `us ]
 "238
-[; ;../canargb_leds.c: 238:         DMAnSIRQ=0x19;
-[e = _DMAnSIRQ -> -> 25 `i `uc ]
+[; ;../canargb_leds.c: 238:         DMAnDSA=(uint16_t)&SPI1TXB;
+[e = _DMAnDSA -> &U _SPI1TXB `us ]
 "239
-[; ;../canargb_leds.c: 239:         DMAnAIRQ=0;
+[; ;../canargb_leds.c: 239:         DMAnSIRQ=0x19;
+[e = _DMAnSIRQ -> -> 25 `i `uc ]
+"240
+[; ;../canargb_leds.c: 240:         DMAnAIRQ=0;
 [e = _DMAnAIRQ -> -> 0 `i `uc ]
-"245
-[; ;../canargb_leds.c: 245:         DMAnCON0bits.EN=1;
-[e = . . _DMAnCON0bits 0 6 -> -> 1 `i `uc ]
 "246
-[; ;../canargb_leds.c: 246:     }
-}
-[e :U 3308 ]
+[; ;../canargb_leds.c: 246:         DMAnCON0bits.SIRQEN = 0;
+[e = . . _DMAnCON0bits 0 5 -> -> 0 `i `uc ]
+"247
+[; ;../canargb_leds.c: 247:         DMAnCON0bits.EN=1;
+[e = . . _DMAnCON0bits 0 6 -> -> 1 `i `uc ]
 "248
-[; ;../canargb_leds.c: 248:     T2CONbits.ON = 1;
+[; ;../canargb_leds.c: 248:     }
+}
+"251
+[; ;../canargb_leds.c: 251:     T2CONbits.ON = 1;
 [e = . . _T2CONbits 0 2 -> -> 1 `i `uc ]
-"249
-[; ;../canargb_leds.c: 249:     T4CONbits.ON = 1;
-[e = . . _T4CONbits 0 2 -> -> 1 `i `uc ]
-"250
-[; ;../canargb_leds.c: 250:     MD1CON0bits.EN = 1;
-[e = . . _MD1CON0bits 0 5 -> -> 1 `i `uc ]
 "252
-[; ;../canargb_leds.c: 252:     refreshRequired = 1;
-[e = _refreshRequired -> -> 1 `i `uc ]
+[; ;../canargb_leds.c: 252:     T4CONbits.ON = 1;
+[e = . . _T4CONbits 0 2 -> -> 1 `i `uc ]
 "253
-[; ;../canargb_leds.c: 253: }
+[; ;../canargb_leds.c: 253:     MD1CON0bits.EN = 1;
+[e = . . _MD1CON0bits 0 5 -> -> 1 `i `uc ]
+"255
+[; ;../canargb_leds.c: 255:     refreshRequired = 1;
+[e = _refreshRequired -> -> 1 `i `uc ]
+"256
+[; ;../canargb_leds.c: 256: }
 [e :UE 3304 ]
 }
-"274
-[; ;../canargb_leds.c: 274: void updateLedRange(uint8_t start_ledno, uint8_t end_ledno, PaletteIndex colourIndexPair) {
+"262
+[; ;../canargb_leds.c: 262: void updateLedRange(uint8_t start_ledno, uint8_t end_ledno, PaletteIndex colourIndexPair) {
 [v _updateLedRange `(v ~T0 @X0 1 ef3`uc`uc`S3301 ]
 {
 [e :U _updateLedRange ]
@@ -4250,369 +4240,345 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _end_ledno `uc ~T0 @X0 1 r2 ]
 [v _colourIndexPair `S3301 ~T0 @X0 1 r3 ]
 [f ]
-"275
-[; ;../canargb_leds.c: 275:     uint8_t ledno;
+"263
+[; ;../canargb_leds.c: 263:     uint8_t ledno;
 [v _ledno `uc ~T0 @X0 1 a ]
-"276
-[; ;../canargb_leds.c: 276:     if (end_ledno >= 255) end_ledno = 255 -1;
-[e $ ! >= -> _end_ledno `i -> 255 `i 3310  ]
+"264
+[; ;../canargb_leds.c: 264:     if (end_ledno >= 255) end_ledno = 255 -1;
+[e $ ! >= -> _end_ledno `i -> 255 `i 3309  ]
 [e = _end_ledno -> - -> 255 `i -> 1 `i `uc ]
-[e :U 3310 ]
-"278
-[; ;../canargb_leds.c: 278:     for(ledno=start_ledno; ledno<=end_ledno; ledno++) {
+[e :U 3309 ]
+"266
+[; ;../canargb_leds.c: 266:     for(ledno=start_ledno; ledno<=end_ledno; ledno++) {
 {
 [e = _ledno _start_ledno ]
-[e $U 3314  ]
-[e :U 3311 ]
+[e $U 3313  ]
+[e :U 3310 ]
 {
-"279
-[; ;../canargb_leds.c: 279:         ledPaletteIndexes[ledno] = colourIndexPair;
+"267
+[; ;../canargb_leds.c: 267:         ledPaletteIndexes[ledno] = colourIndexPair;
 [e = *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux _colourIndexPair ]
-"280
-[; ;../canargb_leds.c: 280:     }
+"268
+[; ;../canargb_leds.c: 268:     }
 }
 [e ++ _ledno -> -> 1 `i `uc ]
-[e :U 3314 ]
-[e $ <= -> _ledno `i -> _end_ledno `i 3311  ]
-[e :U 3312 ]
+[e :U 3313 ]
+[e $ <= -> _ledno `i -> _end_ledno `i 3310  ]
+[e :U 3311 ]
 }
-"281
-[; ;../canargb_leds.c: 281: }
-[e :UE 3309 ]
+"269
+[; ;../canargb_leds.c: 269: }
+[e :UE 3308 ]
 }
-"286
-[; ;../canargb_leds.c: 286: void updateRGB(void) {
+"274
+[; ;../canargb_leds.c: 274: void updateRGB(void) {
 [v _updateRGB `(v ~T0 @X0 1 ef ]
 {
 [e :U _updateRGB ]
 [f ]
-"287
-[; ;../canargb_leds.c: 287:     refreshRequired = 1;
+"275
+[; ;../canargb_leds.c: 275:     refreshRequired = 1;
 [e = _refreshRequired -> -> 1 `i `uc ]
-"288
-[; ;../canargb_leds.c: 288: }
-[e :UE 3315 ]
+"276
+[; ;../canargb_leds.c: 276: }
+[e :UE 3314 ]
 }
-"294
-[; ;../canargb_leds.c: 294: void doFlash(void) {
+"282
+[; ;../canargb_leds.c: 282: void doFlash(void) {
 [v _doFlash `(v ~T0 @X0 1 ef ]
 {
 [e :U _doFlash ]
 [f ]
-"295
-[; ;../canargb_leds.c: 295:     uint8_t ledno;
+"283
+[; ;../canargb_leds.c: 283:     uint8_t ledno;
 [v _ledno `uc ~T0 @X0 1 a ]
-"296
-[; ;../canargb_leds.c: 296:     uint8_t order;
+"284
+[; ;../canargb_leds.c: 284:     uint8_t order;
 [v _order `uc ~T0 @X0 1 a ]
-"298
-[; ;../canargb_leds.c: 298:     flashState = 1-flashState;
+"286
+[; ;../canargb_leds.c: 286:     flashState = 1-flashState;
 [e = _flashState -> - -> 1 `i -> _flashState `i `uc ]
-"299
-[; ;../canargb_leds.c: 299:     order = (uint8_t)getNV(49);
+"287
+[; ;../canargb_leds.c: 287:     order = (uint8_t)getNV(49);
 [e = _order -> ( _getNV (1 -> -> 49 `i `uc `uc ]
-"301
-[; ;../canargb_leds.c: 301:     for (ledno=0; ledno < 255; ledno++) {
+"289
+[; ;../canargb_leds.c: 289:     for (ledno=0; ledno < 255; ledno++) {
 {
 [e = _ledno -> -> 0 `i `uc ]
-[e $ < -> _ledno `i -> 255 `i 3317  ]
-[e $U 3318  ]
-[e :U 3317 ]
+[e $ < -> _ledno `i -> 255 `i 3316  ]
+[e $U 3317  ]
+[e :U 3316 ]
 {
-"302
-[; ;../canargb_leds.c: 302:         if (flashState) {
-[e $ ! != -> _flashState `i -> 0 `i 3320  ]
+"290
+[; ;../canargb_leds.c: 290:         if (flashState) {
+[e $ ! != -> _flashState `i -> 0 `i 3319  ]
 {
-"303
-[; ;../canargb_leds.c: 303:             switch (order) {
-[e $U 3322  ]
+"291
+[; ;../canargb_leds.c: 291:             switch (order) {
+[e $U 3321  ]
 {
-"304
-[; ;../canargb_leds.c: 304:                 case 1:
-[e :U 3323 ]
-"305
-[; ;../canargb_leds.c: 305:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
-"306
-[; ;../canargb_leds.c: 306:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
-"307
-[; ;../canargb_leds.c: 307:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
-"308
-[; ;../canargb_leds.c: 308:                     break;
-[e $U 3321  ]
-"309
-[; ;../canargb_leds.c: 309:                 case 2:
-[e :U 3324 ]
-"310
-[; ;../canargb_leds.c: 310:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
-"311
-[; ;../canargb_leds.c: 311:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
-"312
-[; ;../canargb_leds.c: 312:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
-"313
-[; ;../canargb_leds.c: 313:                     break;
-[e $U 3321  ]
-"314
-[; ;../canargb_leds.c: 314:                 case 4:
-[e :U 3325 ]
-"315
-[; ;../canargb_leds.c: 315:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
-"316
-[; ;../canargb_leds.c: 316:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
-"317
-[; ;../canargb_leds.c: 317:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
-"318
-[; ;../canargb_leds.c: 318:                     break;
-[e $U 3321  ]
-"319
-[; ;../canargb_leds.c: 319:                 case 6:
-[e :U 3326 ]
-"320
-[; ;../canargb_leds.c: 320:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
-"321
-[; ;../canargb_leds.c: 321:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
-"322
-[; ;../canargb_leds.c: 322:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
-"323
-[; ;../canargb_leds.c: 323:                     break;
-[e $U 3321  ]
-"324
-[; ;../canargb_leds.c: 324:                 case 5:
-[e :U 3327 ]
-"325
-[; ;../canargb_leds.c: 325:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
-"326
-[; ;../canargb_leds.c: 326:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
-"327
-[; ;../canargb_leds.c: 327:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
-"328
-[; ;../canargb_leds.c: 328:                     break;
-[e $U 3321  ]
-"329
-[; ;../canargb_leds.c: 329:                 default:
-[e :U 3328 ]
-"330
-[; ;../canargb_leds.c: 330:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
-"331
-[; ;../canargb_leds.c: 331:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
-"332
-[; ;../canargb_leds.c: 332:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
-"333
-[; ;../canargb_leds.c: 333:                     break;
-[e $U 3321  ]
-"334
-[; ;../canargb_leds.c: 334:             }
-}
-[e $U 3321  ]
+"292
+[; ;../canargb_leds.c: 292:                 case 1:
 [e :U 3322 ]
-[e [\ _order , $ -> 1 `i 3323
- , $ -> 2 `i 3324
- , $ -> 4 `i 3325
- , $ -> 6 `i 3326
- , $ -> 5 `i 3327
- 3328 ]
+"293
+[; ;../canargb_leds.c: 293:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
+"294
+[; ;../canargb_leds.c: 294:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
+"295
+[; ;../canargb_leds.c: 295:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
+"296
+[; ;../canargb_leds.c: 296:                     break;
+[e $U 3320  ]
+"297
+[; ;../canargb_leds.c: 297:                 case 2:
+[e :U 3323 ]
+"298
+[; ;../canargb_leds.c: 298:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
+"299
+[; ;../canargb_leds.c: 299:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
+"300
+[; ;../canargb_leds.c: 300:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
+"301
+[; ;../canargb_leds.c: 301:                     break;
+[e $U 3320  ]
+"302
+[; ;../canargb_leds.c: 302:                 case 4:
+[e :U 3324 ]
+"303
+[; ;../canargb_leds.c: 303:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
+"304
+[; ;../canargb_leds.c: 304:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
+"305
+[; ;../canargb_leds.c: 305:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
+"306
+[; ;../canargb_leds.c: 306:                     break;
+[e $U 3320  ]
+"307
+[; ;../canargb_leds.c: 307:                 case 6:
+[e :U 3325 ]
+"308
+[; ;../canargb_leds.c: 308:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
+"309
+[; ;../canargb_leds.c: 309:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
+"310
+[; ;../canargb_leds.c: 310:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
+"311
+[; ;../canargb_leds.c: 311:                     break;
+[e $U 3320  ]
+"312
+[; ;../canargb_leds.c: 312:                 case 5:
+[e :U 3326 ]
+"313
+[; ;../canargb_leds.c: 313:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
+"314
+[; ;../canargb_leds.c: 314:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
+"315
+[; ;../canargb_leds.c: 315:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
+"316
+[; ;../canargb_leds.c: 316:                     break;
+[e $U 3320  ]
+"317
+[; ;../canargb_leds.c: 317:                 default:
+[e :U 3327 ]
+"318
+[; ;../canargb_leds.c: 318:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 1 `i `uc `uc ]
+"319
+[; ;../canargb_leds.c: 319:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 2 `i `uc `uc ]
+"320
+[; ;../canargb_leds.c: 320:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 0 `i -> 3 `i -> 3 `i `uc `uc ]
+"321
+[; ;../canargb_leds.c: 321:                     break;
+[e $U 3320  ]
+"322
+[; ;../canargb_leds.c: 322:             }
+}
+[e $U 3320  ]
 [e :U 3321 ]
+[e [\ _order , $ -> 1 `i 3322
+ , $ -> 2 `i 3323
+ , $ -> 4 `i 3324
+ , $ -> 6 `i 3325
+ , $ -> 5 `i 3326
+ 3327 ]
+[e :U 3320 ]
+"324
+[; ;../canargb_leds.c: 324:         } else {
+}
+[e $U 3328  ]
+[e :U 3319 ]
+{
+"325
+[; ;../canargb_leds.c: 325:             switch (order) {
+[e $U 3330  ]
+{
+"326
+[; ;../canargb_leds.c: 326:                 case 1:
+[e :U 3331 ]
+"327
+[; ;../canargb_leds.c: 327:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
+"328
+[; ;../canargb_leds.c: 328:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
+"329
+[; ;../canargb_leds.c: 329:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
+"330
+[; ;../canargb_leds.c: 330:                     break;
+[e $U 3329  ]
+"331
+[; ;../canargb_leds.c: 331:                 case 2:
+[e :U 3332 ]
+"332
+[; ;../canargb_leds.c: 332:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
+"333
+[; ;../canargb_leds.c: 333:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
+"334
+[; ;../canargb_leds.c: 334:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
+"335
+[; ;../canargb_leds.c: 335:                     break;
+[e $U 3329  ]
 "336
-[; ;../canargb_leds.c: 336:         } else {
+[; ;../canargb_leds.c: 336:                 case 4:
+[e :U 3333 ]
+"337
+[; ;../canargb_leds.c: 337:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
+"338
+[; ;../canargb_leds.c: 338:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
+"339
+[; ;../canargb_leds.c: 339:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
+"340
+[; ;../canargb_leds.c: 340:                     break;
+[e $U 3329  ]
+"341
+[; ;../canargb_leds.c: 341:                 case 6:
+[e :U 3334 ]
+"342
+[; ;../canargb_leds.c: 342:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
+"343
+[; ;../canargb_leds.c: 343:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
+"344
+[; ;../canargb_leds.c: 344:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
+"345
+[; ;../canargb_leds.c: 345:                     break;
+[e $U 3329  ]
+"346
+[; ;../canargb_leds.c: 346:                 case 5:
+[e :U 3335 ]
+"347
+[; ;../canargb_leds.c: 347:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
+"348
+[; ;../canargb_leds.c: 348:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
+"349
+[; ;../canargb_leds.c: 349:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
+"350
+[; ;../canargb_leds.c: 350:                     break;
+[e $U 3329  ]
+"351
+[; ;../canargb_leds.c: 351:                 default:
+[e :U 3336 ]
+"352
+[; ;../canargb_leds.c: 352:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
+"353
+[; ;../canargb_leds.c: 353:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
+"354
+[; ;../canargb_leds.c: 354:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
+[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
+"355
+[; ;../canargb_leds.c: 355:                     break;
+[e $U 3329  ]
+"356
+[; ;../canargb_leds.c: 356:             }
 }
 [e $U 3329  ]
-[e :U 3320 ]
-{
-"337
-[; ;../canargb_leds.c: 337:             switch (order) {
-[e $U 3331  ]
-{
-"338
-[; ;../canargb_leds.c: 338:                 case 1:
-[e :U 3332 ]
-"339
-[; ;../canargb_leds.c: 339:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
-"340
-[; ;../canargb_leds.c: 340:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
-"341
-[; ;../canargb_leds.c: 341:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
-"342
-[; ;../canargb_leds.c: 342:                     break;
-[e $U 3330  ]
-"343
-[; ;../canargb_leds.c: 343:                 case 2:
-[e :U 3333 ]
-"344
-[; ;../canargb_leds.c: 344:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
-"345
-[; ;../canargb_leds.c: 345:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
-"346
-[; ;../canargb_leds.c: 346:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
-"347
-[; ;../canargb_leds.c: 347:                     break;
-[e $U 3330  ]
-"348
-[; ;../canargb_leds.c: 348:                 case 4:
-[e :U 3334 ]
-"349
-[; ;../canargb_leds.c: 349:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
-"350
-[; ;../canargb_leds.c: 350:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
-"351
-[; ;../canargb_leds.c: 351:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
-"352
-[; ;../canargb_leds.c: 352:                     break;
-[e $U 3330  ]
-"353
-[; ;../canargb_leds.c: 353:                 case 6:
-[e :U 3335 ]
-"354
-[; ;../canargb_leds.c: 354:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
-"355
-[; ;../canargb_leds.c: 355:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
-"356
-[; ;../canargb_leds.c: 356:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
-"357
-[; ;../canargb_leds.c: 357:                     break;
-[e $U 3330  ]
-"358
-[; ;../canargb_leds.c: 358:                 case 5:
-[e :U 3336 ]
-"359
-[; ;../canargb_leds.c: 359:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
-"360
-[; ;../canargb_leds.c: 360:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
-"361
-[; ;../canargb_leds.c: 361:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
-"362
-[; ;../canargb_leds.c: 362:                     break;
-[e $U 3330  ]
-"363
-[; ;../canargb_leds.c: 363:                 default:
-[e :U 3337 ]
-"364
-[; ;../canargb_leds.c: 364:                     leds[ledno].g = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 1));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 1 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 1 `i `uc `uc ]
-"365
-[; ;../canargb_leds.c: 365:                     leds[ledno].r = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 2));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 0 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 2 `i `uc `uc ]
-"366
-[; ;../canargb_leds.c: 366:                     leds[ledno].b = ((uint8_t)getNV((ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex)*3 + 3));
-[e = . *U + &U _leds * -> _ledno `ux -> -> # *U &U _leds `ui `ux 2 -> ( _getNV (1 -> + * -> . . *U + &U _ledPaletteIndexes * -> _ledno `ux -> -> # *U &U _ledPaletteIndexes `ui `ux 0 1 `i -> 3 `i -> 3 `i `uc `uc ]
-"367
-[; ;../canargb_leds.c: 367:                     break;
-[e $U 3330  ]
-"368
-[; ;../canargb_leds.c: 368:             }
-}
-[e $U 3330  ]
-[e :U 3331 ]
-[e [\ _order , $ -> 1 `i 3332
- , $ -> 2 `i 3333
- , $ -> 4 `i 3334
- , $ -> 6 `i 3335
- , $ -> 5 `i 3336
- 3337 ]
 [e :U 3330 ]
-"370
-[; ;../canargb_leds.c: 370:         }
-}
+[e [\ _order , $ -> 1 `i 3331
+ , $ -> 2 `i 3332
+ , $ -> 4 `i 3333
+ , $ -> 6 `i 3334
+ , $ -> 5 `i 3335
+ 3336 ]
 [e :U 3329 ]
-"371
-[; ;../canargb_leds.c: 371:     }
+"358
+[; ;../canargb_leds.c: 358:         }
+}
+[e :U 3328 ]
+"359
+[; ;../canargb_leds.c: 359:     }
 }
 [e ++ _ledno -> -> 1 `i `uc ]
-[e $ < -> _ledno `i -> 255 `i 3317  ]
-[e :U 3318 ]
+[e $ < -> _ledno `i -> 255 `i 3316  ]
+[e :U 3317 ]
 }
-"372
-[; ;../canargb_leds.c: 372:     refreshRequired = 1;
+"360
+[; ;../canargb_leds.c: 360:     refreshRequired = 1;
 [e = _refreshRequired -> -> 1 `i `uc ]
-"373
-[; ;../canargb_leds.c: 373: }
-[e :UE 3316 ]
+"361
+[; ;../canargb_leds.c: 361: }
+[e :UE 3315 ]
 }
-"383
-[; ;../canargb_leds.c: 383: void refreshString(void) {
+"371
+[; ;../canargb_leds.c: 371: void refreshString(void) {
 [v _refreshString `(v ~T0 @X0 1 ef ]
 {
 [e :U _refreshString ]
 [f ]
-"384
-[; ;../canargb_leds.c: 384:     uint16_t offset;
+"372
+[; ;../canargb_leds.c: 372:     uint16_t offset;
 [v _offset `us ~T0 @X0 1 a ]
-"389
-[; ;../canargb_leds.c: 389:     if (refreshRequired) {
-[e $ ! != -> _refreshRequired `i -> 0 `i 3339  ]
+"377
+[; ;../canargb_leds.c: 377:     if (refreshRequired) {
+[e $ ! != -> _refreshRequired `i -> 0 `i 3338  ]
 {
-"390
-[; ;../canargb_leds.c: 390:         refreshRequired = 0;
+"378
+[; ;../canargb_leds.c: 378:         refreshRequired = 0;
 [e = _refreshRequired -> -> 0 `i `uc ]
-"393
-[; ;../canargb_leds.c: 393:         offset = 0;
-[e = _offset -> -> 0 `i `us ]
+"381
+[; ;../canargb_leds.c: 381:         SPI1TCNT = 3 * 255;
+[e = _SPI1TCNT -> * -> 3 `i -> 255 `i `us ]
+"382
+[; ;../canargb_leds.c: 382:         DMAnCON0bits.SIRQEN = 1;
+[e = . . _DMAnCON0bits 0 5 -> -> 1 `i `uc ]
 "394
-[; ;../canargb_leds.c: 394:         while (offset < 3*255) {
-[e $U 3340  ]
-[e :U 3341 ]
-{
-"395
-[; ;../canargb_leds.c: 395:             if (PIR3bits.SPI1TXIF) {
-[e $ ! != -> . . _PIR3bits 0 1 `i -> 0 `i 3343  ]
-{
-"396
-[; ;../canargb_leds.c: 396:                 SPI1TXB = *(offset+(uint8_t *)leds);
-[e = _SPI1TXB *U + -> &U _leds `*uc * -> -> _offset `ui `ux -> -> # *U -> &U _leds `*uc `ui `ux ]
-"397
-[; ;../canargb_leds.c: 397:                 offset++;
-[e ++ _offset -> -> 1 `i `us ]
-"398
-[; ;../canargb_leds.c: 398:             }
-}
-[e :U 3343 ]
-"399
-[; ;../canargb_leds.c: 399:         }
-}
-[e :U 3340 ]
-"394
-[; ;../canargb_leds.c: 394:         while (offset < 3*255) {
-[e $ < -> _offset `ui -> * -> 3 `i -> 255 `i `ui 3341  ]
-[e :U 3342 ]
-"409
-[; ;../canargb_leds.c: 409: LATCbits.LATC6 = flashState;
+[; ;../canargb_leds.c: 394: LATCbits.LATC6 = flashState;
 [e = . . _LATCbits 0 6 _flashState ]
-"410
-[; ;../canargb_leds.c: 410:     }
+"395
+[; ;../canargb_leds.c: 395:     }
 }
-[e :U 3339 ]
-"411
-[; ;../canargb_leds.c: 411: }
-[e :UE 3338 ]
+[e :U 3338 ]
+"396
+[; ;../canargb_leds.c: 396: }
+[e :UE 3337 ]
 }

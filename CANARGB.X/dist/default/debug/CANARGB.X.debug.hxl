@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o
+ C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o
  -Odist/default/debug\CANARGB.X.debug.hex
  -logfile=dist/default/debug\CANARGB.X.debug.hxl
  -addressing=1
@@ -9,26 +9,24 @@
 
 ### Memory Usage ###
  Input file ranges:
-  800h - 805h		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  820h - 83Fh		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  848h - 84Fh		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  900h - 7F41h		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  7F44h - 81B9h		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  81BCh - 83ADh		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  83B0h - 83B1h		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  FE58h - FFFFh		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  300000h - 300022h		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  3803FAh - 3803FAh		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
-  3803FFh - 3803FFh		(C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
+  800h - 805h		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  820h - 83Fh		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  848h - 84Fh		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  900h - 7EE1h		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  7EE4h - 8379h		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  837Ch - 837Dh		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  FE58h - FFFFh		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  300000h - 300022h		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  3803FAh - 3803FAh		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
+  3803FFh - 3803FFh		(C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
  Unused ranges:
   0h - 7FFh
   806h - 81Fh
   840h - 847h
   850h - 8FFh
-  7F42h - 7F43h
-  81BAh - 81BBh
-  83AEh - 83AFh
-  83B2h - FE57h
+  7EE2h - 7EE3h
+  837Ah - 837Bh
+  837Eh - FE57h
   10000h - 2FFFFFh
   300023h - 3803F9h
   3803FBh - 3803FEh
@@ -36,7 +34,7 @@
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\ianwh\AppData\Local\Temp\xcAs14d8.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\ianwh\AppData\Local\Temp\xcAs2s0.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -1932,13 +1930,13 @@
 00007EB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007EC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007ED0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00007EE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00007EE0 | H1 H1 -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007EF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007F00 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007F10 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007F20 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007F30 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00007F40 | H1 H1 -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00007F40 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007F50 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007F60 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00007F70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
@@ -1977,7 +1975,7 @@
 00008180 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00008190 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000081A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000081B0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- H1 H1 H1 H1
+000081B0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000081C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000081D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000081E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
@@ -2005,11 +2003,7 @@
 00008340 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00008350 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00008360 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00008370 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00008380 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00008390 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000083A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- --
-000083B0 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
+00008370 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- H1 H1 -- --
 ----------------------------------------------------------
 0000FE50 | -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1
 0000FE60 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

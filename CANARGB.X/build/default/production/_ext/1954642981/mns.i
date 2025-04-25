@@ -38372,7 +38372,6 @@ typedef enum VlcbManufacturer
   MANU_SPROG = 44,
   MANU_ROCRAIL = 70,
   MANU_SPECTRUM = 80,
-  MANU_VLCB = 250,
   MANU_SYSPIXIE = 249,
   MANU_RME = 248,
 } VlcbManufacturer;
@@ -38473,6 +38472,7 @@ typedef enum VlcbMergModuleTypes
   MTYP_CANPIXEL = 84,
   MTYP_CANCABPE = 85,
   MTYP_CANSMARTTD = 86,
+  MTYP_CANARGB = 87,
   MTYP_VLCB = 0xFC,
 
 
@@ -39643,7 +39643,7 @@ static Processed mnsProcessMessage(Message * m) {
                 return PROCESSED;
             case OPC_RQNP:
                 sendMessage7(OPC_PARAMS, MANU_MERG, 'a',
-                        MTYP_VLCB, 255, 252,
+                        MTYP_CANARGB, 255, 252,
                         49, 1);
                 return PROCESSED;
             case OPC_RQMN:
@@ -39651,7 +39651,7 @@ static Processed mnsProcessMessage(Message * m) {
                         name[4], name[5], name[6]);
                 return PROCESSED;
             case OPC_QNN:
-                sendMessage5(OPC_PNN, 0,0, MANU_MERG, MTYP_VLCB, getParameterFlags());
+                sendMessage5(OPC_PNN, 0,0, MANU_MERG, MTYP_CANARGB, getParameterFlags());
                 return PROCESSED;
             default:
                 break;
@@ -39661,7 +39661,7 @@ static Processed mnsProcessMessage(Message * m) {
 
     switch (m->opc) {
         case OPC_QNN:
-            sendMessage5(OPC_PNN, nn.bytes.hi,nn.bytes.lo, MANU_MERG, MTYP_VLCB, getParameterFlags());
+            sendMessage5(OPC_PNN, nn.bytes.hi,nn.bytes.lo, MANU_MERG, MTYP_CANARGB, getParameterFlags());
             return PROCESSED;
 
         case OPC_MODE:
@@ -40069,7 +40069,7 @@ static uint8_t getParameter(uint8_t idx) {
     case PAR_MINVER:
         return 'a';
     case PAR_MTYP:
-        return MTYP_VLCB;
+        return MTYP_CANARGB;
     case PAR_EVTNUM:
         return 255;
     case PAR_EVNUM:

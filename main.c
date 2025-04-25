@@ -227,28 +227,28 @@ void setup(void) {
     // enable interrupts, all init now done
     ei(); 
     flashTime.val = tickGet();
-
-    updateLedRange(0, 2, (PaletteIndex)(uint8_t)0x00);
-    updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);
-    updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x88);
-    updateLedRange(9, 11, (PaletteIndex)(uint8_t)0xFF);
-    updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x22);
-    updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x33);
-    updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x44);
-    updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x55);
-    updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x66);
-    updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x77);
-    updateLedRange(30, 32, (PaletteIndex)(uint8_t)0x99);
-    updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xAA);
-    updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xBB);
-    updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xCC);
-    updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xDD);
-    updateLedRange(45, 47, (PaletteIndex)(uint8_t)0xEE);
-    updateLedRange(48, 50, (PaletteIndex)(uint8_t)0x28);
-    updateLedRange(51, 53, (PaletteIndex)(uint8_t)0x40);
-    updateLedRange(54, 56, (PaletteIndex)(uint8_t)0x23);
-    updateLedRange(57, 254, (PaletteIndex)(uint8_t)0x11);
-    updateLedRange(70, 74, (PaletteIndex)(uint8_t)0x22);
+    if (0) {
+        updateLedRange(0, 2, (PaletteIndex)(uint8_t)0x00);  // black/off
+        updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);  // dark grey
+        updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x88);  // light grey
+        updateLedRange(9, 11, (PaletteIndex)(uint8_t)0xFF); // white
+        updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x22);    // dark red
+        updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x33);    // dark green
+        updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x44);    // dark blue
+        updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x55);    // orange
+        updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x66);    // dark magenta
+        updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x77);    // dark cyan
+        updateLedRange(30, 32, (PaletteIndex)(uint8_t)0x99);    // red
+        updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xAA);    // green
+        updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xBB);    // blue
+        updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xCC);    // yellow
+        updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xDD);    // magenta
+        updateLedRange(45, 47, (PaletteIndex)(uint8_t)0xEE);    // cyan
+        updateLedRange(48, 50, (PaletteIndex)(uint8_t)0x28);    // flash red/grey
+        updateLedRange(51, 53, (PaletteIndex)(uint8_t)0x40);    // flash blue/black
+        updateLedRange(54, 56, (PaletteIndex)(uint8_t)0x23);    // flash red/green
+        updateLedRange(57, 254, (PaletteIndex)(uint8_t)0x11);   // grey
+    }
 }
 
 void loop(void) {

@@ -38288,7 +38288,6 @@ typedef enum VlcbManufacturer
   MANU_SPROG = 44,
   MANU_ROCRAIL = 70,
   MANU_SPECTRUM = 80,
-  MANU_VLCB = 250,
   MANU_SYSPIXIE = 249,
   MANU_RME = 248,
 } VlcbManufacturer;
@@ -38389,6 +38388,7 @@ typedef enum VlcbMergModuleTypes
   MTYP_CANPIXEL = 84,
   MTYP_CANCABPE = 85,
   MTYP_CANSMARTTD = 86,
+  MTYP_CANARGB = 87,
   MTYP_VLCB = 0xFC,
 
 
@@ -39555,7 +39555,32 @@ void initARGB(void) {
         MD1CARL = 0x10;
         MD1SRC = 0x1F;
     }
-# 251 "../canargb_leds.c"
+
+
+
+
+    {
+        DMASELECT=0;
+        DMAnCON1bits.DMODE=0;
+        DMAnCON1bits.SMR=0;
+        DMAnCON1bits.SMODE=1;
+        DMAnCON1bits.SSTP=1;
+        DMAnSSZ=3*255;
+        DMAnSSA=(__uint24)leds;
+        DMAnDSZ=1;
+        DMAnDSA=(uint16_t)&SPI1TXB;
+        DMAnSIRQ=0x19;
+        DMAnAIRQ=0;
+
+        DMA1PR = 0x01;
+        PRLOCK = 0x55;
+        PRLOCK = 0xAA;
+        PRLOCKbits.PRLOCKED = 1;
+        DMAnCON0bits.SIRQEN = 0;
+        DMAnCON0bits.EN=1;
+    }
+
+
     T2CONbits.ON = 1;
     T4CONbits.ON = 1;
     MD1CON0bits.EN = 1;
@@ -39678,18 +39703,9 @@ void refreshString(void) {
         refreshRequired = 0;
 
 
-
-
-
-        offset = 0;
-        while (offset < 3*255) {
-            if (PIR3bits.SPI1TXIF) {
-                SPI1TXB = *(offset+(uint8_t *)leds);
-                offset++;
-            }
-        }
-
-
+        SPI1TCNT = 3 * 255;
+        DMAnCON0bits.SIRQEN = 1;
+# 394 "../canargb_leds.c"
 LATCbits.LATC6 = flashState;
     }
 }

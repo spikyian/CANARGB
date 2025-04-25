@@ -93,7 +93,7 @@
 // Parameters
 #define PARAM_MANU              MANU_MERG
 
-#define PARAM_MODULE_ID         MTYP_VLCB       // NEEDS TO BE CHANGED
+#define PARAM_MODULE_ID         MTYP_CANARGB
 #define PARAM_MAJOR_VERSION     1
 #define PARAM_MINOR_VERSION     'a'
 #define PARAM_BUILD_VERSION     1
@@ -120,7 +120,7 @@
 //#define SAFETY
 
 // Module specific stuff here
-//#define DMA
+#define DMA
 
 
 #endif

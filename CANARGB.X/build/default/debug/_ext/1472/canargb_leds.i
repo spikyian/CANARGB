@@ -39558,15 +39558,16 @@ void initARGB(void) {
 
 
 
-    if (0) {
+
+    {
         DMASELECT=0;
-        DMAnCON1bits.DMODE=0b00;
-        DMAnCON1bits.SMR=0b00;
-        DMAnCON1bits.SMODE=0b01;
+        DMAnCON1bits.DMODE=0;
+        DMAnCON1bits.SMR=0;
+        DMAnCON1bits.SMODE=1;
         DMAnCON1bits.SSTP=1;
-        DMAnSSZ=0x300;
+        DMAnSSZ=3*255;
         DMAnSSA=(__uint24)&leds;
-        DMAnDSZ=1;
+        DMAnDSZ=3*255;
         DMAnDSA=(uint16_t)&SPI1TXB;
         DMAnSIRQ=0x19;
         DMAnAIRQ=0;
@@ -39575,8 +39576,10 @@ void initARGB(void) {
 
 
 
+        DMAnCON0bits.SIRQEN = 0;
         DMAnCON0bits.EN=1;
     }
+
 
     T2CONbits.ON = 1;
     T4CONbits.ON = 1;
@@ -39584,7 +39587,11 @@ void initARGB(void) {
 
     refreshRequired = 1;
 }
-# 274 "../canargb_leds.c"
+
+
+
+
+
 void updateLedRange(uint8_t start_ledno, uint8_t end_ledno, PaletteIndex colourIndexPair) {
     uint8_t ledno;
     if (end_ledno >= 255) end_ledno = 255 -1;
@@ -39685,7 +39692,7 @@ void doFlash(void) {
     }
     refreshRequired = 1;
 }
-# 383 "../canargb_leds.c"
+# 371 "../canargb_leds.c"
 void refreshString(void) {
     uint16_t offset;
 
@@ -39696,14 +39703,9 @@ void refreshString(void) {
         refreshRequired = 0;
 
 
-        offset = 0;
-        while (offset < 3*255) {
-            if (PIR3bits.SPI1TXIF) {
-                SPI1TXB = *(offset+(uint8_t *)leds);
-                offset++;
-            }
-        }
-# 409 "../canargb_leds.c"
+        SPI1TCNT = 3 * 255;
+        DMAnCON0bits.SIRQEN = 1;
+# 394 "../canargb_leds.c"
 LATCbits.LATC6 = flashState;
     }
 }

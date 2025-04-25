@@ -217,6 +217,69 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1941
 [; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 1941: extern volatile unsigned char MD1SRC __attribute__((address(0x06C)));
 [v _MD1SRC `Vuc ~T0 @X0 0 e@108 ]
+"7347
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 7347: extern volatile unsigned char DMASELECT __attribute__((address(0x0E8)));
+[v _DMASELECT `Vuc ~T0 @X0 0 e@232 ]
+"8709
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8709:     struct {
+[s S412 :1 `uc 1 :2 `uc 1 :2 `uc 1 :1 `uc 1 :2 `uc 1 ]
+[n S412 . SSTP SMODE SMR DSTP DMODE ]
+"8708
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8708: typedef union {
+[u S411 `S412 1 ]
+[n S411 . . ]
+"8717
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8717: extern volatile DMAnCON1bits_t DMAnCON1bits __attribute__((address(0x0FD)));
+[v _DMAnCON1bits `VS411 ~T0 @X0 0 e@253 ]
+"8327
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8327: extern volatile unsigned short DMAnSSZ __attribute__((address(0x0F7)));
+[v _DMAnSSZ `Vus ~T0 @X0 0 e@247 ]
+"8451
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8451: extern volatile __uint24 DMAnSSA __attribute__((address(0x0F9)));
+[v _DMAnSSA `Vum ~T0 @X0 0 e@249 ]
+"7727
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 7727: extern volatile unsigned short DMAnDSZ __attribute__((address(0x0EE)));
+[v _DMAnDSZ `Vus ~T0 @X0 0 e@238 ]
+"7850
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 7850: extern volatile unsigned short DMAnDSA __attribute__((address(0x0F0)));
+[v _DMAnDSA `Vus ~T0 @X0 0 e@240 ]
+"3506
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 3506: extern volatile unsigned char SPI1TXB __attribute__((address(0x081)));
+[v _SPI1TXB `Vuc ~T0 @X0 0 e@129 ]
+"8817
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8817: extern volatile unsigned char DMAnSIRQ __attribute__((address(0x0FF)));
+[v _DMAnSIRQ `Vuc ~T0 @X0 0 e@255 ]
+"8747
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8747: extern volatile unsigned char DMAnAIRQ __attribute__((address(0x0FE)));
+[v _DMAnAIRQ `Vuc ~T0 @X0 0 e@254 ]
+"5864
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5864: extern volatile unsigned char DMA1PR __attribute__((address(0x0B6)));
+[v _DMA1PR `Vuc ~T0 @X0 0 e@182 ]
+"5776
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5776: extern volatile unsigned char PRLOCK __attribute__((address(0x0B4)));
+[v _PRLOCK `Vuc ~T0 @X0 0 e@180 ]
+"5782
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5782:     struct {
+[s S261 :1 `uc 1 ]
+[n S261 . PRLOCKED ]
+"5781
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5781: typedef union {
+[u S260 `S261 1 ]
+[n S260 . . ]
+"5786
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5786: extern volatile PRLOCKbits_t PRLOCKbits __attribute__((address(0x0B4)));
+[v _PRLOCKbits `VS260 ~T0 @X0 0 e@180 ]
+"8663
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8663:     struct {
+[s S410 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S410 . XIP . AIRQEN . DGO SIRQEN EN ]
+"8662
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8662: typedef union {
+[u S409 `S410 1 ]
+[n S409 . . ]
+"8673
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8673: extern volatile DMAnCON0bits_t DMAnCON0bits __attribute__((address(0x0FC)));
+[v _DMAnCON0bits `VS409 ~T0 @X0 0 e@252 ]
 "39954
 [; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 39954:     struct {
 [s S1878 :4 `uc 1 :3 `uc 1 :1 `uc 1 ]
@@ -281,21 +344,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "116 ../../VLCBlib_PIC/nv.h
 [; ;../../VLCBlib_PIC/nv.h: 116: extern int16_t getNV(uint8_t index);
 [v _getNV `(s ~T0 @X0 0 ef1`uc ]
-"1415 C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h
-[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 1415: typedef union {
-[s S3080 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3080 . SPI1RXIF SPI1TXIF SPI1IF TMR2IF TMR1IF TMR1GIF CCP1IF TMR0IF ]
-"1414
-[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 1414: 
-[u S3079 `S3080 1 ]
-[n S3079 . . ]
-"1426
-[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 1426: } PMD2bits_t;
-[v _PIR3bits `VS3079 ~T0 @X0 0 e@1201 ]
-"3506
-[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 3506: extern volatile unsigned char SPI1TXB __attribute__((address(0x081)));
-[v _SPI1TXB `Vuc ~T0 @X0 0 e@129 ]
-"2330
+"2330 C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h
 [s S3110 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3110 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
 "2329
@@ -4138,6 +4187,63 @@ Version 4.0 HI-TECH Software Intermediate Code
 "224
 [; ;../canargb_leds.c: 224:     }
 }
+"229
+[; ;../canargb_leds.c: 229:     {
+{
+"230
+[; ;../canargb_leds.c: 230:         DMASELECT=0;
+[e = _DMASELECT -> -> 0 `i `uc ]
+"231
+[; ;../canargb_leds.c: 231:         DMAnCON1bits.DMODE=0;
+[e = . . _DMAnCON1bits 0 4 -> -> 0 `i `uc ]
+"232
+[; ;../canargb_leds.c: 232:         DMAnCON1bits.SMR=0;
+[e = . . _DMAnCON1bits 0 2 -> -> 0 `i `uc ]
+"233
+[; ;../canargb_leds.c: 233:         DMAnCON1bits.SMODE=1;
+[e = . . _DMAnCON1bits 0 1 -> -> 1 `i `uc ]
+"234
+[; ;../canargb_leds.c: 234:         DMAnCON1bits.SSTP=1;
+[e = . . _DMAnCON1bits 0 0 -> -> 1 `i `uc ]
+"235
+[; ;../canargb_leds.c: 235:         DMAnSSZ=3*255;
+[e = _DMAnSSZ -> * -> 3 `i -> 255 `i `us ]
+"236
+[; ;../canargb_leds.c: 236:         DMAnSSA=(__uint24)leds;
+[e = _DMAnSSA -> &U _leds `um ]
+"237
+[; ;../canargb_leds.c: 237:         DMAnDSZ=1;
+[e = _DMAnDSZ -> -> 1 `i `us ]
+"238
+[; ;../canargb_leds.c: 238:         DMAnDSA=(uint16_t)&SPI1TXB;
+[e = _DMAnDSA -> &U _SPI1TXB `us ]
+"239
+[; ;../canargb_leds.c: 239:         DMAnSIRQ=0x19;
+[e = _DMAnSIRQ -> -> 25 `i `uc ]
+"240
+[; ;../canargb_leds.c: 240:         DMAnAIRQ=0;
+[e = _DMAnAIRQ -> -> 0 `i `uc ]
+"242
+[; ;../canargb_leds.c: 242:         DMA1PR = 0x01;
+[e = _DMA1PR -> -> 1 `i `uc ]
+"243
+[; ;../canargb_leds.c: 243:         PRLOCK = 0x55;
+[e = _PRLOCK -> -> 85 `i `uc ]
+"244
+[; ;../canargb_leds.c: 244:         PRLOCK = 0xAA;
+[e = _PRLOCK -> -> 170 `i `uc ]
+"245
+[; ;../canargb_leds.c: 245:         PRLOCKbits.PRLOCKED = 1;
+[e = . . _PRLOCKbits 0 0 -> -> 1 `i `uc ]
+"246
+[; ;../canargb_leds.c: 246:         DMAnCON0bits.SIRQEN = 0;
+[e = . . _DMAnCON0bits 0 5 -> -> 0 `i `uc ]
+"247
+[; ;../canargb_leds.c: 247:         DMAnCON0bits.EN=1;
+[e = . . _DMAnCON0bits 0 6 -> -> 1 `i `uc ]
+"248
+[; ;../canargb_leds.c: 248:     }
+}
 "251
 [; ;../canargb_leds.c: 251:     T2CONbits.ON = 1;
 [e = . . _T2CONbits 0 2 -> -> 1 `i `uc ]
@@ -4488,44 +4594,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "378
 [; ;../canargb_leds.c: 378:         refreshRequired = 0;
 [e = _refreshRequired -> -> 0 `i `uc ]
-"384
-[; ;../canargb_leds.c: 384:         offset = 0;
-[e = _offset -> -> 0 `i `us ]
-"385
-[; ;../canargb_leds.c: 385:         while (offset < 3*255) {
-[e $U 3339  ]
-[e :U 3340 ]
-{
-"386
-[; ;../canargb_leds.c: 386:             if (PIR3bits.SPI1TXIF) {
-[e $ ! != -> . . _PIR3bits 0 1 `i -> 0 `i 3342  ]
-{
-"387
-[; ;../canargb_leds.c: 387:                 SPI1TXB = *(offset+(uint8_t *)leds);
-[e = _SPI1TXB *U + -> &U _leds `*uc * -> -> _offset `ui `ux -> -> # *U -> &U _leds `*uc `ui `ux ]
-"388
-[; ;../canargb_leds.c: 388:                 offset++;
-[e ++ _offset -> -> 1 `i `us ]
-"389
-[; ;../canargb_leds.c: 389:             }
-}
-[e :U 3342 ]
-"390
-[; ;../canargb_leds.c: 390:         }
-}
-[e :U 3339 ]
-"385
-[; ;../canargb_leds.c: 385:         while (offset < 3*255) {
-[e $ < -> _offset `ui -> * -> 3 `i -> 255 `i `ui 3340  ]
-[e :U 3341 ]
-"393
-[; ;../canargb_leds.c: 393: LATCbits.LATC6 = flashState;
-[e = . . _LATCbits 0 6 _flashState ]
+"381
+[; ;../canargb_leds.c: 381:         SPI1TCNT = 3 * 255;
+[e = _SPI1TCNT -> * -> 3 `i -> 255 `i `us ]
+"382
+[; ;../canargb_leds.c: 382:         DMAnCON0bits.SIRQEN = 1;
+[e = . . _DMAnCON0bits 0 5 -> -> 1 `i `uc ]
 "394
-[; ;../canargb_leds.c: 394:     }
+[; ;../canargb_leds.c: 394: LATCbits.LATC6 = flashState;
+[e = . . _LATCbits 0 6 _flashState ]
+"395
+[; ;../canargb_leds.c: 395:     }
 }
 [e :U 3338 ]
-"395
-[; ;../canargb_leds.c: 395: }
+"396
+[; ;../canargb_leds.c: 396: }
 [e :UE 3337 ]
 }

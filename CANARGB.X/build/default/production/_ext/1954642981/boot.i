@@ -38371,7 +38371,6 @@ typedef enum VlcbManufacturer
   MANU_SPROG = 44,
   MANU_ROCRAIL = 70,
   MANU_SPECTRUM = 80,
-  MANU_VLCB = 250,
   MANU_SYSPIXIE = 249,
   MANU_RME = 248,
 } VlcbManufacturer;
@@ -38472,6 +38471,7 @@ typedef enum VlcbMergModuleTypes
   MTYP_CANPIXEL = 84,
   MTYP_CANCABPE = 85,
   MTYP_CANSMARTTD = 86,
+  MTYP_CANARGB = 87,
   MTYP_VLCB = 0xFC,
 
 
@@ -39424,7 +39424,7 @@ __asm("db 0");
 const uint8_t paramBlock[] __attribute__((address(0x820))) = {
     MANU_MERG,
     'a',
-    MTYP_VLCB,
+    MTYP_CANARGB,
     255,
     252,
     49,
@@ -39462,8 +39462,8 @@ const uint8_t paramBlock[] __attribute__((address(0x820))) = {
     0x08,
     0,
     0,
-    ((MANU_MERG+'a'+MTYP_VLCB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+1 +(20)+(0x48)+(0x08)+1 +PB_CAN+P18F27Q83)&0xFF),
-    ((MANU_MERG+'a'+MTYP_VLCB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+1 +(20)+(0x48)+(0x08)+1 +PB_CAN+P18F27Q83)>>8)
+    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+1 +(20)+(0x48)+(0x08)+1 +PB_CAN+P18F27Q83)&0xFF),
+    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+1 +(20)+(0x48)+(0x08)+1 +PB_CAN+P18F27Q83)>>8)
 };
 
 
