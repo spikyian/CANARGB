@@ -39732,7 +39732,7 @@ static void canPowerUp(void) {
 
 
         (void)CAN1_OperationModeSet(CAN_NORMAL_2_0_MODE);
-    }
+     }
 
 
     prepareSelfEnumResponse();

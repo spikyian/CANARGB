@@ -322,6 +322,19 @@
           "displayTitle": "Blue"
 	}
       ]
+    },
+    {
+      "type": "NodeVariableSelect",
+      "nodeVariableIndex": 49,
+      "displayTitle": "Colour order",
+      "options": [
+	{ "label": "RGB", "value":1},
+        { "label": "RBG", "value":2},
+        { "label": "GRB", "value":3},
+        { "label": "GBR", "value":4},
+        { "label": "BGR", "value":5},
+        { "label": "BRG", "value":6}
+      ]
     }
   ],
   "eventVariables": [
@@ -348,19 +361,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 2
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 3
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 4,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -369,7 +383,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 4,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -400,19 +415,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 6
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 7
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 8,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -421,7 +437,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 8,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -452,19 +469,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 10
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 11
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 12,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -473,7 +491,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 12,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -504,19 +523,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 14
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 15
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 16,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -525,7 +545,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 16,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -556,19 +577,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 18
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 19
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 20,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -577,7 +599,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 20,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -608,19 +631,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 22
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 23
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 24,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -629,7 +653,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 24,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -660,19 +685,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 26
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 27
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 28,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -681,7 +707,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 28,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -712,19 +739,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 30
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 31
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 32,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -733,7 +761,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 32,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -764,19 +793,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 34
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 35
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 36,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -785,7 +815,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 36,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -816,19 +847,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 38
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 39
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 40,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -837,7 +869,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 40,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -868,19 +901,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 42
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 43
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 44,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -889,7 +923,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 44,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -920,19 +955,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 46
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 47
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 48,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -941,7 +977,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 48,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -972,19 +1009,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 50
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 51
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 52,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -993,7 +1031,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 52,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1024,19 +1063,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 54
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 55
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 56,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1045,7 +1085,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 56,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1076,19 +1117,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 58
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 59
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 60,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1097,7 +1139,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 60,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1128,19 +1171,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 62
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 63
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 64,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1149,7 +1193,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 64,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1180,19 +1225,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 66
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 67
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 68,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1201,7 +1247,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 68,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1232,19 +1279,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 70
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 71
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 72,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1253,7 +1301,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 72,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1284,19 +1333,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 74
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 75
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 76,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1305,7 +1355,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 76,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1336,19 +1387,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 78
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 79
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 80,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1357,7 +1409,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 80,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1388,19 +1441,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 82
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 83
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 84,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1409,7 +1463,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 84,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1440,19 +1495,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 86
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 87
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 88,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1461,7 +1517,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 88,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1492,19 +1549,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 90
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 91
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 92,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1513,7 +1571,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 92,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1544,19 +1603,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 94
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 95
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 96,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1565,7 +1625,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 96,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1596,19 +1657,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 98
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 99
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 100,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1617,7 +1679,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 100,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1648,19 +1711,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 102
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 103
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 104,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1669,7 +1733,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 104,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1700,19 +1765,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 106
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 107
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 108,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1721,7 +1787,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 108,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1752,19 +1819,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 110
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 111
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 112,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1773,7 +1841,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 112,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1804,19 +1873,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 114
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 115
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 116,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1825,7 +1895,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 116,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1856,19 +1927,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 118
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 119
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 120,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1877,7 +1949,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 120,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1908,19 +1981,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 122
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 123
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 124,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1929,7 +2003,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 124,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -1960,19 +2035,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 126
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 127
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 128,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -1981,7 +2057,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 128,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2012,19 +2089,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 130
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 131
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 132,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2033,7 +2111,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 132,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2064,19 +2143,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 134
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 135
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 136,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2085,7 +2165,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 136,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2116,19 +2197,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 138
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 139
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 140,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2137,7 +2219,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 140,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2168,19 +2251,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 142
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 143
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 144,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2189,7 +2273,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 144,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2220,19 +2305,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 146
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 147
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 148,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2241,7 +2327,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 148,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2272,19 +2359,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 150
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 151
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 152,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2293,7 +2381,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 152,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2324,19 +2413,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 154
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 155
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 156,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2345,7 +2435,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 156,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2376,19 +2467,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 158
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 159
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 160,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2397,7 +2489,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 160,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2428,19 +2521,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 162
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 163
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 164,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2449,7 +2543,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 164,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2480,19 +2575,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 166
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 167
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 168,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2501,7 +2597,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 168,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2532,19 +2629,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 170
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 171
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 172,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2553,7 +2651,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 172,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2584,19 +2683,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 174
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 175
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 176,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2605,7 +2705,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 176,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2636,19 +2737,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 178
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 179
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 180,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2657,7 +2759,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 180,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2688,19 +2791,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 182
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 183
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 184,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2709,7 +2813,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 184,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2740,19 +2845,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 186
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 187
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 188,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2761,7 +2867,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 188,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2792,19 +2899,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 190
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 191
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 192,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2813,7 +2921,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 192,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2844,19 +2953,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 194
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 195
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 196,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2865,7 +2975,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 196,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2896,19 +3007,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 198
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 199
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 200,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2917,7 +3029,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 200,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -2948,19 +3061,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 202
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 203
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 204,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -2969,7 +3083,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 204,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3000,19 +3115,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 206
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 207
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 208,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3021,7 +3137,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 208,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3052,19 +3169,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 210
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 211
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 212,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3073,7 +3191,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 212,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3104,19 +3223,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 214
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 215
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 216,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3125,7 +3245,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 216,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3156,19 +3277,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 218
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 219
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 220,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3177,7 +3299,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 220,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3208,19 +3331,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 222
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 223
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 224,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3229,7 +3353,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 224,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3260,19 +3385,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 226
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 227
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 228,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3281,7 +3407,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 228,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3312,19 +3439,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 230
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 231
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 232,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3333,7 +3461,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 232,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3364,19 +3493,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 234
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 235
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 236,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3385,7 +3515,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 236,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3416,19 +3547,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 238
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 239
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 240,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3437,7 +3569,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 240,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3468,19 +3601,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 242
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 243
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 244,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3489,7 +3623,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 244,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,
@@ -3520,19 +3655,20 @@
           ]
         },
         {
-          "displayTitle": "Start LED number",
+          "displayTitle": "Start LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 246
         },
         {
-          "displayTitle": "End LED number",
+          "displayTitle": "End LED",
           "type": "EventVariableNumber",
           "eventVariableIndex": 247
         },
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 248,
-	  "displayTitle": "Flash off Colour palette",
+	  "displayTitle": "Flash A",
+	  "displaySubTitle": "Palette index",
           "startBit": 0,
           "endBit": 3,
           "max": 15,
@@ -3541,7 +3677,8 @@
 	{
           "type": "EventVariableNumber",
           "eventVariableIndex": 248,
-	  "displayTitle": "Flash on Colour palette",
+	  "displayTitle": "Flash B",
+	  "displaySubTitle": "Palette index",
           "startBit": 4,
           "endBit": 7,
           "max": 15,

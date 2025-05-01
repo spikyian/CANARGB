@@ -11,10 +11,6 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-init CODE 0 A02 A02 4 1 2
-reset_vec CODE 0 800 800 4 1 2
-config CONFIG 4 300000 300000 23 1 1
 $dist/default/production\CANARGB.X.production.o
 _name_text CODE 0 848 848 8 1 2
 cinit CODE 0 7182 7182 78 1 2
@@ -179,6 +175,10 @@ text147 CODE 0 8268 8268 2 1 4
 bssBIGRAM BIGRAM 1 8FC 8FC 57D 1 1
 mediumconst MEDIUMCONST 0 FE58 FE58 1A8 1 2
 ivt0x900 CODE 0 900 900 102 1 2
+config CONFIG 4 300000 300000 23 1 1
+$C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+init CODE 0 A02 A02 4 1 2
+reset_vec CODE 0 800 800 4 1 2
 config CONFIG 4 300000 300000 23 1 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -2486,65 +2486,65 @@ FE4 text18 CODE >503:C:\Users\ianwh\github/VLCBlib_PIC/mns.c
 62CE text0 CODE >1342:C:\Users\ianwh\github/VLCBlib_PIC/vlcb.c
 62D0 text0 CODE >1346:C:\Users\ianwh\github/VLCBlib_PIC/vlcb.c
 62D4 text0 CODE >1347:C:\Users\ianwh\github/VLCBlib_PIC/vlcb.c
-7182 cinit CODE >39069:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7182 cinit CODE >39071:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7182 cinit CODE >39074:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7182 cinit CODE >39235:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7184 cinit CODE >39236:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7186 cinit CODE >39237:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7188 cinit CODE >39238:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-718A cinit CODE >39239:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-718C cinit CODE >39240:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-718E cinit CODE >39241:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7190 cinit CODE >39242:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7194 cinit CODE >39243:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-7196 cinit CODE >39244:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-719A cinit CODE >39248:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-719E cinit CODE >39249:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71A2 cinit CODE >39250:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71A2 cinit CODE >39251:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71A4 cinit CODE >39252:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71A6 cinit CODE >39253:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71A8 cinit CODE >39254:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71AA cinit CODE >39255:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71AC cinit CODE >39256:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71AE cinit CODE >39259:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71B2 cinit CODE >39260:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71B4 cinit CODE >39261:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71B4 cinit CODE >39262:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71B6 cinit CODE >39263:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71B8 cinit CODE >39264:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71BA cinit CODE >39267:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71BE cinit CODE >39268:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71C2 cinit CODE >39269:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71C2 cinit CODE >39270:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71C4 cinit CODE >39271:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71C6 cinit CODE >39272:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71C8 cinit CODE >39273:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71CA cinit CODE >39274:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71CC cinit CODE >39275:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71CE cinit CODE >39278:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71D2 cinit CODE >39279:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71D4 cinit CODE >39280:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71D4 cinit CODE >39281:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71D6 cinit CODE >39282:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71D8 cinit CODE >39283:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71DA cinit CODE >39286:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71DE cinit CODE >39287:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71E0 cinit CODE >39288:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71E0 cinit CODE >39289:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71E2 cinit CODE >39290:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71E4 cinit CODE >39291:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71E6 cinit CODE >39299:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71E8 cinit CODE >39300:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71EA cinit CODE >39301:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71EC cinit CODE >39302:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71EE cinit CODE >39303:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71F0 cinit CODE >39304:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71F2 cinit CODE >39305:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71F4 cinit CODE >39311:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71F4 cinit CODE >39313:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
-71F6 cinit CODE >39314:C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_1.s
+7182 cinit CODE >39069:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7182 cinit CODE >39071:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7182 cinit CODE >39074:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7182 cinit CODE >39235:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7184 cinit CODE >39236:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7186 cinit CODE >39237:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7188 cinit CODE >39238:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+718A cinit CODE >39239:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+718C cinit CODE >39240:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+718E cinit CODE >39241:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7190 cinit CODE >39242:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7194 cinit CODE >39243:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+7196 cinit CODE >39244:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+719A cinit CODE >39248:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+719E cinit CODE >39249:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71A2 cinit CODE >39250:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71A2 cinit CODE >39251:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71A4 cinit CODE >39252:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71A6 cinit CODE >39253:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71A8 cinit CODE >39254:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71AA cinit CODE >39255:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71AC cinit CODE >39256:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71AE cinit CODE >39259:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71B2 cinit CODE >39260:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71B4 cinit CODE >39261:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71B4 cinit CODE >39262:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71B6 cinit CODE >39263:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71B8 cinit CODE >39264:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71BA cinit CODE >39267:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71BE cinit CODE >39268:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71C2 cinit CODE >39269:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71C2 cinit CODE >39270:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71C4 cinit CODE >39271:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71C6 cinit CODE >39272:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71C8 cinit CODE >39273:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71CA cinit CODE >39274:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71CC cinit CODE >39275:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71CE cinit CODE >39278:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71D2 cinit CODE >39279:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71D4 cinit CODE >39280:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71D4 cinit CODE >39281:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71D6 cinit CODE >39282:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71D8 cinit CODE >39283:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71DA cinit CODE >39286:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71DE cinit CODE >39287:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71E0 cinit CODE >39288:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71E0 cinit CODE >39289:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71E2 cinit CODE >39290:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71E4 cinit CODE >39291:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71E6 cinit CODE >39299:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71E8 cinit CODE >39300:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71EA cinit CODE >39301:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71EC cinit CODE >39302:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71EE cinit CODE >39303:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71F0 cinit CODE >39304:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71F2 cinit CODE >39305:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71F4 cinit CODE >39311:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71F4 cinit CODE >39313:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
+71F6 cinit CODE >39314:C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_1.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -2634,22 +2634,22 @@ __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\CANARGB.X.prod
 _IPR5 367 0 ABS 0 - dist/default/production\CANARGB.X.production.o
 _T2PR 323 0 ABS 0 - dist/default/production\CANARGB.X.production.o
 _T4PR 32F 0 ABS 0 - dist/default/production\CANARGB.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+___sp 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 _have 6D6A 0 CODE 0 text90 dist/default/production\CANARGB.X.production.o
 _leds B7C 0 BIGRAM 1 bssBIGRAM dist/default/production\CANARGB.X.production.o
 _loop 783E 0 CODE 0 text101 dist/default/production\CANARGB.X.production.o
 _main 6224 0 CODE 0 text0 dist/default/production\CANARGB.X.production.o
 _name 848 0 CODE 0 _name_text dist/default/production\CANARGB.X.production.o
 _poll 2EC6 0 CODE 0 text16 dist/default/production\CANARGB.X.production.o
-___stack_hi 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-___stack_lo 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+___stack_hi 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+___stack_lo 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 __end_of_teachCheckLen 7006 0 CODE 0 text23 dist/default/production\CANARGB.X.production.o
 reqevCallback@tableIndex 53C 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 _mnsTRallDiagnosticsCallback 5302 0 CODE 0 text41 dist/default/production\CANARGB.X.production.o
 canPowerUp@temp 50D 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 pop@q 501 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 __HbssBIGRAM 0 0 ABS 0 bssBIGRAM dist/default/production\CANARGB.X.production.o
-start A02 0 CODE 0 init C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+start A02 0 CODE 0 init C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 _mnsGetDiagnostic 7E64 0 CODE 0 text57 dist/default/production\CANARGB.X.production.o
 _eraseFlashBlock 6E7E 0 CODE 0 text129 dist/default/production\CANARGB.X.production.o
 checkLen@m 52C 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
@@ -2701,11 +2701,11 @@ __LbssBIGRAM 0 0 ABS 0 bssBIGRAM dist/default/production\CANARGB.X.production.o
 _prepareSelfEnumResponse 71FA 0 CODE 0 text98 dist/default/production\CANARGB.X.production.o
 _mnsProcessMessage$4475 557 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 _enumerationState 5A5 0 BANK5 1 bssBANK5 dist/default/production\CANARGB.X.production.o
-__accesstop 560 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-intlevel0 0 0 CODE 0 text C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-intlevel1 0 0 CODE 0 text C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-intlevel2 0 0 CODE 0 text C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-intlevel3 0 0 CODE 0 text C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+__accesstop 560 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+intlevel0 0 0 CODE 0 text C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+intlevel1 0 0 CODE 0 text C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+intlevel2 0 0 CODE 0 text C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+intlevel3 0 0 CODE 0 text C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 __ptext100 825E 0 CODE 0 text100 dist/default/production\CANARGB.X.production.o
 __ptext101 783E 0 CODE 0 text101 dist/default/production\CANARGB.X.production.o
 __ptext102 7F22 0 CODE 0 text102 dist/default/production\CANARGB.X.production.o
@@ -2836,8 +2836,8 @@ _C1FIFOCON3T 177 0 ABS 0 - dist/default/production\CANARGB.X.production.o
 _C1FIFOCON3U 176 0 ABS 0 - dist/default/production\CANARGB.X.production.o
 ___awdiv@dividend 501 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 __end_of_nvGetESDdata 80E0 0 CODE 0 text51 dist/default/production\CANARGB.X.production.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 have@id 503 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 _C1CONH 101 0 ABS 0 - dist/default/production\CANARGB.X.production.o
 _C1CONL 100 0 ABS 0 - dist/default/production\CANARGB.X.production.o
@@ -3058,7 +3058,7 @@ writeEv@evNum 515 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.prod
 writeEv@evVal 516 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 teachGetESDdata@id 501 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 addEvent@e 545 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
-isa$xinst 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+isa$xinst 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 _readNVM 73D4 0 CODE 0 text138 dist/default/production\CANARGB.X.production.o
 _DMAnCON0bits FC 0 ABS 0 - dist/default/production\CANARGB.X.production.o
 _DMAnCON1bits FD 0 ABS 0 - dist/default/production\CANARGB.X.production.o
@@ -3633,15 +3633,15 @@ consumerProcessMessage@m 554 0 COMRAM 1 cstackCOMRAM dist/default/production\CAN
 tickGet@currentTime 507 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 __end_of_setNewCanId 7B10 0 CODE 0 text97 dist/default/production\CANARGB.X.production.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\CANARGB.X.production.o
-___inthi_stack_hi 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-___inthi_stack_lo 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+___inthi_stack_hi 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+___inthi_stack_lo 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 canSendMessage@temp 515 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 __end_of_tickGet 7360 0 CODE 0 text143 dist/default/production\CANARGB.X.production.o
 __end_of_bootProcessMessage 6B2C 0 CODE 0 text21 dist/default/production\CANARGB.X.production.o
 _mnsProcessMessage A06 0 CODE 0 text18 dist/default/production\CANARGB.X.production.o
 __end_of_pbUpTimer 5F22 0 CODE 0 text108 dist/default/production\CANARGB.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\CANARGB.X.production.o
-isa$std 1 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+isa$std 1 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 setNV@index 519 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 nvPowerUp@i 512 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 writeNVM@index 50E 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
@@ -3655,8 +3655,8 @@ _flashCounter 589 0 BANK5 1 bssBANK5 dist/default/production\CANARGB.X.productio
 APP_addEvent@eventNumber 549 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 _canWaitForTxQueueToDrain 81EE 0 CODE 0 text68 dist/default/production\CANARGB.X.production.o
 _testTime 57C 0 BANK5 1 bssBANK5 dist/default/production\CANARGB.X.production.o
-stackhi 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-stacklo 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+stackhi 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+stacklo 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 pbDownTimer@timeout 51C 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 _initRomOps 81AA 0 CODE 0 text105 dist/default/production\CANARGB.X.production.o
 poll@handled 5F2 0 BANK5 1 cstackBANK5 dist/default/production\CANARGB.X.production.o
@@ -3863,7 +3863,7 @@ __Ltext99 0 0 ABS 0 text99 dist/default/production\CANARGB.X.production.o
 nvFactoryReset@i 517 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 __end_of_checkLen 6826 0 CODE 0 text78 dist/default/production\CANARGB.X.production.o
 _bootService FFC1 0 MEDIUMCONST 0 mediumconst dist/default/production\CANARGB.X.production.o
-__ramtop 4000 0 RAM 0 ramtop C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+__ramtop 4000 0 RAM 0 ramtop C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 __end_of_APP_postProcessMessage 8262 0 CODE 0 text100 dist/default/production\CANARGB.X.production.o
 __end_of_APP_nvValueChanged 8266 0 CODE 0 text49 dist/default/production\CANARGB.X.production.o
 _processEnumeration 461E 0 CODE 0 text94 dist/default/production\CANARGB.X.production.o
@@ -3886,16 +3886,16 @@ readNVM@index 507 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.prod
 consumerEsdData@index 501 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 pbUpTimer@timeout 51C 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 doNenrd@index 530 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
-___heap_hi 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-___heap_lo 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+___heap_hi 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+___heap_lo 0 0 ABS 0 - C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 __end_of_initTicker 7722 0 CODE 0 text13 dist/default/production\CANARGB.X.production.o
 _consumerProcessMessage 3CB8 0 CODE 0 text19 dist/default/production\CANARGB.X.production.o
 getParameter@idx 509 0 COMRAM 1 cstackCOMRAM dist/default/production\CANARGB.X.production.o
 ivt0x900_base 900 0 CODE 0 ivt0x900 dist/default/production\CANARGB.X.production.o
 __end_of_paramBlock 840 0 CODE 0 _paramBlock_text dist/default/production\CANARGB.X.production.o
 ___param_bank 0 0 ABS 0 - dist/default/production\CANARGB.X.production.o
-___intlo_stack_hi 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
-___intlo_stack_lo 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAse98.\driver_tmp_9.o
+___intlo_stack_hi 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
+___intlo_stack_lo 0 0 STACK 2 stack C:\Users\ianwh\AppData\Local\Temp\xcAs1ga8.\driver_tmp_9.o
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\CANARGB.X.production.o
 _timedResponseStep 595 0 BANK5 1 bssBANK5 dist/default/production\CANARGB.X.production.o
 _timedResponseTime 560 0 BANK5 1 bssBANK5 dist/default/production\CANARGB.X.production.o

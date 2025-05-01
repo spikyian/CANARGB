@@ -38288,7 +38288,6 @@ typedef enum VlcbManufacturer
   MANU_SPROG = 44,
   MANU_ROCRAIL = 70,
   MANU_SPECTRUM = 80,
-  MANU_VLCB = 250,
   MANU_SYSPIXIE = 249,
   MANU_RME = 248,
 } VlcbManufacturer;
@@ -38389,6 +38388,7 @@ typedef enum VlcbMergModuleTypes
   MTYP_CANPIXEL = 84,
   MTYP_CANCABPE = 85,
   MTYP_CANSMARTTD = 86,
+  MTYP_CANARGB = 87,
   MTYP_VLCB = 0xFC,
 
 
@@ -39566,16 +39566,16 @@ void initARGB(void) {
         DMAnCON1bits.SMODE=1;
         DMAnCON1bits.SSTP=1;
         DMAnSSZ=3*255;
-        DMAnSSA=(__uint24)&leds;
-        DMAnDSZ=3*255;
+        DMAnSSA=(__uint24)leds;
+        DMAnDSZ=1;
         DMAnDSA=(uint16_t)&SPI1TXB;
         DMAnSIRQ=0x19;
         DMAnAIRQ=0;
 
-
-
-
-
+        DMA1PR = 0x01;
+        PRLOCK = 0x55;
+        PRLOCK = 0xAA;
+        PRLOCKbits.PRLOCKED = 1;
         DMAnCON0bits.SIRQEN = 0;
         DMAnCON0bits.EN=1;
     }

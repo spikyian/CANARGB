@@ -4362,7 +4362,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../../VLCBlib_PIC/can18_can_2.c: 349:         (void)CAN1_OperationModeSet(CAN_NORMAL_2_0_MODE);
 [e ( _CAN1_OperationModeSet (1 . `E23640 6 ]
 "350
-[; ;../../VLCBlib_PIC/can18_can_2.c: 350:     }
+[; ;../../VLCBlib_PIC/can18_can_2.c: 350:      }
 }
 [e :U 3310 ]
 "353

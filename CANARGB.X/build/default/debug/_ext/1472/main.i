@@ -38297,7 +38297,6 @@ typedef enum VlcbManufacturer
   MANU_SPROG = 44,
   MANU_ROCRAIL = 70,
   MANU_SPECTRUM = 80,
-  MANU_VLCB = 250,
   MANU_SYSPIXIE = 249,
   MANU_RME = 248,
 } VlcbManufacturer;
@@ -38398,6 +38397,7 @@ typedef enum VlcbMergModuleTypes
   MTYP_CANPIXEL = 84,
   MTYP_CANCABPE = 85,
   MTYP_CANSMARTTD = 86,
+  MTYP_CANARGB = 87,
   MTYP_VLCB = 0xFC,
 
 
@@ -39702,28 +39702,28 @@ void setup(void) {
 
     (INTCON0bits.GIE = 1);
     flashTime.val = tickGet();
-
-    updateLedRange(0, 2, (PaletteIndex)(uint8_t)0x00);
-    updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);
-    updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x88);
-    updateLedRange(9, 11, (PaletteIndex)(uint8_t)0xFF);
-    updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x22);
-    updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x33);
-    updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x44);
-    updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x55);
-    updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x66);
-    updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x77);
-    updateLedRange(30, 32, (PaletteIndex)(uint8_t)0x99);
-    updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xAA);
-    updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xBB);
-    updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xCC);
-    updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xDD);
-    updateLedRange(45, 47, (PaletteIndex)(uint8_t)0xEE);
-    updateLedRange(48, 50, (PaletteIndex)(uint8_t)0x28);
-    updateLedRange(51, 53, (PaletteIndex)(uint8_t)0x40);
-    updateLedRange(54, 56, (PaletteIndex)(uint8_t)0x23);
-    updateLedRange(57, 254, (PaletteIndex)(uint8_t)0x11);
-    updateLedRange(70, 74, (PaletteIndex)(uint8_t)0x22);
+    if (0) {
+        updateLedRange(0, 2, (PaletteIndex)(uint8_t)0x00);
+        updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);
+        updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x88);
+        updateLedRange(9, 11, (PaletteIndex)(uint8_t)0xFF);
+        updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x22);
+        updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x33);
+        updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x44);
+        updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x55);
+        updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x66);
+        updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x77);
+        updateLedRange(30, 32, (PaletteIndex)(uint8_t)0x99);
+        updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xAA);
+        updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xBB);
+        updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xCC);
+        updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xDD);
+        updateLedRange(45, 47, (PaletteIndex)(uint8_t)0xEE);
+        updateLedRange(48, 50, (PaletteIndex)(uint8_t)0x28);
+        updateLedRange(51, 53, (PaletteIndex)(uint8_t)0x40);
+        updateLedRange(54, 56, (PaletteIndex)(uint8_t)0x23);
+        updateLedRange(57, 254, (PaletteIndex)(uint8_t)0x11);
+    }
 }
 
 void loop(void) {

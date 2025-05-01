@@ -252,6 +252,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8747
 [; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8747: extern volatile unsigned char DMAnAIRQ __attribute__((address(0x0FE)));
 [v _DMAnAIRQ `Vuc ~T0 @X0 0 e@254 ]
+"5864
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5864: extern volatile unsigned char DMA1PR __attribute__((address(0x0B6)));
+[v _DMA1PR `Vuc ~T0 @X0 0 e@182 ]
+"5776
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5776: extern volatile unsigned char PRLOCK __attribute__((address(0x0B4)));
+[v _PRLOCK `Vuc ~T0 @X0 0 e@180 ]
+"5782
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5782:     struct {
+[s S261 :1 `uc 1 ]
+[n S261 . PRLOCKED ]
+"5781
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5781: typedef union {
+[u S260 `S261 1 ]
+[n S260 . . ]
+"5786
+[; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 5786: extern volatile PRLOCKbits_t PRLOCKbits __attribute__((address(0x0B4)));
+[v _PRLOCKbits `VS260 ~T0 @X0 0 e@180 ]
 "8663
 [; ;C:/Users/ianwh/.mchp_packs/Microchip/PIC18F-Q_DFP/1.28.451/xc8\pic\include\proc/pic18f27q83.h: 8663:     struct {
 [s S410 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -4192,11 +4209,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../canargb_leds.c: 235:         DMAnSSZ=3*255;
 [e = _DMAnSSZ -> * -> 3 `i -> 255 `i `us ]
 "236
-[; ;../canargb_leds.c: 236:         DMAnSSA=(__uint24)&leds;
+[; ;../canargb_leds.c: 236:         DMAnSSA=(__uint24)leds;
 [e = _DMAnSSA -> &U _leds `um ]
 "237
-[; ;../canargb_leds.c: 237:         DMAnDSZ=3*255;
-[e = _DMAnDSZ -> * -> 3 `i -> 255 `i `us ]
+[; ;../canargb_leds.c: 237:         DMAnDSZ=1;
+[e = _DMAnDSZ -> -> 1 `i `us ]
 "238
 [; ;../canargb_leds.c: 238:         DMAnDSA=(uint16_t)&SPI1TXB;
 [e = _DMAnDSA -> &U _SPI1TXB `us ]
@@ -4206,6 +4223,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "240
 [; ;../canargb_leds.c: 240:         DMAnAIRQ=0;
 [e = _DMAnAIRQ -> -> 0 `i `uc ]
+"242
+[; ;../canargb_leds.c: 242:         DMA1PR = 0x01;
+[e = _DMA1PR -> -> 1 `i `uc ]
+"243
+[; ;../canargb_leds.c: 243:         PRLOCK = 0x55;
+[e = _PRLOCK -> -> 85 `i `uc ]
+"244
+[; ;../canargb_leds.c: 244:         PRLOCK = 0xAA;
+[e = _PRLOCK -> -> 170 `i `uc ]
+"245
+[; ;../canargb_leds.c: 245:         PRLOCKbits.PRLOCKED = 1;
+[e = . . _PRLOCKbits 0 0 -> -> 1 `i `uc ]
 "246
 [; ;../canargb_leds.c: 246:         DMAnCON0bits.SIRQEN = 0;
 [e = . . _DMAnCON0bits 0 5 -> -> 0 `i `uc ]

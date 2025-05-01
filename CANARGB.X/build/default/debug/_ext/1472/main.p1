@@ -3973,69 +3973,74 @@ Version 4.0 HI-TECH Software Intermediate Code
 "229
 [; ;../main.c: 229:     flashTime.val = tickGet();
 [e = . _flashTime 0 ( _tickGet ..  ]
+"230
+[; ;../main.c: 230:     if (0) {
+[e $ ! != -> 0 `i -> 0 `i 3326  ]
+{
 "231
-[; ;../main.c: 231:     updateLedRange(0, 2, (PaletteIndex)(uint8_t)0x00);
+[; ;../main.c: 231:         updateLedRange(0, 2, (PaletteIndex)(uint8_t)0x00);
 [e ( _updateLedRange (3 , , -> -> 0 `i `uc -> -> 2 `i `uc -> -> -> 0 `i `uc `S3302 ]
 "232
-[; ;../main.c: 232:     updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);
+[; ;../main.c: 232:         updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);
 [e ( _updateLedRange (3 , , -> -> 3 `i `uc -> -> 5 `i `uc -> -> -> 17 `i `uc `S3302 ]
 "233
-[; ;../main.c: 233:     updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x88);
+[; ;../main.c: 233:         updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x88);
 [e ( _updateLedRange (3 , , -> -> 6 `i `uc -> -> 8 `i `uc -> -> -> 136 `i `uc `S3302 ]
 "234
-[; ;../main.c: 234:     updateLedRange(9, 11, (PaletteIndex)(uint8_t)0xFF);
+[; ;../main.c: 234:         updateLedRange(9, 11, (PaletteIndex)(uint8_t)0xFF);
 [e ( _updateLedRange (3 , , -> -> 9 `i `uc -> -> 11 `i `uc -> -> -> 255 `i `uc `S3302 ]
 "235
-[; ;../main.c: 235:     updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x22);
+[; ;../main.c: 235:         updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x22);
 [e ( _updateLedRange (3 , , -> -> 12 `i `uc -> -> 14 `i `uc -> -> -> 34 `i `uc `S3302 ]
 "236
-[; ;../main.c: 236:     updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x33);
+[; ;../main.c: 236:         updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x33);
 [e ( _updateLedRange (3 , , -> -> 15 `i `uc -> -> 17 `i `uc -> -> -> 51 `i `uc `S3302 ]
 "237
-[; ;../main.c: 237:     updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x44);
+[; ;../main.c: 237:         updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x44);
 [e ( _updateLedRange (3 , , -> -> 18 `i `uc -> -> 20 `i `uc -> -> -> 68 `i `uc `S3302 ]
 "238
-[; ;../main.c: 238:     updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x55);
+[; ;../main.c: 238:         updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x55);
 [e ( _updateLedRange (3 , , -> -> 21 `i `uc -> -> 23 `i `uc -> -> -> 85 `i `uc `S3302 ]
 "239
-[; ;../main.c: 239:     updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x66);
+[; ;../main.c: 239:         updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x66);
 [e ( _updateLedRange (3 , , -> -> 24 `i `uc -> -> 26 `i `uc -> -> -> 102 `i `uc `S3302 ]
 "240
-[; ;../main.c: 240:     updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x77);
+[; ;../main.c: 240:         updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x77);
 [e ( _updateLedRange (3 , , -> -> 27 `i `uc -> -> 29 `i `uc -> -> -> 119 `i `uc `S3302 ]
 "241
-[; ;../main.c: 241:     updateLedRange(30, 32, (PaletteIndex)(uint8_t)0x99);
+[; ;../main.c: 241:         updateLedRange(30, 32, (PaletteIndex)(uint8_t)0x99);
 [e ( _updateLedRange (3 , , -> -> 30 `i `uc -> -> 32 `i `uc -> -> -> 153 `i `uc `S3302 ]
 "242
-[; ;../main.c: 242:     updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xAA);
+[; ;../main.c: 242:         updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xAA);
 [e ( _updateLedRange (3 , , -> -> 33 `i `uc -> -> 35 `i `uc -> -> -> 170 `i `uc `S3302 ]
 "243
-[; ;../main.c: 243:     updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xBB);
+[; ;../main.c: 243:         updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xBB);
 [e ( _updateLedRange (3 , , -> -> 36 `i `uc -> -> 38 `i `uc -> -> -> 187 `i `uc `S3302 ]
 "244
-[; ;../main.c: 244:     updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xCC);
+[; ;../main.c: 244:         updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xCC);
 [e ( _updateLedRange (3 , , -> -> 39 `i `uc -> -> 41 `i `uc -> -> -> 204 `i `uc `S3302 ]
 "245
-[; ;../main.c: 245:     updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xDD);
+[; ;../main.c: 245:         updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xDD);
 [e ( _updateLedRange (3 , , -> -> 42 `i `uc -> -> 44 `i `uc -> -> -> 221 `i `uc `S3302 ]
 "246
-[; ;../main.c: 246:     updateLedRange(45, 47, (PaletteIndex)(uint8_t)0xEE);
+[; ;../main.c: 246:         updateLedRange(45, 47, (PaletteIndex)(uint8_t)0xEE);
 [e ( _updateLedRange (3 , , -> -> 45 `i `uc -> -> 47 `i `uc -> -> -> 238 `i `uc `S3302 ]
 "247
-[; ;../main.c: 247:     updateLedRange(48, 50, (PaletteIndex)(uint8_t)0x28);
+[; ;../main.c: 247:         updateLedRange(48, 50, (PaletteIndex)(uint8_t)0x28);
 [e ( _updateLedRange (3 , , -> -> 48 `i `uc -> -> 50 `i `uc -> -> -> 40 `i `uc `S3302 ]
 "248
-[; ;../main.c: 248:     updateLedRange(51, 53, (PaletteIndex)(uint8_t)0x40);
+[; ;../main.c: 248:         updateLedRange(51, 53, (PaletteIndex)(uint8_t)0x40);
 [e ( _updateLedRange (3 , , -> -> 51 `i `uc -> -> 53 `i `uc -> -> -> 64 `i `uc `S3302 ]
 "249
-[; ;../main.c: 249:     updateLedRange(54, 56, (PaletteIndex)(uint8_t)0x23);
+[; ;../main.c: 249:         updateLedRange(54, 56, (PaletteIndex)(uint8_t)0x23);
 [e ( _updateLedRange (3 , , -> -> 54 `i `uc -> -> 56 `i `uc -> -> -> 35 `i `uc `S3302 ]
 "250
-[; ;../main.c: 250:     updateLedRange(57, 254, (PaletteIndex)(uint8_t)0x11);
+[; ;../main.c: 250:         updateLedRange(57, 254, (PaletteIndex)(uint8_t)0x11);
 [e ( _updateLedRange (3 , , -> -> 57 `i `uc -> -> 254 `i `uc -> -> -> 17 `i `uc `S3302 ]
 "251
-[; ;../main.c: 251:     updateLedRange(70, 74, (PaletteIndex)(uint8_t)0x22);
-[e ( _updateLedRange (3 , , -> -> 70 `i `uc -> -> 74 `i `uc -> -> -> 34 `i `uc `S3302 ]
+[; ;../main.c: 251:     }
+}
+[e :U 3326 ]
 "252
 [; ;../main.c: 252: }
 [e :UE 3325 ]
@@ -4048,7 +4053,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "256
 [; ;../main.c: 256:     if ((tickGet() - flashTime.val) > (62500/2)) {
-[e $ ! > - ( _tickGet ..  . _flashTime 0 -> / -> 62500 `l -> -> 2 `i `l `ul 3327  ]
+[e $ ! > - ( _tickGet ..  . _flashTime 0 -> / -> 62500 `l -> -> 2 `i `l `ul 3328  ]
 {
 "257
 [; ;../main.c: 257:         doFlash();
@@ -4059,13 +4064,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "259
 [; ;../main.c: 259:     }
 }
-[e :U 3327 ]
+[e :U 3328 ]
 "261
 [; ;../main.c: 261:     refreshString();
 [e ( _refreshString ..  ]
 "262
 [; ;../main.c: 262: }
-[e :UE 3326 ]
+[e :UE 3327 ]
 }
 "275
 [; ;../main.c: 275: ValidTime APP_isSuitableTimeToWriteFlash(void){
@@ -4075,15 +4080,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "277
 [; ;../main.c: 277:     if (DMAnCON0bits.DGO) return BAD_TIME;
-[e $ ! != -> . . _DMAnCON0bits 0 4 `i -> 0 `i 3329  ]
+[e $ ! != -> . . _DMAnCON0bits 0 4 `i -> 0 `i 3330  ]
 [e ) . `E23231 0 ]
-[e $UE 3328  ]
-[e :U 3329 ]
+[e $UE 3329  ]
+[e :U 3330 ]
 "279
 [; ;../main.c: 279:     return GOOD_TIME;
 [e ) . `E23231 1 ]
-[e $UE 3328  ]
+[e $UE 3329  ]
 "280
 [; ;../main.c: 280: }
-[e :UE 3328 ]
+[e :UE 3329 ]
 }
