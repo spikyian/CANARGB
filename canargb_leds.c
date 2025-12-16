@@ -102,6 +102,9 @@ void initARGB(void) {
      *           
      */
     
+    TRISA = 0; LATA = 0;    // unused
+    TRISB = 0; LATB = 0;    // unused
+
     // Main Output on RC0 other to help debug
     TRISC = 0;
     RC0PPS = 0x43;      // DSM1
@@ -111,6 +114,7 @@ void initARGB(void) {
     RC4PPS = 0x02;      // CLC2 (TMR2)
     RC5PPS = 0x04;      // CLC4 (TMR4)
     RC6PPS = 0x00;      // LATC6 (flashState)
+    TRISCbits.TRISC7 = 0; LATCbits.LATC7 = 0; // unused
     
     // Set up SPI as host
     {
@@ -262,6 +266,8 @@ void initARGB(void) {
 void updateLedRange(uint8_t start_ledno, uint8_t end_ledno, PaletteIndex colourIndexPair) {
     uint8_t ledno;
     if (end_ledno >= MAX_LEDS) end_ledno = MAX_LEDS-1;
+    if (start_ledno >= MAX_LEDS) start_ledno = MAX_LEDS-1;
+    if (start_ledno > end_ledno) end_ledno = start_ledno;
     // update the LED array using the 2 nibbles of the new colour. a value of 0 is no change
     for(ledno=start_ledno; ledno<=end_ledno; ledno++) {
         ledPaletteIndexes[ledno] = colourIndexPair;

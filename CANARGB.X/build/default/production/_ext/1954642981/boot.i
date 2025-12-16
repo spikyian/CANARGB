@@ -38472,6 +38472,7 @@ typedef enum VlcbMergModuleTypes
   MTYP_CANCABPE = 85,
   MTYP_CANSMARTTD = 86,
   MTYP_CANARGB = 87,
+  MTYP_CANCDU_U = 88,
   MTYP_VLCB = 0xFC,
 
 
@@ -39420,7 +39421,7 @@ __asm("PSECT eeprom_data,class=EEDATA");
 __asm("ORG " "0x3FF");
 
 __asm("db 0");
-# 144 "../../VLCBlib_PIC/boot.c"
+# 151 "../../VLCBlib_PIC/boot.c"
 const uint8_t paramBlock[] __attribute__((address(0x820))) = {
     MANU_MERG,
     'a',
@@ -39429,12 +39430,15 @@ const uint8_t paramBlock[] __attribute__((address(0x820))) = {
     252,
     49,
     1,
-    0x08
+    PF_BOOT
 
-            |0x01
+            |PF_CONSUMER
 
 
 
+
+
+            |PF_VLCB
 
         ,
 
@@ -39451,7 +39455,7 @@ const uint8_t paramBlock[] __attribute__((address(0x820))) = {
     0,8,0,0,
     0,0,0,0,
     CPUM_MICROCHIP,
-    1,
+    3,
     0,
     0,
     0,
@@ -39462,8 +39466,8 @@ const uint8_t paramBlock[] __attribute__((address(0x820))) = {
     0x08,
     0,
     0,
-    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+1 +(20)+(0x48)+(0x08)+1 +PB_CAN+P18F27Q83)&0xFF),
-    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+1 +(20)+(0x48)+(0x08)+1 +PB_CAN+P18F27Q83)>>8)
+    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+3 +(20)+(0x48)+(0x08)+PF_CONSUMER+PB_CAN+P18F27Q83+PF_VLCB)&0xFF),
+    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+3 +(20)+(0x48)+(0x08)+PF_CONSUMER+PB_CAN+P18F27Q83+PF_VLCB)>>8)
 };
 
 

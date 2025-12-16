@@ -38530,6 +38530,7 @@ typedef enum VlcbMergModuleTypes
   MTYP_CANCABPE = 85,
   MTYP_CANSMARTTD = 86,
   MTYP_CANARGB = 87,
+  MTYP_CANCDU_U = 88,
   MTYP_VLCB = 0xFC,
 
 
@@ -39857,10 +39858,14 @@ static DiagnosticVal * canGetDiagnostic(uint8_t index) {
             canDiagnostics[0x07].asUint = getNumRxBuffersInUse();
             break;
         case 0x02:
-            canDiagnostics[0x02].asUint = C1BDIAG0Hbits.NTERRCNT;
+
+
+            canDiagnostics[0x02].asUint += C1BDIAG0Hbits.NTERRCNT;
             break;
         case 0x01:
-            canDiagnostics[0x01].asUint = C1BDIAG0Lbits.NRERRCNT;
+
+
+            canDiagnostics[0x01].asUint += C1BDIAG0Lbits.NRERRCNT;
             break;
     }
 
@@ -39902,7 +39907,7 @@ static uint8_t getNumRxBuffersInUse(void) {
         return (uint8_t) i16;
     }
 }
-# 570 "../../VLCBlib_PIC/can18_can_2.c"
+# 574 "../../VLCBlib_PIC/can18_can_2.c"
 static SendResult canSendMessage(Message * mp) {
     uint8_t i;
     uint8_t* txFifoObj;
@@ -40023,7 +40028,7 @@ static void sendRTR(void) {
     canDiagnostics[0x06].asUint++;
 
 }
-# 700 "../../VLCBlib_PIC/can18_can_2.c"
+# 704 "../../VLCBlib_PIC/can18_can_2.c"
 static MessageReceived canReceiveMessage(Message * m){
     Message * mp;
     uint8_t incomingCanId;
@@ -40083,7 +40088,7 @@ static MessageReceived canReceiveMessage(Message * m){
         return RECEIVED;
     }
 }
-# 777 "../../VLCBlib_PIC/can18_can_2.c"
+# 781 "../../VLCBlib_PIC/can18_can_2.c"
 static void startEnumeration(Boolean txWaiting) {
     uint8_t i;
 
@@ -40099,7 +40104,7 @@ static void startEnumeration(Boolean txWaiting) {
 
     sendRTR();
 }
-# 800 "../../VLCBlib_PIC/can18_can_2.c"
+# 804 "../../VLCBlib_PIC/can18_can_2.c"
 static void handleSelfEnumeration(uint8_t receivedCanId) {
 
     switch (enumerationState) {
@@ -40210,7 +40215,7 @@ static CanidResult setNewCanId(uint8_t newCanId) {
         return CANID_FAIL;
     }
 }
-# 919 "../../VLCBlib_PIC/can18_can_2.c"
+# 923 "../../VLCBlib_PIC/can18_can_2.c"
 enum CAN_OP_MODE_STATUS CAN1_OperationModeSet(const enum CAN_OP_MODES requestMode)
 {
     enum CAN_OP_MODE_STATUS status = CAN_OP_MODE_REQUEST_SUCCESS;
