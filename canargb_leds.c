@@ -102,8 +102,15 @@ void initARGB(void) {
      *           
      */
     
-    TRISA = 0; LATA = 0;    // unused
-    TRISB = 0; LATB = 0;    // unused
+    TRISAbits.TRISA5 = 0; LATAbits.LATA5 = 0; // unused
+    TRISAbits.TRISA3 = 0; LATAbits.LATA3 = 0; // unused
+    TRISAbits.TRISA0 = 0; LATAbits.LATA0 = 0; // unused
+    TRISAbits.TRISA1 = 0; LATAbits.LATA1 = 0; // unused
+    TRISBbits.TRISB5 = 0; LATBbits.LATB5 = 0; // unused
+    TRISBbits.TRISB4 = 0; LATBbits.LATB4 = 0; // unused
+    TRISBbits.TRISB1 = 0; LATBbits.LATB1 = 0; // unused
+    TRISBbits.TRISB0 = 0; LATBbits.LATB0 = 0; // unused
+    TRISAbits.TRISA4 = 0; LATAbits.LATA4 = 0; // unused
 
     // Main Output on RC0 other to help debug
     TRISC = 0;

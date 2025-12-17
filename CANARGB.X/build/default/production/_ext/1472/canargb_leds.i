@@ -39437,8 +39437,15 @@ void initARGB(void) {
         ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex = 0;
     }
 # 105 "../canargb_leds.c"
-    TRISA = 0; LATA = 0;
-    TRISB = 0; LATB = 0;
+    TRISAbits.TRISA5 = 0; LATAbits.LATA5 = 0;
+    TRISAbits.TRISA3 = 0; LATAbits.LATA3 = 0;
+    TRISAbits.TRISA0 = 0; LATAbits.LATA0 = 0;
+    TRISAbits.TRISA1 = 0; LATAbits.LATA1 = 0;
+    TRISBbits.TRISB5 = 0; LATBbits.LATB5 = 0;
+    TRISBbits.TRISB4 = 0; LATBbits.LATB4 = 0;
+    TRISBbits.TRISB1 = 0; LATBbits.LATB1 = 0;
+    TRISBbits.TRISB0 = 0; LATBbits.LATB0 = 0;
+    TRISAbits.TRISA4 = 0; LATAbits.LATA4 = 0;
 
 
     TRISC = 0;
@@ -39700,7 +39707,7 @@ void doFlash(void) {
     }
     refreshRequired = 1;
 }
-# 377 "../canargb_leds.c"
+# 384 "../canargb_leds.c"
 void refreshString(void) {
     uint16_t offset;
 
@@ -39713,7 +39720,7 @@ void refreshString(void) {
 
         SPI1TCNT = 3 * 255;
         DMAnCON0bits.SIRQEN = 1;
-# 400 "../canargb_leds.c"
+# 407 "../canargb_leds.c"
 LATCbits.LATC6 = flashState;
     }
 }

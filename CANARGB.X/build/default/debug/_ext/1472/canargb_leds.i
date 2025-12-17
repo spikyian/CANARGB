@@ -38389,6 +38389,7 @@ typedef enum VlcbMergModuleTypes
   MTYP_CANCABPE = 85,
   MTYP_CANSMARTTD = 86,
   MTYP_CANARGB = 87,
+  MTYP_CANCDU_U = 88,
   MTYP_VLCB = 0xFC,
 
 
@@ -39435,7 +39436,18 @@ void initARGB(void) {
         ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex = 0;
         ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex = 0;
     }
-# 106 "../canargb_leds.c"
+# 105 "../canargb_leds.c"
+    TRISAbits.TRISA5 = 0; LATAbits.LATA5 = 0;
+    TRISAbits.TRISA3 = 0; LATAbits.LATA3 = 0;
+    TRISAbits.TRISA0 = 0; LATAbits.LATA0 = 0;
+    TRISAbits.TRISA1 = 0; LATAbits.LATA1 = 0;
+    TRISBbits.TRISB5 = 0; LATBbits.LATB5 = 0;
+    TRISBbits.TRISB4 = 0; LATBbits.LATB4 = 0;
+    TRISBbits.TRISB1 = 0; LATBbits.LATB1 = 0;
+    TRISBbits.TRISB0 = 0; LATBbits.LATB0 = 0;
+    TRISAbits.TRISA4 = 0; LATAbits.LATA4 = 0;
+
+
     TRISC = 0;
     RC0PPS = 0x43;
     RC1PPS = 0x32;
@@ -39444,6 +39456,7 @@ void initARGB(void) {
     RC4PPS = 0x02;
     RC5PPS = 0x04;
     RC6PPS = 0x00;
+    TRISCbits.TRISC7 = 0; LATCbits.LATC7 = 0;
 
 
     {
@@ -39595,6 +39608,8 @@ void initARGB(void) {
 void updateLedRange(uint8_t start_ledno, uint8_t end_ledno, PaletteIndex colourIndexPair) {
     uint8_t ledno;
     if (end_ledno >= 255) end_ledno = 255 -1;
+    if (start_ledno >= 255) start_ledno = 255 -1;
+    if (start_ledno > end_ledno) end_ledno = start_ledno;
 
     for(ledno=start_ledno; ledno<=end_ledno; ledno++) {
         ledPaletteIndexes[ledno] = colourIndexPair;
@@ -39692,7 +39707,7 @@ void doFlash(void) {
     }
     refreshRequired = 1;
 }
-# 371 "../canargb_leds.c"
+# 384 "../canargb_leds.c"
 void refreshString(void) {
     uint16_t offset;
 
@@ -39705,7 +39720,7 @@ void refreshString(void) {
 
         SPI1TCNT = 3 * 255;
         DMAnCON0bits.SIRQEN = 1;
-# 394 "../canargb_leds.c"
+# 407 "../canargb_leds.c"
 LATCbits.LATC6 = flashState;
     }
 }
