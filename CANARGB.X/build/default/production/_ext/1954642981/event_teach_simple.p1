@@ -107,6 +107,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "119
 [; ;../../VLCBlib_PIC/event_teach_simple.c: 119: static void doRqevn(void);
 [v _doRqevn `(v ~T0 @X0 0 sf ]
+"121
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 121: static void doReval(uint8_t enNum, uint8_t evNum);
+[v _doReval `(v ~T0 @X0 0 sf2`uc`uc ]
 "103
 [; ;../../VLCBlib_PIC/event_teach_simple.c: 103: Processed checkLen(Message * m, uint8_t needed, uint8_t service);
 [v _checkLen `(E23341 ~T0 @X0 0 ef3`*S3294`uc`uc ]
@@ -116,8 +119,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "109
 [; ;../../VLCBlib_PIC/event_teach_simple.c: 109: uint16_t getEN(uint8_t tableIndex);
 [v _getEN `(us ~T0 @X0 0 ef1`uc ]
-"415
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 415:     startTimedResponse(2, findServiceIndex(SERVICE_ID_OLD_TEACH), nerdCallback);
+"423
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 423:     startTimedResponse(2, findServiceIndex(SERVICE_ID_OLD_TEACH), nerdCallback);
 [c E23475 0 1 2 .. ]
 [n E23475 . TIMED_RESPONSE_RESULT_FINISHED TIMED_RESPONSE_RESULT_RETRY TIMED_RESPONSE_RESULT_NEXT  ]
 [v F23488 `(E23475 ~T0 @X0 0 tf3`uc`uc`uc ]
@@ -145,12 +148,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "223 ../../VLCBlib_PIC/vlcb.h
 [; ;../../VLCBlib_PIC/vlcb.h: 223: void sendMessage2(VlcbOpCodes opc, uint8_t data1, uint8_t data2);
 [v _sendMessage2 `(v ~T0 @X0 0 ef3`E22929`uc`uc ]
-"492 ../../VLCBlib_PIC/event_teach_simple.c
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 492:     sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_NNCLR, SERVICE_ID_OLD_TEACH, GRSP_OK);
+"500 ../../VLCBlib_PIC/event_teach_simple.c
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 500:     sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_NNCLR, SERVICE_ID_OLD_TEACH, GRSP_OK);
 [c E23113 0 254 253 252 251 250 .. ]
 [n E23113 VlcbGrspCodes GRSP_OK GRSP_UNKNOWN_NVM_TYPE GRSP_INVALID_DIAGNOSTIC GRSP_INVALID_SERVICE GRSP_INVALID_COMMAND_PARAMETER GRSP_INVALID_MODE  ]
-"515
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 515:     APP_addEvent(nodeNumber, eventNumber, evNum, evVal, FALSE);
+"523
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 523:     APP_addEvent(nodeNumber, eventNumber, evNum, evVal, FALSE);
 [c E23308 0 1 .. ]
 [n E23308 Boolean FALSE TRUE  ]
 "89 ../../VLCBlib_PIC/event_teach.h
@@ -174,8 +177,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "110 ../../VLCBlib_PIC/event_teach_simple.c
 [; ;../../VLCBlib_PIC/event_teach_simple.c: 110: uint8_t numEv(uint8_t tableIndex);
 [v _numEv `(uc ~T0 @X0 0 ef1`uc ]
-"707
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 707:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 0, 0x00);
+"715
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 715:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 0, 0x00);
 [c E23277 0 1 .. ]
 [n E23277 . EEPROM_NVM_TYPE FLASH_NVM_TYPE  ]
 "171 ../../VLCBlib_PIC/nvm.h
@@ -4108,14 +4111,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../../VLCBlib_PIC/event_teach_simple.c: 312:             return PROCESSED;
 [e ) . `E23341 1 ]
 [e $UE 3307  ]
-"313
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 313:         default:
-[e :U 3346 ]
-"314
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 314:             break;
-[e $U 3308  ]
 "315
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 315:     }
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 315:         case OPC_REVAL:
+[e :U 3346 ]
+"316
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 316:             if (teachCheckLen(m, 5, 0) == PROCESSED) return PROCESSED;
+[e $ ! == -> ( _teachCheckLen (3 , , _m -> -> 5 `i `uc -> -> 0 `i `uc `ui -> . `E23341 1 `ui 3347  ]
+[e ) . `E23341 1 ]
+[e $UE 3307  ]
+[e :U 3347 ]
+"317
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 317:             if ((m->bytes[0] != nn.bytes.hi) || (m->bytes[1] != nn.bytes.lo)) return PROCESSED;
+[e $ ! || != -> *U + &U . *U _m 2 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _m 2 `ui `ux `i -> . . _nn 0 1 `i != -> *U + &U . *U _m 2 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _m 2 `ui `ux `i -> . . _nn 0 0 `i 3348  ]
+[e ) . `E23341 1 ]
+[e $UE 3307  ]
+[e :U 3348 ]
+"319
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 319:             doReval(m->bytes[2], m->bytes[3]);
+[e ( _doReval (2 , *U + &U . *U _m 2 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _m 2 `ui `ux *U + &U . *U _m 2 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _m 2 `ui `ux ]
+"320
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 320:             return PROCESSED;
+[e ) . `E23341 1 ]
+[e $UE 3307  ]
+"321
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 321:         default:
+[e :U 3349 ]
+"322
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 322:             break;
+[e $U 3308  ]
+"323
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 323:     }
 }
 [e $U 3308  ]
 [e :U 3309 ]
@@ -4129,18 +4154,19 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E22929 40 `ui 3337
  , $ -> . `E22929 39 `ui 3340
  , $ -> . `E22929 41 `ui 3343
- 3346 ]
+ , $ -> . `E22929 81 `ui 3346
+ 3349 ]
 [e :U 3308 ]
-"316
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 316:     return NOT_PROCESSED;
+"324
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 324:     return NOT_PROCESSED;
 [e ) . `E23341 0 ]
 [e $UE 3307  ]
-"317
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 317: }
+"325
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 325: }
 [e :UE 3307 ]
 }
-"326
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 326: static Processed teachCheckLen(Message * m, uint8_t needed, uint8_t learn) {
+"334
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 334: static Processed teachCheckLen(Message * m, uint8_t needed, uint8_t learn) {
 [v _teachCheckLen `(E23341 ~T0 @X0 1 sf3`*S3294`uc`uc ]
 {
 [e :U _teachCheckLen ]
@@ -4148,216 +4174,216 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _needed `uc ~T0 @X0 1 r2 ]
 [v _learn `uc ~T0 @X0 1 r3 ]
 [f ]
-"327
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 327:     if (learn) {
-[e $ ! != -> _learn `i -> 0 `i 3348  ]
+"335
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 335:     if (learn) {
+[e $ ! != -> _learn `i -> 0 `i 3351  ]
 {
-"329
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 329:         if (m->len < needed) {
-[e $ ! < -> . *U _m 0 `i -> _needed `i 3349  ]
-{
-"331
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 331:             if (mode_flags & 1) {
-[e $ ! != & -> _mode_flags `i -> 1 `i -> 0 `i 3350  ]
-{
-"334
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 334:                 sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, (uint8_t)(m->opc), SERVICE_ID_OLD_TEACH, CMDERR_INV_CMD);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . *U _m 1 `uc -> . `E23136 4 `uc -> . `E23098 0 `uc ]
-"336
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 336:             }
-}
-[e :U 3350 ]
 "337
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 337:             return PROCESSED;
-[e ) . `E23341 1 ]
-[e $UE 3347  ]
-"338
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 338:         }
-}
-[e :U 3349 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 337:         if (m->len < needed) {
+[e $ ! < -> . *U _m 0 `i -> _needed `i 3352  ]
+{
 "339
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 339:         return NOT_PROCESSED;
-[e ) . `E23341 0 ]
-[e $UE 3347  ]
-"340
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 340:     }
-}
-[e :U 3348 ]
-"341
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 341:     return checkLen(m, needed, SERVICE_ID_OLD_TEACH);
-[e ) ( _checkLen (3 , , _m _needed -> . `E23136 4 `uc ]
-[e $UE 3347  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 339:             if (mode_flags & 1) {
+[e $ ! != & -> _mode_flags `i -> 1 `i -> 0 `i 3353  ]
+{
 "342
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 342: }
-[e :UE 3347 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 342:                 sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, (uint8_t)(m->opc), SERVICE_ID_OLD_TEACH, CMDERR_INV_CMD);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . *U _m 1 `uc -> . `E23136 4 `uc -> . `E23098 0 `uc ]
+"344
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 344:             }
 }
+[e :U 3353 ]
+"345
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 345:             return PROCESSED;
+[e ) . `E23341 1 ]
+[e $UE 3350  ]
+"346
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 346:         }
+}
+[e :U 3352 ]
+"347
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 347:         return NOT_PROCESSED;
+[e ) . `E23341 0 ]
+[e $UE 3350  ]
+"348
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 348:     }
+}
+[e :U 3351 ]
+"349
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 349:     return checkLen(m, needed, SERVICE_ID_OLD_TEACH);
+[e ) ( _checkLen (3 , , _m _needed -> . `E23136 4 `uc ]
+[e $UE 3350  ]
 "350
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 350: static uint8_t teachGetESDdata(uint8_t id) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 350: }
+[e :UE 3350 ]
+}
+"358
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 358: static uint8_t teachGetESDdata(uint8_t id) {
 [v _teachGetESDdata `(uc ~T0 @X0 1 sf1`uc ]
 {
 [e :U _teachGetESDdata ]
 [v _id `uc ~T0 @X0 1 r1 ]
 [f ]
-"351
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 351:     switch (id) {
-[e $U 3353  ]
+"359
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 359:     switch (id) {
+[e $U 3356  ]
 {
-"352
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 352:         case 1: return 255;
-[e :U 3354 ]
+"360
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 360:         case 1: return 255;
+[e :U 3357 ]
 [e ) -> -> 255 `i `uc ]
-[e $UE 3351  ]
-"353
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 353:         case 2: return 252;
-[e :U 3355 ]
+[e $UE 3354  ]
+"361
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 361:         case 2: return 252;
+[e :U 3358 ]
 [e ) -> -> 252 `i `uc ]
-[e $UE 3351  ]
-"354
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 354:         default: return 0;
-[e :U 3356 ]
+[e $UE 3354  ]
+"362
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 362:         default: return 0;
+[e :U 3359 ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 3351  ]
-"355
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 355:     }
+[e $UE 3354  ]
+"363
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 363:     }
 }
-[e $U 3352  ]
-[e :U 3353 ]
-[e [\ _id , $ -> 1 `i 3354
- , $ -> 2 `i 3355
- 3356 ]
-[e :U 3352 ]
-"356
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 356: }
-[e :UE 3351 ]
+[e $U 3355  ]
+[e :U 3356 ]
+[e [\ _id , $ -> 1 `i 3357
+ , $ -> 2 `i 3358
+ 3359 ]
+[e :U 3355 ]
+"364
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 364: }
+[e :UE 3354 ]
 }
-"365
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 365: static DiagnosticVal * teachGetDiagnostic(uint8_t index) {
+"373
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 373: static DiagnosticVal * teachGetDiagnostic(uint8_t index) {
 [v _teachGetDiagnostic `(*S3297 ~T0 @X0 1 sf1`uc ]
 {
 [e :U _teachGetDiagnostic ]
 [v _index `uc ~T0 @X0 1 r1 ]
 [f ]
-"366
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 366:     if (index > 1) {
-[e $ ! > -> _index `i -> 1 `i 3358  ]
+"374
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 374:     if (index > 1) {
+[e $ ! > -> _index `i -> 1 `i 3361  ]
 {
-"367
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 367:         return ((void*)0);
+"375
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 375:         return ((void*)0);
 [e ) -> -> -> 0 `i `*v `*S3297 ]
-[e $UE 3357  ]
-"368
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 368:     }
+[e $UE 3360  ]
+"376
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 376:     }
 }
-[e :U 3358 ]
-"369
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 369:     return &(teachDiagnostics[index]);
+[e :U 3361 ]
+"377
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 377:     return &(teachDiagnostics[index]);
 [e ) &U *U + &U _teachDiagnostics * -> _index `ux -> -> # *U &U _teachDiagnostics `ui `ux ]
-[e $UE 3357  ]
-"370
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 370: }
-[e :UE 3357 ]
+[e $UE 3360  ]
+"378
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 378: }
+[e :UE 3360 ]
 }
-"380
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 380: void clearAllEvents(void) {
+"388
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 388: void clearAllEvents(void) {
 [v _clearAllEvents `(v ~T0 @X0 1 ef ]
 {
 [e :U _clearAllEvents ]
 [f ]
-"381
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 381:     uint8_t tableIndex;
+"389
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 389:     uint8_t tableIndex;
 [v _tableIndex `uc ~T0 @X0 1 a ]
-"383
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 383:     for (tableIndex=0; tableIndex<255; tableIndex++) {
+"391
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 391:     for (tableIndex=0; tableIndex<255; tableIndex++) {
 {
 [e = _tableIndex -> -> 0 `i `uc ]
-[e $ < -> _tableIndex `i -> 255 `i 3360  ]
-[e $U 3361  ]
-[e :U 3360 ]
+[e $ < -> _tableIndex `i -> 255 `i 3363  ]
+[e $U 3364  ]
+[e :U 3363 ]
 {
-"384
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 384:         removeTableEntry(tableIndex);
+"392
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 392:         removeTableEntry(tableIndex);
 [e ( _removeTableEntry (1 _tableIndex ]
-"385
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 385:     }
+"393
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 393:     }
 }
 [e ++ _tableIndex -> -> 1 `i `uc ]
-[e $ < -> _tableIndex `i -> 255 `i 3360  ]
-[e :U 3361 ]
-}
-"387
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 387:     rebuildHashtable();
-[e ( _rebuildHashtable ..  ]
-"389
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 389: }
-[e :UE 3359 ]
+[e $ < -> _tableIndex `i -> 255 `i 3363  ]
+[e :U 3364 ]
 }
 "395
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 395: static void doNnevn(void) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 395:     rebuildHashtable();
+[e ( _rebuildHashtable ..  ]
+"397
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 397: }
+[e :UE 3362 ]
+}
+"403
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 403: static void doNnevn(void) {
 [v _doNnevn `(v ~T0 @X0 1 sf ]
 {
 [e :U _doNnevn ]
 [f ]
-"397
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 397:     uint8_t count = 0;
+"405
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 405:     uint8_t count = 0;
 [v _count `uc ~T0 @X0 1 a ]
 [e = _count -> -> 0 `i `uc ]
-"398
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 398:     uint8_t i;
+"406
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 406:     uint8_t i;
 [v _i `uc ~T0 @X0 1 a ]
-"399
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 399:     for (i=0; i<255; i++) {
+"407
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 407:     for (i=0; i<255; i++) {
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 255 `i 3364  ]
-[e $U 3365  ]
-[e :U 3364 ]
-{
-"400
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 400:         uint16_t eventNumber;
-[v _eventNumber `us ~T0 @X0 1 a ]
-"401
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 401:         eventNumber = getEN(i);
-[e = _eventNumber ( _getEN (1 _i ]
-"402
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 402:         if (eventNumber == 0) {
-[e $ ! == -> _eventNumber `ui -> -> 0 `i `ui 3367  ]
-{
-"403
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 403:             count++;
-[e ++ _count -> -> 1 `i `uc ]
-"404
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 404:         }
-}
+[e $ < -> _i `i -> 255 `i 3367  ]
+[e $U 3368  ]
 [e :U 3367 ]
-"405
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 405:     }
+{
+"408
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 408:         uint16_t eventNumber;
+[v _eventNumber `us ~T0 @X0 1 a ]
+"409
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 409:         eventNumber = getEN(i);
+[e = _eventNumber ( _getEN (1 _i ]
+"410
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 410:         if (eventNumber == 0) {
+[e $ ! == -> _eventNumber `ui -> -> 0 `i `ui 3370  ]
+{
+"411
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 411:             count++;
+[e ++ _count -> -> 1 `i `uc ]
+"412
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 412:         }
+}
+[e :U 3370 ]
+"413
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 413:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 255 `i 3364  ]
-[e :U 3365 ]
-}
-"406
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 406:     sendMessage3(OPC_EVNLF, nn.bytes.hi, nn.bytes.lo, count);
-[e ( _sendMessage3 (4 , , , . `E22929 53 . . _nn 0 1 . . _nn 0 0 _count ]
-"407
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 407: }
-[e :UE 3363 ]
+[e $ < -> _i `i -> 255 `i 3367  ]
+[e :U 3368 ]
 }
 "414
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 414: static void doNerd(void) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 414:     sendMessage3(OPC_EVNLF, nn.bytes.hi, nn.bytes.lo, count);
+[e ( _sendMessage3 (4 , , , . `E22929 53 . . _nn 0 1 . . _nn 0 0 _count ]
+"415
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 415: }
+[e :UE 3366 ]
+}
+"422
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 422: static void doNerd(void) {
 [v _doNerd `(v ~T0 @X0 1 sf ]
 {
 [e :U _doNerd ]
 [f ]
-"415
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 415:     startTimedResponse(2, findServiceIndex(SERVICE_ID_OLD_TEACH), nerdCallback);
+"423
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 423:     startTimedResponse(2, findServiceIndex(SERVICE_ID_OLD_TEACH), nerdCallback);
 [e ( _startTimedResponse (3 , , -> -> 2 `i `uc ( _findServiceIndex (1 -> . `E23136 4 `uc &U _nerdCallback ]
-"416
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 416: }
-[e :UE 3368 ]
+"424
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 424: }
+[e :UE 3371 ]
 }
-"425
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 425: TimedResponseResult nerdCallback(uint8_t type, uint8_t serviceIndex, uint8_t step){
+"433
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 433: TimedResponseResult nerdCallback(uint8_t type, uint8_t serviceIndex, uint8_t step){
 [v _nerdCallback `(E23475 ~T0 @X0 1 ef3`uc`uc`uc ]
 {
 [e :U _nerdCallback ]
@@ -4365,167 +4391,167 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _serviceIndex `uc ~T0 @X0 1 r2 ]
 [v _step `uc ~T0 @X0 1 r3 ]
 [f ]
-"426
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 426:     Word nodeNumber, eventNumber;
+"434
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 434:     Word nodeNumber, eventNumber;
 [v _nodeNumber `S3295 ~T0 @X0 1 a ]
 [v _eventNumber `S3295 ~T0 @X0 1 a ]
-"428
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 428:     if (step >= 255) {
-[e $ ! >= -> _step `i -> 255 `i 3370  ]
-{
-"429
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 429:         return TIMED_RESPONSE_RESULT_FINISHED;
-[e ) . `E23475 0 ]
-[e $UE 3369  ]
-"430
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 430:     }
-}
-[e :U 3370 ]
-"432
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 432:     eventNumber.word = getEN(step);
-[e = . _eventNumber 1 ( _getEN (1 _step ]
-"433
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 433:     if (eventNumber.word != 0) {
-[e $ ! != -> . _eventNumber 1 `ui -> -> 0 `i `ui 3371  ]
-{
-"434
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 434:         nodeNumber.word = getNN(step);
-[e = . _nodeNumber 1 ( _getNN (1 _step ]
-"435
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 435:         sendMessage7(OPC_ENRSP, nn.bytes.hi, nn.bytes.lo, nodeNumber.bytes.hi, nodeNumber.bytes.lo, eventNumber.bytes.hi, eventNumber.bytes.lo, tableIndexToEvtIdx(step));
-[e ( _sendMessage7 (4 , , , , , , , . `E22929 128 . . _nn 0 1 . . _nn 0 0 . . _nodeNumber 0 1 . . _nodeNumber 0 0 . . _eventNumber 0 1 . . _eventNumber 0 0 ( _tableIndexToEvtIdx (1 _step ]
 "436
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 436:     }
-}
-[e :U 3371 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 436:     if (step >= 255) {
+[e $ ! >= -> _step `i -> 255 `i 3373  ]
+{
+"437
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 437:         return TIMED_RESPONSE_RESULT_FINISHED;
+[e ) . `E23475 0 ]
+[e $UE 3372  ]
 "438
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 438:     return TIMED_RESPONSE_RESULT_NEXT;
-[e ) . `E23475 2 ]
-[e $UE 3369  ]
-"439
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 439: }
-[e :UE 3369 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 438:     }
 }
+[e :U 3373 ]
+"440
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 440:     eventNumber.word = getEN(step);
+[e = . _eventNumber 1 ( _getEN (1 _step ]
+"441
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 441:     if (eventNumber.word != 0) {
+[e $ ! != -> . _eventNumber 1 `ui -> -> 0 `i `ui 3374  ]
+{
+"442
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 442:         nodeNumber.word = getNN(step);
+[e = . _nodeNumber 1 ( _getNN (1 _step ]
+"443
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 443:         sendMessage7(OPC_ENRSP, nn.bytes.hi, nn.bytes.lo, nodeNumber.bytes.hi, nodeNumber.bytes.lo, eventNumber.bytes.hi, eventNumber.bytes.lo, tableIndexToEvtIdx(step));
+[e ( _sendMessage7 (4 , , , , , , , . `E22929 128 . . _nn 0 1 . . _nn 0 0 . . _nodeNumber 0 1 . . _nodeNumber 0 0 . . _eventNumber 0 1 . . _eventNumber 0 0 ( _tableIndexToEvtIdx (1 _step ]
+"444
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 444:     }
+}
+[e :U 3374 ]
+"446
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 446:     return TIMED_RESPONSE_RESULT_NEXT;
+[e ) . `E23475 2 ]
+[e $UE 3372  ]
 "447
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 447: static void doNenrd(uint8_t index) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 447: }
+[e :UE 3372 ]
+}
+"455
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 455: static void doNenrd(uint8_t index) {
 [v _doNenrd `(v ~T0 @X0 1 sf1`uc ]
 {
 [e :U _doNenrd ]
 [v _index `uc ~T0 @X0 1 r1 ]
 [f ]
-"448
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 448:     uint8_t tableIndex;
+"456
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 456:     uint8_t tableIndex;
 [v _tableIndex `uc ~T0 @X0 1 a ]
-"449
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 449:     uint16_t nodeNumber, eventNumber;
+"457
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 457:     uint16_t nodeNumber, eventNumber;
 [v _nodeNumber `us ~T0 @X0 1 a ]
 [v _eventNumber `us ~T0 @X0 1 a ]
-"451
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 451:     tableIndex = evtIdxToTableIndex(index);
-[e = _tableIndex ( _evtIdxToTableIndex (1 _index ]
-"453
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 453:     if (tableIndex >= 255) {
-[e $ ! >= -> _tableIndex `i -> 255 `i 3373  ]
-{
-"454
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 454:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INV_EN_IDX);
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 7 `uc ]
-"456
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 456:                 sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_NENRD, SERVICE_ID_OLD_TEACH, CMDERR_INV_EN_IDX);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 55 `uc -> . `E23136 4 `uc -> . `E23098 7 `uc ]
-"458
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 458:         return;
-[e $UE 3372  ]
 "459
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 459:     }
-}
-[e :U 3373 ]
-"460
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 460:     nodeNumber = getNN(tableIndex);
-[e = _nodeNumber ( _getNN (1 _tableIndex ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 459:     tableIndex = evtIdxToTableIndex(index);
+[e = _tableIndex ( _evtIdxToTableIndex (1 _index ]
 "461
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 461:     eventNumber = getEN(tableIndex);
-[e = _eventNumber ( _getEN (1 _tableIndex ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 461:     if (tableIndex >= 255) {
+[e $ ! >= -> _tableIndex `i -> 255 `i 3376  ]
+{
 "462
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 462:     sendMessage7(OPC_ENRSP, nn.bytes.hi, nn.bytes.lo, nodeNumber>>8, nodeNumber&0xFF, eventNumber>>8, eventNumber&0xFF, tableIndex);
-[e ( _sendMessage7 (4 , , , , , , , . `E22929 128 . . _nn 0 1 . . _nn 0 0 -> >> -> _nodeNumber `ui -> 8 `i `uc -> & -> _nodeNumber `ui -> -> 255 `i `ui `uc -> >> -> _eventNumber `ui -> 8 `i `uc -> & -> _eventNumber `ui -> -> 255 `i `ui `uc _tableIndex ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 462:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INV_EN_IDX);
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 7 `uc ]
 "464
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 464: }
-[e :UE 3372 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 464:                 sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_NENRD, SERVICE_ID_OLD_TEACH, CMDERR_INV_EN_IDX);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 55 `uc -> . `E23136 4 `uc -> . `E23098 7 `uc ]
+"466
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 466:         return;
+[e $UE 3375  ]
+"467
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 467:     }
 }
-"471
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 471: static void doRqevn(void) {
+[e :U 3376 ]
+"468
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 468:     nodeNumber = getNN(tableIndex);
+[e = _nodeNumber ( _getNN (1 _tableIndex ]
+"469
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 469:     eventNumber = getEN(tableIndex);
+[e = _eventNumber ( _getEN (1 _tableIndex ]
+"470
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 470:     sendMessage7(OPC_ENRSP, nn.bytes.hi, nn.bytes.lo, nodeNumber>>8, nodeNumber&0xFF, eventNumber>>8, eventNumber&0xFF, tableIndex);
+[e ( _sendMessage7 (4 , , , , , , , . `E22929 128 . . _nn 0 1 . . _nn 0 0 -> >> -> _nodeNumber `ui -> 8 `i `uc -> & -> _nodeNumber `ui -> -> 255 `i `ui `uc -> >> -> _eventNumber `ui -> 8 `i `uc -> & -> _eventNumber `ui -> -> 255 `i `ui `uc _tableIndex ]
+"472
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 472: }
+[e :UE 3375 ]
+}
+"479
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 479: static void doRqevn(void) {
 [v _doRqevn `(v ~T0 @X0 1 sf ]
 {
 [e :U _doRqevn ]
 [f ]
-"473
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 473:     uint8_t count = 0;
+"481
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 481:     uint8_t count = 0;
 [v _count `uc ~T0 @X0 1 a ]
 [e = _count -> -> 0 `i `uc ]
-"474
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 474:     uint8_t i;
+"482
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 482:     uint8_t i;
 [v _i `uc ~T0 @X0 1 a ]
-"475
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 475:     for (i=0; i<255; i++) {
+"483
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 483:     for (i=0; i<255; i++) {
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 255 `i 3375  ]
-[e $U 3376  ]
-[e :U 3375 ]
-{
-"476
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 476:         uint16_t eventNumber;
-[v _eventNumber `us ~T0 @X0 1 a ]
-"477
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 477:         eventNumber = getEN(i);
-[e = _eventNumber ( _getEN (1 _i ]
-"478
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 478:         if (eventNumber != 0) {
-[e $ ! != -> _eventNumber `ui -> -> 0 `i `ui 3378  ]
-{
-"479
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 479:             count++;
-[e ++ _count -> -> 1 `i `uc ]
-"480
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 480:         }
-}
+[e $ < -> _i `i -> 255 `i 3378  ]
+[e $U 3379  ]
 [e :U 3378 ]
-"481
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 481:     }
+{
+"484
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 484:         uint16_t eventNumber;
+[v _eventNumber `us ~T0 @X0 1 a ]
+"485
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 485:         eventNumber = getEN(i);
+[e = _eventNumber ( _getEN (1 _i ]
+"486
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 486:         if (eventNumber != 0) {
+[e $ ! != -> _eventNumber `ui -> -> 0 `i `ui 3381  ]
+{
+"487
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 487:             count++;
+[e ++ _count -> -> 1 `i `uc ]
+"488
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 488:         }
+}
+[e :U 3381 ]
+"489
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 489:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 255 `i 3375  ]
-[e :U 3376 ]
+[e $ < -> _i `i -> 255 `i 3378  ]
+[e :U 3379 ]
 }
-"482
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 482:     sendMessage3(OPC_NUMEV, nn.bytes.hi, nn.bytes.lo, count);
+"490
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 490:     sendMessage3(OPC_NUMEV, nn.bytes.hi, nn.bytes.lo, count);
 [e ( _sendMessage3 (4 , , , . `E22929 57 . . _nn 0 1 . . _nn 0 0 _count ]
-"483
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 483: }
-[e :UE 3374 ]
+"491
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 491: }
+[e :UE 3377 ]
 }
-"488
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 488: static void doNnclr(void) {
+"496
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 496: static void doNnclr(void) {
 [v _doNnclr `(v ~T0 @X0 1 sf ]
 {
 [e :U _doNnclr ]
 [f ]
-"489
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 489:     clearAllEvents();
+"497
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 497:     clearAllEvents();
 [e ( _clearAllEvents ..  ]
-"490
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 490:     sendMessage2(OPC_WRACK, nn.bytes.hi, nn.bytes.lo);
+"498
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 498:     sendMessage2(OPC_WRACK, nn.bytes.hi, nn.bytes.lo);
 [e ( _sendMessage2 (3 , , . `E22929 42 . . _nn 0 1 . . _nn 0 0 ]
-"492
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 492:     sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_NNCLR, SERVICE_ID_OLD_TEACH, GRSP_OK);
+"500
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 500:     sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_NNCLR, SERVICE_ID_OLD_TEACH, GRSP_OK);
 [e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 38 `uc -> . `E23136 4 `uc -> . `E23113 0 `uc ]
-"494
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 494: }
-[e :UE 3379 ]
+"502
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 502: }
+[e :UE 3382 ]
 }
-"505
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 505: static void doEvlrn(uint16_t nodeNumber, uint16_t eventNumber, uint8_t evNum, uint8_t evVal) {
+"513
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 513: static void doEvlrn(uint16_t nodeNumber, uint16_t eventNumber, uint8_t evNum, uint8_t evVal) {
 [v _doEvlrn `(v ~T0 @X0 1 sf4`us`us`uc`uc ]
 {
 [e :U _doEvlrn ]
@@ -4534,198 +4560,198 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _evNum `uc ~T0 @X0 1 r3 ]
 [v _evVal `uc ~T0 @X0 1 r4 ]
 [f ]
-"507
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 507:     evNum--;
-[e -- _evNum -> -> 1 `i `uc ]
-"508
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 508:     if (evNum >= 252) {
-[e $ ! >= -> _evNum `i -> 252 `i 3381  ]
-{
-"509
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 509:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INV_EV_IDX);
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 5 `uc ]
-"511
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 511:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVLRN, SERVICE_ID_OLD_TEACH, CMDERR_INV_EV_IDX);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 109 `uc -> . `E23136 4 `uc -> . `E23098 5 `uc ]
-"513
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 513:         return;
-[e $UE 3380  ]
-"514
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 514:     }
-}
-[e :U 3381 ]
 "515
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 515:     APP_addEvent(nodeNumber, eventNumber, evNum, evVal, FALSE);
-[e ( _APP_addEvent (4 , , , , _nodeNumber _eventNumber _evNum _evVal . `E23308 0 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 515:     evNum--;
+[e -- _evNum -> -> 1 `i `uc ]
 "516
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 516:     if (errno) {
-[e $ ! != -> _errno `i -> 0 `i 3382  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 516:     if (evNum >= 252) {
+[e $ ! >= -> _evNum `i -> 252 `i 3384  ]
 {
-"518
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 518:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, errno);
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 _errno ]
-"520
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 520:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVLRN, SERVICE_ID_OLD_TEACH, errno);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 109 `uc -> . `E23136 4 `uc _errno ]
+"517
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 517:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INV_EV_IDX);
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 5 `uc ]
+"519
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 519:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVLRN, SERVICE_ID_OLD_TEACH, CMDERR_INV_EV_IDX);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 109 `uc -> . `E23136 4 `uc -> . `E23098 5 `uc ]
+"521
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 521:         return;
+[e $UE 3383  ]
 "522
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 522:         return;
-[e $UE 3380  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 522:     }
+}
+[e :U 3384 ]
 "523
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 523:     }
-}
-[e :U 3382 ]
-"525
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 525:     teachDiagnostics[0x01].asUint++;
-[e ++ . *U + &U _teachDiagnostics * -> -> -> 1 `i `ui `ux -> -> # *U &U _teachDiagnostics `ui `ux 0 -> -> 1 `i `us ]
-"527
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 527:     sendMessage2(OPC_WRACK, nn.bytes.hi, nn.bytes.lo);
-[e ( _sendMessage2 (3 , , . `E22929 42 . . _nn 0 1 . . _nn 0 0 ]
-"529
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 529:     sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVLRN, SERVICE_ID_OLD_TEACH, GRSP_OK);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 109 `uc -> . `E23136 4 `uc -> . `E23113 0 `uc ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 523:     APP_addEvent(nodeNumber, eventNumber, evNum, evVal, FALSE);
+[e ( _APP_addEvent (4 , , , , _nodeNumber _eventNumber _evNum _evVal . `E23308 0 ]
+"524
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 524:     if (errno) {
+[e $ ! != -> _errno `i -> 0 `i 3385  ]
+{
+"526
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 526:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, errno);
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 _errno ]
+"528
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 528:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVLRN, SERVICE_ID_OLD_TEACH, errno);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 109 `uc -> . `E23136 4 `uc _errno ]
+"530
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 530:         return;
+[e $UE 3383  ]
 "531
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 531:     return;
-[e $UE 3380  ]
-"532
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 532: }
-[e :UE 3380 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 531:     }
 }
+[e :U 3385 ]
+"533
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 533:     teachDiagnostics[0x01].asUint++;
+[e ++ . *U + &U _teachDiagnostics * -> -> -> 1 `i `ui `ux -> -> # *U &U _teachDiagnostics `ui `ux 0 -> -> 1 `i `us ]
+"535
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 535:     sendMessage2(OPC_WRACK, nn.bytes.hi, nn.bytes.lo);
+[e ( _sendMessage2 (3 , , . `E22929 42 . . _nn 0 1 . . _nn 0 0 ]
+"537
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 537:     sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVLRN, SERVICE_ID_OLD_TEACH, GRSP_OK);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 109 `uc -> . `E23136 4 `uc -> . `E23113 0 `uc ]
+"539
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 539:     return;
+[e $UE 3383  ]
 "540
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 540: static void doReval(uint8_t enNum, uint8_t evNum) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 540: }
+[e :UE 3383 ]
+}
+"548
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 548: static void doReval(uint8_t enNum, uint8_t evNum) {
 [v _doReval `(v ~T0 @X0 1 sf2`uc`uc ]
 {
 [e :U _doReval ]
 [v _enNum `uc ~T0 @X0 1 r1 ]
 [v _evNum `uc ~T0 @X0 1 r2 ]
 [f ]
-"543
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 543:     uint8_t evIndex;
+"551
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 551:     uint8_t evIndex;
 [v _evIndex `uc ~T0 @X0 1 a ]
-"544
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 544:     uint8_t tableIndex = evtIdxToTableIndex(enNum);
+"552
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 552:     uint8_t tableIndex = evtIdxToTableIndex(enNum);
 [v _tableIndex `uc ~T0 @X0 1 a ]
 [e = _tableIndex ( _evtIdxToTableIndex (1 _enNum ]
-"545
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 545:     int evVal;
+"553
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 553:     int evVal;
 [v _evVal `i ~T0 @X0 1 a ]
-"547
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 547:     if (tableIndex >= 255) {
-[e $ ! >= -> _tableIndex `i -> 255 `i 3384  ]
-{
-"548
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 548:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INV_EV_IDX);
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 5 `uc ]
-"549
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 549:         return;
-[e $UE 3383  ]
-"550
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 550:     }
-}
-[e :U 3384 ]
-"552
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 552:     evIndex = evNum-1U;
-[e = _evIndex -> - -> _evNum `ui -> 1 `ui `uc ]
-"554
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 554:     if (evNum == 0) {
-[e $ ! == -> _evNum `i -> 0 `i 3385  ]
-{
 "555
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 555:         evVal = 248;
-[e = _evVal -> 248 `i ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 555:     if (tableIndex >= 255) {
+[e $ ! >= -> _tableIndex `i -> 255 `i 3387  ]
+{
 "556
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 556:         if ((mode_flags & 8) == 0) {
-[e $ ! == & -> _mode_flags `i -> 8 `i -> 0 `i 3386  ]
-{
-"559
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 559:             timedResponseOpcode = OPC_NEVAL;
-[e = _timedResponseOpcode -> . `E22929 95 `uc ]
-"560
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 560:             startTimedResponse(tableIndex, findServiceIndex(SERVICE_ID_OLD_TEACH), reqevCallback);
-[e ( _startTimedResponse (3 , , _tableIndex ( _findServiceIndex (1 -> . `E23136 4 `uc &U _reqevCallback ]
-"561
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 561:         }
-}
-[e :U 3386 ]
-"562
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 562:     } else {
-}
-[e $U 3387  ]
-[e :U 3385 ]
-{
-"563
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 563:         evVal = getEv(tableIndex, evIndex);
-[e = _evVal -> ( _getEv (2 , _tableIndex _evIndex `i ]
-"564
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 564:     }
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 556:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INV_EV_IDX);
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 5 `uc ]
+"557
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 557:         return;
+[e $UE 3386  ]
+"558
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 558:     }
 }
 [e :U 3387 ]
-"566
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 566:     if (evVal < 0) {
-[e $ ! < _evVal -> 0 `i 3388  ]
+"560
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 560:     evIndex = evNum-1U;
+[e = _evIndex -> - -> _evNum `ui -> 1 `ui `uc ]
+"562
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 562:     if (evNum == 0) {
+[e $ ! == -> _evNum `i -> 0 `i 3388  ]
 {
+"563
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 563:         evVal = 248;
+[e = _evVal -> 248 `i ]
+"564
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 564:         if ((mode_flags & 8) == 0) {
+[e $ ! == & -> _mode_flags `i -> 8 `i -> 0 `i 3389  ]
+{
+"567
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 567:             timedResponseOpcode = OPC_NEVAL;
+[e = _timedResponseOpcode -> . `E22929 95 `uc ]
 "568
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 568:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, (uint8_t)(-evVal));
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> -U _evVal `uc ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 568:             startTimedResponse(tableIndex, findServiceIndex(SERVICE_ID_OLD_TEACH), reqevCallback);
+[e ( _startTimedResponse (3 , , _tableIndex ( _findServiceIndex (1 -> . `E23136 4 `uc &U _reqevCallback ]
+"569
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 569:         }
+}
+[e :U 3389 ]
 "570
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 570:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_REVAL, SERVICE_ID_OLD_TEACH, (uint8_t)(-evVal));
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 81 `uc -> . `E23136 4 `uc -> -U _evVal `uc ]
-"572
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 572:         return;
-[e $UE 3383  ]
-"573
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 573:     }
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 570:     } else {
 }
+[e $U 3390  ]
 [e :U 3388 ]
-"574
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 574:     sendMessage5(OPC_NEVAL, nn.bytes.hi, nn.bytes.lo, enNum, evNum, (uint8_t)evVal);
-[e ( _sendMessage5 (4 , , , , , . `E22929 95 . . _nn 0 1 . . _nn 0 0 _enNum _evNum -> _evVal `uc ]
-"575
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 575: }
-[e :UE 3383 ]
+{
+"571
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 571:         evVal = getEv(tableIndex, evIndex);
+[e = _evVal -> ( _getEv (2 , _tableIndex _evIndex `i ]
+"572
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 572:     }
 }
+[e :U 3390 ]
+"574
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 574:     if (evVal < 0) {
+[e $ ! < _evVal -> 0 `i 3391  ]
+{
+"576
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 576:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, (uint8_t)(-evVal));
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> -U _evVal `uc ]
+"578
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 578:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_REVAL, SERVICE_ID_OLD_TEACH, (uint8_t)(-evVal));
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 81 `uc -> . `E23136 4 `uc -> -U _evVal `uc ]
+"580
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 580:         return;
+[e $UE 3386  ]
+"581
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 581:     }
+}
+[e :U 3391 ]
 "582
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 582: static void doEvuln(uint16_t nodeNumber, uint16_t eventNumber) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 582:     sendMessage5(OPC_NEVAL, nn.bytes.hi, nn.bytes.lo, enNum, evNum, (uint8_t)evVal);
+[e ( _sendMessage5 (4 , , , , , . `E22929 95 . . _nn 0 1 . . _nn 0 0 _enNum _evNum -> _evVal `uc ]
+"583
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 583: }
+[e :UE 3386 ]
+}
+"590
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 590: static void doEvuln(uint16_t nodeNumber, uint16_t eventNumber) {
 [v _doEvuln `(v ~T0 @X0 1 sf2`us`us ]
 {
 [e :U _doEvuln ]
 [v _nodeNumber `us ~T0 @X0 1 r1 ]
 [v _eventNumber `us ~T0 @X0 1 r2 ]
 [f ]
-"583
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 583:     uint8_t result;
-[v _result `uc ~T0 @X0 1 a ]
-"584
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 584:     result = removeEvent(nodeNumber, eventNumber);
-[e = _result ( _removeEvent (2 , _nodeNumber _eventNumber ]
-"585
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 585:     if (result) {
-[e $ ! != -> _result `i -> 0 `i 3390  ]
-{
-"586
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 586:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, result);
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 _result ]
-"588
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 588:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVULN, SERVICE_ID_OLD_TEACH, result);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 74 `uc -> . `E23136 4 `uc _result ]
-"590
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 590:         return;
-[e $UE 3389  ]
 "591
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 591:     }
-}
-[e :U 3390 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 591:     uint8_t result;
+[v _result `uc ~T0 @X0 1 a ]
+"592
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 592:     result = removeEvent(nodeNumber, eventNumber);
+[e = _result ( _removeEvent (2 , _nodeNumber _eventNumber ]
 "593
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 593:     sendMessage2(OPC_WRACK, nn.bytes.hi, nn.bytes.lo);
-[e ( _sendMessage2 (3 , , . `E22929 42 . . _nn 0 1 . . _nn 0 0 ]
-"595
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 595:     sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVULN, SERVICE_ID_OLD_TEACH, GRSP_OK);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 74 `uc -> . `E23136 4 `uc -> . `E23113 0 `uc ]
-"597
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 597: }
-[e :UE 3389 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 593:     if (result) {
+[e $ ! != -> _result `i -> 0 `i 3393  ]
+{
+"594
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 594:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, result);
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 _result ]
+"596
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 596:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVULN, SERVICE_ID_OLD_TEACH, result);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 74 `uc -> . `E23136 4 `uc _result ]
+"598
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 598:         return;
+[e $UE 3392  ]
+"599
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 599:     }
 }
+[e :U 3393 ]
+"601
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 601:     sendMessage2(OPC_WRACK, nn.bytes.hi, nn.bytes.lo);
+[e ( _sendMessage2 (3 , , . `E22929 42 . . _nn 0 1 . . _nn 0 0 ]
+"603
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 603:     sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_EVULN, SERVICE_ID_OLD_TEACH, GRSP_OK);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 74 `uc -> . `E23136 4 `uc -> . `E23113 0 `uc ]
 "605
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 605: static void doReqev(uint16_t nodeNumber, uint16_t eventNumber, uint8_t evNum) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 605: }
+[e :UE 3392 ]
+}
+"613
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 613: static void doReqev(uint16_t nodeNumber, uint16_t eventNumber, uint8_t evNum) {
 [v _doReqev `(v ~T0 @X0 1 sf3`us`us`uc ]
 {
 [e :U _doReqev ]
@@ -4733,116 +4759,116 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _eventNumber `us ~T0 @X0 1 r2 ]
 [v _evNum `uc ~T0 @X0 1 r3 ]
 [f ]
-"606
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 606:     int16_t evVal;
+"614
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 614:     int16_t evVal;
 [v _evVal `s ~T0 @X0 1 a ]
-"608
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 608:     uint8_t tableIndex = findEvent(nodeNumber, eventNumber);
+"616
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 616:     uint8_t tableIndex = findEvent(nodeNumber, eventNumber);
 [v _tableIndex `uc ~T0 @X0 1 a ]
 [e = _tableIndex ( _findEvent (2 , _nodeNumber _eventNumber ]
-"609
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 609:     if (tableIndex == 0xff) {
-[e $ ! == -> _tableIndex `i -> 255 `i 3392  ]
-{
-"610
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 610:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INVALID_EVENT);
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 6 `uc ]
-"612
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 612:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_REQEV, SERVICE_ID_OLD_TEACH, CMDERR_INVALID_EVENT);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 92 `uc -> . `E23136 4 `uc -> . `E23098 6 `uc ]
-"614
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 614:         return;
-[e $UE 3391  ]
-"615
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 615:     }
-}
-[e :U 3392 ]
-"616
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 616:     if (evNum > 252) {
-[e $ ! > -> _evNum `i -> 252 `i 3393  ]
-{
 "617
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 617:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INV_EV_IDX);
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 5 `uc ]
-"619
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 619:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_REQEV, SERVICE_ID_OLD_TEACH, CMDERR_INV_EV_IDX);
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 92 `uc -> . `E23136 4 `uc -> . `E23098 5 `uc ]
-"621
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 621:         return;
-[e $UE 3391  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 617:     if (tableIndex == 0xff) {
+[e $ ! == -> _tableIndex `i -> 255 `i 3395  ]
+{
+"618
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 618:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INVALID_EVENT);
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 6 `uc ]
+"620
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 620:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_REQEV, SERVICE_ID_OLD_TEACH, CMDERR_INVALID_EVENT);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 92 `uc -> . `E23136 4 `uc -> . `E23098 6 `uc ]
 "622
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 622:     }
-}
-[e :U 3393 ]
-"624
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 624:     if (evNum == 0) {
-[e $ ! == -> _evNum `i -> 0 `i 3394  ]
-{
-"625
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 625:         evVal = 248;
-[e = _evVal -> -> 248 `i `s ]
-"626
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 626:         if ((mode_flags & 8) == 0) {
-[e $ ! == & -> _mode_flags `i -> 8 `i -> 0 `i 3395  ]
-{
-"627
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 627:             sendMessage6(OPC_EVANS, nodeNumber>>8, nodeNumber&0xFF, eventNumber>>8, eventNumber&0xFF, 0, numEv(tableIndex));
-[e ( _sendMessage6 (4 , , , , , , . `E22929 110 -> >> -> _nodeNumber `ui -> 8 `i `uc -> & -> _nodeNumber `ui -> -> 255 `i `ui `uc -> >> -> _eventNumber `ui -> 8 `i `uc -> & -> _eventNumber `ui -> -> 255 `i `ui `uc -> -> 0 `i `uc ( _numEv (1 _tableIndex ]
-"630
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 630:             timedResponseOpcode = OPC_EVANS;
-[e = _timedResponseOpcode -> . `E22929 110 `uc ]
-"631
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 631:             startTimedResponse(tableIndex, findServiceIndex(SERVICE_ID_OLD_TEACH), reqevCallback);
-[e ( _startTimedResponse (3 , , _tableIndex ( _findServiceIndex (1 -> . `E23136 4 `uc &U _reqevCallback ]
-"632
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 632:             return;
-[e $UE 3391  ]
-"633
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 633:         }
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 622:         return;
+[e $UE 3394  ]
+"623
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 623:     }
 }
 [e :U 3395 ]
-"634
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 634:     } else {
-}
-[e $U 3396  ]
-[e :U 3394 ]
+"624
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 624:     if (evNum > 252) {
+[e $ ! > -> _evNum `i -> 252 `i 3396  ]
 {
-"635
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 635:         evVal = getEv(tableIndex, evNum-1);
-[e = _evVal ( _getEv (2 , _tableIndex -> - -> _evNum `i -> 1 `i `uc ]
-"636
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 636:     }
+"625
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 625:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, CMDERR_INV_EV_IDX);
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> . `E23098 5 `uc ]
+"627
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 627:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_REQEV, SERVICE_ID_OLD_TEACH, CMDERR_INV_EV_IDX);
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 92 `uc -> . `E23136 4 `uc -> . `E23098 5 `uc ]
+"629
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 629:         return;
+[e $UE 3394  ]
+"630
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 630:     }
 }
 [e :U 3396 ]
-"638
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 638:     if (evVal < 0) {
-[e $ ! < -> _evVal `i -> 0 `i 3397  ]
+"632
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 632:     if (evNum == 0) {
+[e $ ! == -> _evNum `i -> 0 `i 3397  ]
 {
+"633
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 633:         evVal = 248;
+[e = _evVal -> -> 248 `i `s ]
+"634
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 634:         if ((mode_flags & 8) == 0) {
+[e $ ! == & -> _mode_flags `i -> 8 `i -> 0 `i 3398  ]
+{
+"635
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 635:             sendMessage6(OPC_EVANS, nodeNumber>>8, nodeNumber&0xFF, eventNumber>>8, eventNumber&0xFF, 0, numEv(tableIndex));
+[e ( _sendMessage6 (4 , , , , , , . `E22929 110 -> >> -> _nodeNumber `ui -> 8 `i `uc -> & -> _nodeNumber `ui -> -> 255 `i `ui `uc -> >> -> _eventNumber `ui -> 8 `i `uc -> & -> _eventNumber `ui -> -> 255 `i `ui `uc -> -> 0 `i `uc ( _numEv (1 _tableIndex ]
+"638
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 638:             timedResponseOpcode = OPC_EVANS;
+[e = _timedResponseOpcode -> . `E22929 110 `uc ]
+"639
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 639:             startTimedResponse(tableIndex, findServiceIndex(SERVICE_ID_OLD_TEACH), reqevCallback);
+[e ( _startTimedResponse (3 , , _tableIndex ( _findServiceIndex (1 -> . `E23136 4 `uc &U _reqevCallback ]
 "640
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 640:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, (uint8_t)(-evVal));
-[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> -U -> _evVal `i `uc ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 640:             return;
+[e $UE 3394  ]
+"641
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 641:         }
+}
+[e :U 3398 ]
 "642
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 642:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_REQEV, SERVICE_ID_OLD_TEACH, (uint8_t)(-evVal));
-[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 92 `uc -> . `E23136 4 `uc -> -U -> _evVal `i `uc ]
-"644
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 644:         return;
-[e $UE 3391  ]
-"645
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 645:     }
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 642:     } else {
 }
+[e $U 3399  ]
 [e :U 3397 ]
-"647
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 647:     sendMessage6(OPC_EVANS, nodeNumber>>8, nodeNumber&0xFF, eventNumber>>8, eventNumber&0xFF, evNum, (uint8_t)evVal);
-[e ( _sendMessage6 (4 , , , , , , . `E22929 110 -> >> -> _nodeNumber `ui -> 8 `i `uc -> & -> _nodeNumber `ui -> -> 255 `i `ui `uc -> >> -> _eventNumber `ui -> 8 `i `uc -> & -> _eventNumber `ui -> -> 255 `i `ui `uc _evNum -> _evVal `uc ]
-"648
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 648:     return;
-[e $UE 3391  ]
-"649
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 649: }
-[e :UE 3391 ]
+{
+"643
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 643:         evVal = getEv(tableIndex, evNum-1);
+[e = _evVal ( _getEv (2 , _tableIndex -> - -> _evNum `i -> 1 `i `uc ]
+"644
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 644:     }
 }
+[e :U 3399 ]
+"646
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 646:     if (evVal < 0) {
+[e $ ! < -> _evVal `i -> 0 `i 3400  ]
+{
+"648
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 648:         sendMessage3(OPC_CMDERR, nn.bytes.hi, nn.bytes.lo, (uint8_t)(-evVal));
+[e ( _sendMessage3 (4 , , , . `E22929 52 . . _nn 0 1 . . _nn 0 0 -> -U -> _evVal `i `uc ]
+"650
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 650:         sendMessage5(OPC_GRSP, nn.bytes.hi, nn.bytes.lo, OPC_REQEV, SERVICE_ID_OLD_TEACH, (uint8_t)(-evVal));
+[e ( _sendMessage5 (4 , , , , , . `E22929 89 . . _nn 0 1 . . _nn 0 0 -> . `E22929 92 `uc -> . `E23136 4 `uc -> -U -> _evVal `i `uc ]
+"652
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 652:         return;
+[e $UE 3394  ]
+"653
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 653:     }
+}
+[e :U 3400 ]
+"655
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 655:     sendMessage6(OPC_EVANS, nodeNumber>>8, nodeNumber&0xFF, eventNumber>>8, eventNumber&0xFF, evNum, (uint8_t)evVal);
+[e ( _sendMessage6 (4 , , , , , , . `E22929 110 -> >> -> _nodeNumber `ui -> 8 `i `uc -> & -> _nodeNumber `ui -> -> 255 `i `ui `uc -> >> -> _eventNumber `ui -> 8 `i `uc -> & -> _eventNumber `ui -> -> 255 `i `ui `uc _evNum -> _evVal `uc ]
+"656
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 656:     return;
+[e $UE 3394  ]
 "657
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 657: TimedResponseResult reqevCallback(uint8_t tableIndex, uint8_t serviceIndex, uint8_t step){
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 657: }
+[e :UE 3394 ]
+}
+"665
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 665: TimedResponseResult reqevCallback(uint8_t tableIndex, uint8_t serviceIndex, uint8_t step){
 [v _reqevCallback `(E23475 ~T0 @X0 1 ef3`uc`uc`uc ]
 {
 [e :U _reqevCallback ]
@@ -4850,159 +4876,159 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _serviceIndex `uc ~T0 @X0 1 r2 ]
 [v _step `uc ~T0 @X0 1 r3 ]
 [f ]
-"658
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 658:     Word nodeNumber, eventNumber;
+"666
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 666:     Word nodeNumber, eventNumber;
 [v _nodeNumber `S3295 ~T0 @X0 1 a ]
 [v _eventNumber `S3295 ~T0 @X0 1 a ]
-"660
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 660:     uint8_t nEv = numEv(tableIndex);
+"668
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 668:     uint8_t nEv = numEv(tableIndex);
 [v _nEv `uc ~T0 @X0 1 a ]
 [e = _nEv ( _numEv (1 _tableIndex ]
-"661
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 661:     int16_t ev;
-[v _ev `s ~T0 @X0 1 a ]
-"663
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 663:     if (step+1 > nEv) {
-[e $ ! > + -> _step `i -> 1 `i -> _nEv `i 3399  ]
-{
-"664
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 664:         return TIMED_RESPONSE_RESULT_FINISHED;
-[e ) . `E23475 0 ]
-[e $UE 3398  ]
-"665
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 665:     }
-}
-[e :U 3399 ]
-"667
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 667:     nodeNumber.word = getNN(tableIndex);
-[e = . _nodeNumber 1 ( _getNN (1 _tableIndex ]
-"668
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 668:     eventNumber.word = getEN(tableIndex);
-[e = . _eventNumber 1 ( _getEN (1 _tableIndex ]
 "669
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 669:     ev = getEv(tableIndex, step);
-[e = _ev ( _getEv (2 , _tableIndex _step ]
-"670
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 670:     if (ev >= 0) {
-[e $ ! >= -> _ev `i -> 0 `i 3400  ]
-{
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 669:     int16_t ev;
+[v _ev `s ~T0 @X0 1 a ]
 "671
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 671:         if (timedResponseOpcode == OPC_EVANS) {
-[e $ ! == -> _timedResponseOpcode `i -> . `E22929 110 `i 3401  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 671:     if (step+1 > nEv) {
+[e $ ! > + -> _step `i -> 1 `i -> _nEv `i 3402  ]
 {
 "672
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 672:             sendMessage6(OPC_EVANS, nodeNumber.bytes.hi, nodeNumber.bytes.lo, eventNumber.bytes.hi, eventNumber.bytes.lo, step+1, (uint8_t)ev);
-[e ( _sendMessage6 (4 , , , , , , . `E22929 110 . . _nodeNumber 0 1 . . _nodeNumber 0 0 . . _eventNumber 0 1 . . _eventNumber 0 0 -> + -> _step `i -> 1 `i `uc -> _ev `uc ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 672:         return TIMED_RESPONSE_RESULT_FINISHED;
+[e ) . `E23475 0 ]
+[e $UE 3401  ]
 "673
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 673:         } else {
-}
-[e $U 3402  ]
-[e :U 3401 ]
-{
-"674
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 674:             sendMessage5(OPC_NEVAL, nodeNumber.bytes.hi, nodeNumber.bytes.lo, tableIndexToEvtIdx(tableIndex), step+1, (uint8_t)ev);
-[e ( _sendMessage5 (4 , , , , , . `E22929 95 . . _nodeNumber 0 1 . . _nodeNumber 0 0 ( _tableIndexToEvtIdx (1 _tableIndex -> + -> _step `i -> 1 `i `uc -> _ev `uc ]
-"675
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 675:         }
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 673:     }
 }
 [e :U 3402 ]
+"675
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 675:     nodeNumber.word = getNN(tableIndex);
+[e = . _nodeNumber 1 ( _getNN (1 _tableIndex ]
 "676
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 676:     }
-}
-[e :U 3400 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 676:     eventNumber.word = getEN(tableIndex);
+[e = . _eventNumber 1 ( _getEN (1 _tableIndex ]
 "677
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 677:     return TIMED_RESPONSE_RESULT_NEXT;
-[e ) . `E23475 2 ]
-[e $UE 3398  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 677:     ev = getEv(tableIndex, step);
+[e = _ev ( _getEv (2 , _tableIndex _step ]
 "678
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 678: }
-[e :UE 3398 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 678:     if (ev >= 0) {
+[e $ ! >= -> _ev `i -> 0 `i 3403  ]
+{
+"679
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 679:         if (timedResponseOpcode == OPC_EVANS) {
+[e $ ! == -> _timedResponseOpcode `i -> . `E22929 110 `i 3404  ]
+{
+"680
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 680:             sendMessage6(OPC_EVANS, nodeNumber.bytes.hi, nodeNumber.bytes.lo, eventNumber.bytes.hi, eventNumber.bytes.lo, step+1, (uint8_t)ev);
+[e ( _sendMessage6 (4 , , , , , , . `E22929 110 . . _nodeNumber 0 1 . . _nodeNumber 0 0 . . _eventNumber 0 1 . . _eventNumber 0 0 -> + -> _step `i -> 1 `i `uc -> _ev `uc ]
+"681
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 681:         } else {
 }
-"688
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 688: uint8_t removeEvent(uint16_t nodeNumber, uint16_t eventNumber) {
+[e $U 3405  ]
+[e :U 3404 ]
+{
+"682
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 682:             sendMessage5(OPC_NEVAL, nodeNumber.bytes.hi, nodeNumber.bytes.lo, tableIndexToEvtIdx(tableIndex), step+1, (uint8_t)ev);
+[e ( _sendMessage5 (4 , , , , , . `E22929 95 . . _nodeNumber 0 1 . . _nodeNumber 0 0 ( _tableIndexToEvtIdx (1 _tableIndex -> + -> _step `i -> 1 `i `uc -> _ev `uc ]
+"683
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 683:         }
+}
+[e :U 3405 ]
+"684
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 684:     }
+}
+[e :U 3403 ]
+"685
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 685:     return TIMED_RESPONSE_RESULT_NEXT;
+[e ) . `E23475 2 ]
+[e $UE 3401  ]
+"686
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 686: }
+[e :UE 3401 ]
+}
+"696
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 696: uint8_t removeEvent(uint16_t nodeNumber, uint16_t eventNumber) {
 [v _removeEvent `(uc ~T0 @X0 1 ef2`us`us ]
 {
 [e :U _removeEvent ]
 [v _nodeNumber `us ~T0 @X0 1 r1 ]
 [v _eventNumber `us ~T0 @X0 1 r2 ]
 [f ]
-"690
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 690:     uint8_t tableIndex = findEvent(nodeNumber, eventNumber);
+"698
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 698:     uint8_t tableIndex = findEvent(nodeNumber, eventNumber);
 [v _tableIndex `uc ~T0 @X0 1 a ]
 [e = _tableIndex ( _findEvent (2 , _nodeNumber _eventNumber ]
-"691
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 691:     if (tableIndex == 0xff) return CMDERR_INVALID_EVENT;
-[e $ ! == -> _tableIndex `i -> 255 `i 3404  ]
+"699
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 699:     if (tableIndex == 0xff) return CMDERR_INVALID_EVENT;
+[e $ ! == -> _tableIndex `i -> 255 `i 3407  ]
 [e ) -> . `E23098 6 `uc ]
-[e $UE 3403  ]
-[e :U 3404 ]
-"693
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 693:     return removeTableEntry(tableIndex);
-[e ) ( _removeTableEntry (1 _tableIndex ]
-[e $UE 3403  ]
-"694
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 694: }
-[e :UE 3403 ]
-}
+[e $UE 3406  ]
+[e :U 3407 ]
 "701
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 701: static uint8_t removeTableEntry(uint8_t tableIndex) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 701:     return removeTableEntry(tableIndex);
+[e ) ( _removeTableEntry (1 _tableIndex ]
+[e $UE 3406  ]
+"702
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 702: }
+[e :UE 3406 ]
+}
+"709
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 709: static uint8_t removeTableEntry(uint8_t tableIndex) {
 [v _removeTableEntry `(uc ~T0 @X0 1 sf1`uc ]
 {
 [e :U _removeTableEntry ]
 [v _tableIndex `uc ~T0 @X0 1 r1 ]
 [f ]
-"702
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 702:     uint8_t i;
-[v _i `uc ~T0 @X0 1 a ]
-"707
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 707:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 0, 0x00);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 0 `i `l `um -> -> 0 `i `uc ]
-"708
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 708:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 1, 0x00);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 1 `i `l `um -> -> 0 `i `uc ]
-"709
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 709:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 2, 0x00);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 2 `i `l `um -> -> 0 `i `uc ]
 "710
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 710:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 3, 0x00);
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 710:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"715
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 715:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 0, 0x00);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 0 `i `l `um -> -> 0 `i `uc ]
+"716
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 716:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 1, 0x00);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 1 `i `l `um -> -> 0 `i `uc ]
+"717
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 717:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 2, 0x00);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 2 `i `l `um -> -> 0 `i `uc ]
+"718
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 718:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 3, 0x00);
 [e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 3 `i `l `um -> -> 0 `i `uc ]
-"711
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 711:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 4, 0x00);
+"719
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 719:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + 4, 0x00);
 [e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 4 `i `l `um -> -> 0 `i `uc ]
-"713
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 713:     for (i=0; i<252; i++) {
+"721
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 721:     for (i=0; i<252; i++) {
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 252 `i 3406  ]
-[e $U 3407  ]
-[e :U 3406 ]
+[e $ < -> _i `i -> 252 `i 3409  ]
+[e $U 3410  ]
+[e :U 3409 ]
 {
-"714
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 714:         writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + (5 + i), 0x00);
+"722
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 722:         writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex + (5 + i), 0x00);
 [e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> + -> 5 `i -> _i `i `l `um -> -> 0 `i `uc ]
-"715
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 715:     }
+"723
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 723:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 252 `i 3406  ]
-[e :U 3407 ]
+[e $ < -> _i `i -> 252 `i 3409  ]
+[e :U 3410 ]
 }
-"716
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 716:     flushFlashBlock();
+"724
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 724:     flushFlashBlock();
 [e ( _flushFlashBlock ..  ]
-"718
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 718:     rebuildHashtable();
+"726
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 726:     rebuildHashtable();
 [e ( _rebuildHashtable ..  ]
-"720
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 720:     return 0;
+"728
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 728:     return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 3405  ]
-"721
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 721: }
-[e :UE 3405 ]
+[e $UE 3408  ]
+"729
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 729: }
+[e :UE 3408 ]
 }
-"737
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 737: uint8_t addEvent(uint16_t nodeNumber, uint16_t eventNumber, uint8_t evNum, uint8_t evVal, Boolean forceOwnNN) {
+"745
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 745: uint8_t addEvent(uint16_t nodeNumber, uint16_t eventNumber, uint8_t evNum, uint8_t evVal, Boolean forceOwnNN) {
 [v _addEvent `(uc ~T0 @X0 1 ef5`us`us`uc`uc`E23308 ]
 {
 [e :U _addEvent ]
@@ -5012,222 +5038,222 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _evVal `uc ~T0 @X0 1 r4 ]
 [v _forceOwnNN `E23308 ~T0 @X0 1 r5 ]
 [f ]
-"738
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 738:     uint8_t tableIndex;
+"746
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 746:     uint8_t tableIndex;
 [v _tableIndex `uc ~T0 @X0 1 a ]
-"741
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 741:     tableIndex = findEvent(nodeNumber, eventNumber);
+"749
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 749:     tableIndex = findEvent(nodeNumber, eventNumber);
 [e = _tableIndex ( _findEvent (2 , _nodeNumber _eventNumber ]
-"742
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 742:     if (tableIndex == 0xff) {
-[e $ ! == -> _tableIndex `i -> 255 `i 3410  ]
+"750
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 750:     if (tableIndex == 0xff) {
+[e $ ! == -> _tableIndex `i -> 255 `i 3413  ]
 {
-"743
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 743:         errno = CMDERR_TOO_MANY_EVENTS;
+"751
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 751:         errno = CMDERR_TOO_MANY_EVENTS;
 [e = _errno -> . `E23098 3 `uc ]
-"745
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 745:         for (tableIndex=0; tableIndex<255; tableIndex++) {
+"753
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 753:         for (tableIndex=0; tableIndex<255; tableIndex++) {
 {
 [e = _tableIndex -> -> 0 `i `uc ]
-[e $ < -> _tableIndex `i -> 255 `i 3411  ]
-[e $U 3412  ]
-[e :U 3411 ]
+[e $ < -> _tableIndex `i -> 255 `i 3414  ]
+[e $U 3415  ]
+[e :U 3414 ]
 {
-"746
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 746:             uint16_t en = getEN(tableIndex);
+"754
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 754:             uint16_t en = getEN(tableIndex);
 [v _en `us ~T0 @X0 1 a ]
 [e = _en ( _getEN (1 _tableIndex ]
-"747
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 747:             if (en == 0) {
-[e $ ! == -> _en `ui -> -> 0 `i `ui 3414  ]
-{
-"748
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 748:                 uint8_t e;
-[v _e `uc ~T0 @X0 1 a ]
-"750
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 750:                 writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+1, nodeNumber&0xFF);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 1 `i `l `um -> & -> _nodeNumber `ui -> -> 255 `i `ui `uc ]
-"751
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 751:                 writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+0, nodeNumber>>8);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 0 `i `l `um -> >> -> _nodeNumber `ui -> 8 `i `uc ]
-"752
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 752:                 writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+3, eventNumber&0xFF);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 3 `i `l `um -> & -> _eventNumber `ui -> -> 255 `i `ui `uc ]
-"753
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 753:                 writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+2, eventNumber>>8);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 2 `i `l `um -> >> -> _eventNumber `ui -> 8 `i `uc ]
-"754
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 754:                 if (forceOwnNN) {
-[e $ ! != -> _forceOwnNN `ui -> -> 0 `i `ui 3415  ]
-{
 "755
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 755:                     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+4, 1);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 4 `i `l `um -> -> 1 `i `uc ]
-"756
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 756:                 } else {
-}
-[e $U 3416  ]
-[e :U 3415 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 755:             if (en == 0) {
+[e $ ! == -> _en `ui -> -> 0 `i `ui 3417  ]
 {
-"757
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 757:                     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+4, 0);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 4 `i `l `um -> -> 0 `i `uc ]
+"756
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 756:                 uint8_t e;
+[v _e `uc ~T0 @X0 1 a ]
 "758
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 758:                 }
-}
-[e :U 3416 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 758:                 writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+1, nodeNumber&0xFF);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 1 `i `l `um -> & -> _nodeNumber `ui -> -> 255 `i `ui `uc ]
 "759
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 759:                 for (e = 0; e < 248; e++) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 759:                 writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+0, nodeNumber>>8);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 0 `i `l `um -> >> -> _nodeNumber `ui -> 8 `i `uc ]
+"760
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 760:                 writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+3, eventNumber&0xFF);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 3 `i `l `um -> & -> _eventNumber `ui -> -> 255 `i `ui `uc ]
+"761
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 761:                 writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+2, eventNumber>>8);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 2 `i `l `um -> >> -> _eventNumber `ui -> 8 `i `uc ]
+"762
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 762:                 if (forceOwnNN) {
+[e $ ! != -> _forceOwnNN `ui -> -> 0 `i `ui 3418  ]
+{
+"763
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 763:                     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+4, 1);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 4 `i `l `um -> -> 1 `i `uc ]
+"764
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 764:                 } else {
+}
+[e $U 3419  ]
+[e :U 3418 ]
+{
+"765
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 765:                     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+4, 0);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 4 `i `l `um -> -> 0 `i `uc ]
+"766
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 766:                 }
+}
+[e :U 3419 ]
+"767
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 767:                 for (e = 0; e < 248; e++) {
 {
 [e = _e -> -> 0 `i `uc ]
-[e $ < -> _e `i -> 248 `i 3417  ]
-[e $U 3418  ]
-[e :U 3417 ]
+[e $ < -> _e `i -> 248 `i 3420  ]
+[e $U 3421  ]
+[e :U 3420 ]
 {
-"760
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 760:                     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+5 +e, 0);
+"768
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 768:                     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+5 +e, 0);
 [e ( _writeNVM (3 , , . `E23277 1 -> + + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 5 `i `l -> _e `l `um -> -> 0 `i `uc ]
-"761
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 761:                 }
+"769
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 769:                 }
 }
 [e ++ _e -> -> 1 `i `uc ]
-[e $ < -> _e `i -> 248 `i 3417  ]
-[e :U 3418 ]
+[e $ < -> _e `i -> 248 `i 3420  ]
+[e :U 3421 ]
 }
-"762
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 762:                 errno = 0;
+"770
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 770:                 errno = 0;
 [e = _errno -> -> 0 `i `uc ]
-"763
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 763:                 break;
-[e $U 3412  ]
-"764
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 764:             }
+"771
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 771:                 break;
+[e $U 3415  ]
+"772
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 772:             }
 }
-[e :U 3414 ]
-"765
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 765:         }
+[e :U 3417 ]
+"773
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 773:         }
 }
 [e ++ _tableIndex -> -> 1 `i `uc ]
-[e $ < -> _tableIndex `i -> 255 `i 3411  ]
-[e :U 3412 ]
+[e $ < -> _tableIndex `i -> 255 `i 3414  ]
+[e :U 3415 ]
 }
-"766
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 766:         if (errno) {
-[e $ ! != -> _errno `i -> 0 `i 3420  ]
-{
-"767
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 767:             return 0xff;
-[e ) -> -> 255 `i `uc ]
-[e $UE 3409  ]
-"768
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 768:         }
-}
-[e :U 3420 ]
-"769
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 769:     }
-}
-[e :U 3410 ]
-"771
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 771:     if (writeEv(tableIndex, evNum, evVal)) {
-[e $ ! != -> ( _writeEv (3 , , _tableIndex _evNum _evVal `i -> 0 `i 3421  ]
-{
-"773
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 773:         errno = CMDERR_INV_EV_IDX;
-[e = _errno -> . `E23098 5 `uc ]
 "774
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 774:         return 0xff;
-[e ) -> -> 255 `i `uc ]
-[e $UE 3409  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 774:         if (errno) {
+[e $ ! != -> _errno `i -> 0 `i 3423  ]
+{
 "775
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 775:     }
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 775:             return 0xff;
+[e ) -> -> 255 `i `uc ]
+[e $UE 3412  ]
+"776
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 776:         }
 }
-[e :U 3421 ]
+[e :U 3423 ]
 "777
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 777:     flushFlashBlock();
-[e ( _flushFlashBlock ..  ]
-"779
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 779:     rebuildHashtable();
-[e ( _rebuildHashtable ..  ]
-"781
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 781:     return tableIndex;
-[e ) _tableIndex ]
-[e $UE 3409  ]
-"782
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 782: }
-[e :UE 3409 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 777:     }
 }
-"791
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 791: uint8_t findEvent(uint16_t nodeNumber, uint16_t eventNumber) {
+[e :U 3413 ]
+"779
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 779:     if (writeEv(tableIndex, evNum, evVal)) {
+[e $ ! != -> ( _writeEv (3 , , _tableIndex _evNum _evVal `i -> 0 `i 3424  ]
+{
+"781
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 781:         errno = CMDERR_INV_EV_IDX;
+[e = _errno -> . `E23098 5 `uc ]
+"782
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 782:         return 0xff;
+[e ) -> -> 255 `i `uc ]
+[e $UE 3412  ]
+"783
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 783:     }
+}
+[e :U 3424 ]
+"785
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 785:     flushFlashBlock();
+[e ( _flushFlashBlock ..  ]
+"787
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 787:     rebuildHashtable();
+[e ( _rebuildHashtable ..  ]
+"789
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 789:     return tableIndex;
+[e ) _tableIndex ]
+[e $UE 3412  ]
+"790
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 790: }
+[e :UE 3412 ]
+}
+"799
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 799: uint8_t findEvent(uint16_t nodeNumber, uint16_t eventNumber) {
 [v _findEvent `(uc ~T0 @X0 1 ef2`us`us ]
 {
 [e :U _findEvent ]
 [v _nodeNumber `us ~T0 @X0 1 r1 ]
 [v _eventNumber `us ~T0 @X0 1 r2 ]
 [f ]
-"793
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 793:     uint8_t hash = getHash(nodeNumber, eventNumber);
+"801
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 801:     uint8_t hash = getHash(nodeNumber, eventNumber);
 [v _hash `uc ~T0 @X0 1 a ]
 [e = _hash ( _getHash (2 , _nodeNumber _eventNumber ]
-"794
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 794:     uint8_t chainIdx;
+"802
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 802:     uint8_t chainIdx;
 [v _chainIdx `uc ~T0 @X0 1 a ]
-"795
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 795:     for (chainIdx=0; chainIdx<20; chainIdx++) {
+"803
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 803:     for (chainIdx=0; chainIdx<20; chainIdx++) {
 {
 [e = _chainIdx -> -> 0 `i `uc ]
-[e $ < -> _chainIdx `i -> 20 `i 3423  ]
-[e $U 3424  ]
-[e :U 3423 ]
+[e $ < -> _chainIdx `i -> 20 `i 3426  ]
+[e $U 3427  ]
+[e :U 3426 ]
 {
-"796
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 796:         uint8_t tableIndex = eventChains[hash][chainIdx];
+"804
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 804:         uint8_t tableIndex = eventChains[hash][chainIdx];
 [v _tableIndex `uc ~T0 @X0 1 a ]
 [e = _tableIndex *U + &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux * -> _chainIdx `ux -> -> # *U &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux `ui `ux ]
-"797
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 797:         uint16_t nn, en;
+"805
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 805:         uint16_t nn, en;
 [v _nn `us ~T0 @X0 1 a ]
 [v _en `us ~T0 @X0 1 a ]
-"798
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 798:         if (tableIndex == 0xff) return 0xff;
-[e $ ! == -> _tableIndex `i -> 255 `i 3426  ]
+"806
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 806:         if (tableIndex == 0xff) return 0xff;
+[e $ ! == -> _tableIndex `i -> 255 `i 3429  ]
 [e ) -> -> 255 `i `uc ]
-[e $UE 3422  ]
-[e :U 3426 ]
-"799
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 799:         nn = getNN(tableIndex);
+[e $UE 3425  ]
+[e :U 3429 ]
+"807
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 807:         nn = getNN(tableIndex);
 [e = _nn ( _getNN (1 _tableIndex ]
-"800
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 800:         en = getEN(tableIndex);
+"808
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 808:         en = getEN(tableIndex);
 [e = _en ( _getEN (1 _tableIndex ]
-"801
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 801:         if ((nn == nodeNumber) && (en == eventNumber)) {
-[e $ ! && == -> _nn `ui -> _nodeNumber `ui == -> _en `ui -> _eventNumber `ui 3427  ]
+"809
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 809:         if ((nn == nodeNumber) && (en == eventNumber)) {
+[e $ ! && == -> _nn `ui -> _nodeNumber `ui == -> _en `ui -> _eventNumber `ui 3430  ]
 {
-"802
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 802:             return tableIndex;
+"810
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 810:             return tableIndex;
 [e ) _tableIndex ]
-[e $UE 3422  ]
-"803
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 803:         }
+[e $UE 3425  ]
+"811
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 811:         }
 }
-[e :U 3427 ]
-"804
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 804:     }
+[e :U 3430 ]
+"812
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 812:     }
 }
 [e ++ _chainIdx -> -> 1 `i `uc ]
-[e $ < -> _chainIdx `i -> 20 `i 3423  ]
-[e :U 3424 ]
+[e $ < -> _chainIdx `i -> 20 `i 3426  ]
+[e :U 3427 ]
 }
-"817
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 817:     return 0xff;
+"825
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 825:     return 0xff;
 [e ) -> -> 255 `i `uc ]
-[e $UE 3422  ]
-"818
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 818: }
-[e :UE 3422 ]
+[e $UE 3425  ]
+"826
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 826: }
+[e :UE 3425 ]
 }
-"828
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 828: uint8_t writeEv(uint8_t tableIndex, uint8_t evNum, uint8_t evVal) {
+"836
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 836: uint8_t writeEv(uint8_t tableIndex, uint8_t evNum, uint8_t evVal) {
 [v _writeEv `(uc ~T0 @X0 1 ef3`uc`uc`uc ]
 {
 [e :U _writeEv ]
@@ -5235,399 +5261,399 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _evNum `uc ~T0 @X0 1 r2 ]
 [v _evVal `uc ~T0 @X0 1 r3 ]
 [f ]
-"829
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 829:     if (evNum >= 252) {
-[e $ ! >= -> _evNum `i -> 252 `i 3429  ]
-{
-"830
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 830:         return CMDERR_INV_EV_IDX;
-[e ) -> . `E23098 5 `uc ]
-[e $UE 3428  ]
-"831
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 831:     }
-}
-[e :U 3429 ]
-"832
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 832:     if (tableIndex >= 255) {
-[e $ ! >= -> _tableIndex `i -> 255 `i 3430  ]
-{
-"833
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 833:         return CMDERR_INV_EN_IDX;
-[e ) -> . `E23098 7 `uc ]
-[e $UE 3428  ]
-"834
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 834:     }
-}
-[e :U 3430 ]
 "837
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 837:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+5 +evNum, evVal);
-[e ( _writeNVM (3 , , . `E23277 1 -> + + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 5 `i `l -> _evNum `l `um _evVal ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 837:     if (evNum >= 252) {
+[e $ ! >= -> _evNum `i -> 252 `i 3432  ]
+{
 "838
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 838:     return 0;
-[e ) -> -> 0 `i `uc ]
-[e $UE 3428  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 838:         return CMDERR_INV_EV_IDX;
+[e ) -> . `E23098 5 `uc ]
+[e $UE 3431  ]
 "839
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 839: }
-[e :UE 3428 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 839:     }
 }
-"848
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 848: int16_t getEv(uint8_t tableIndex, uint8_t evNum) {
+[e :U 3432 ]
+"840
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 840:     if (tableIndex >= 255) {
+[e $ ! >= -> _tableIndex `i -> 255 `i 3433  ]
+{
+"841
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 841:         return CMDERR_INV_EN_IDX;
+[e ) -> . `E23098 7 `uc ]
+[e $UE 3431  ]
+"842
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 842:     }
+}
+[e :U 3433 ]
+"845
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 845:     writeNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+5 +evNum, evVal);
+[e ( _writeNVM (3 , , . `E23277 1 -> + + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 5 `i `l -> _evNum `l `um _evVal ]
+"846
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 846:     return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 3431  ]
+"847
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 847: }
+[e :UE 3431 ]
+}
+"856
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 856: int16_t getEv(uint8_t tableIndex, uint8_t evNum) {
 [v _getEv `(s ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _getEv ]
 [v _tableIndex `uc ~T0 @X0 1 r1 ]
 [v _evNum `uc ~T0 @X0 1 r2 ]
 [f ]
-"849
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 849:     if (tableIndex >= 255) {
-[e $ ! >= -> _tableIndex `i -> 255 `i 3432  ]
+"857
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 857:     if (tableIndex >= 255) {
+[e $ ! >= -> _tableIndex `i -> 255 `i 3435  ]
 {
-"850
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 850:         return CMDERR_INV_EN_IDX;
+"858
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 858:         return CMDERR_INV_EN_IDX;
 [e ) -> . `E23098 7 `s ]
-[e $UE 3431  ]
-"851
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 851:     }
+[e $UE 3434  ]
+"859
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 859:     }
 }
-[e :U 3432 ]
-"852
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 852:     if (evNum >= 252) {
-[e $ ! >= -> _evNum `i -> 252 `i 3433  ]
+[e :U 3435 ]
+"860
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 860:     if (evNum >= 252) {
+[e $ ! >= -> _evNum `i -> 252 `i 3436  ]
 {
-"853
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 853:         return -CMDERR_INV_EV_IDX;
+"861
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 861:         return -CMDERR_INV_EV_IDX;
 [e ) -> -U -> . `E23098 5 `i `s ]
-[e $UE 3431  ]
-"854
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 854:     }
+[e $UE 3434  ]
+"862
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 862:     }
 }
-[e :U 3433 ]
-"855
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 855:     return (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+5 +evNum);
+[e :U 3436 ]
+"863
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 863:     return (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+5 +evNum);
 [e ) -> -> ( _readNVM (2 , . `E23277 1 -> + + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 5 `i `l -> _evNum `l `um `uc `s ]
-[e $UE 3431  ]
-"856
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 856: }
-[e :UE 3431 ]
-}
+[e $UE 3434  ]
 "864
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 864: uint8_t numEv(uint8_t tableIndex) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 864: }
+[e :UE 3434 ]
+}
+"872
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 872: uint8_t numEv(uint8_t tableIndex) {
 [v _numEv `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _numEv ]
 [v _tableIndex `uc ~T0 @X0 1 r1 ]
 [f ]
-"865
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 865:     return 252;
+"873
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 873:     return 252;
 [e ) -> -> 252 `i `uc ]
-[e $UE 3434  ]
-"866
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 866: }
-[e :UE 3434 ]
+[e $UE 3437  ]
+"874
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 874: }
+[e :UE 3437 ]
 }
-"871
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 871: uint8_t evs[252];
+"879
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 879: uint8_t evs[252];
 [v _evs `uc ~T0 @X0 -> 252 `i e ]
-"878
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 878: uint8_t getEVs(uint8_t tableIndex) {
+"886
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 886: uint8_t getEVs(uint8_t tableIndex) {
 [v _getEVs `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _getEVs ]
 [v _tableIndex `uc ~T0 @X0 1 r1 ]
 [f ]
-"880
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 880:     uint8_t evIdx;
+"888
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 888:     uint8_t evIdx;
 [v _evIdx `uc ~T0 @X0 1 a ]
-"881
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 881:     if (tableIndex >= 255) {
-[e $ ! >= -> _tableIndex `i -> 255 `i 3436  ]
+"889
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 889:     if (tableIndex >= 255) {
+[e $ ! >= -> _tableIndex `i -> 255 `i 3439  ]
 {
-"882
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 882:         return CMDERR_INV_EN_IDX;
+"890
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 890:         return CMDERR_INV_EN_IDX;
 [e ) -> . `E23098 7 `uc ]
-[e $UE 3435  ]
-"883
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 883:     }
+[e $UE 3438  ]
+"891
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 891:     }
 }
-[e :U 3436 ]
-"885
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 885:     for (evIdx=0; evIdx < 252; evIdx++) {
+[e :U 3439 ]
+"893
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 893:     for (evIdx=0; evIdx < 252; evIdx++) {
 {
 [e = _evIdx -> -> 0 `i `uc ]
-[e $ < -> _evIdx `i -> 252 `i 3437  ]
-[e $U 3438  ]
-[e :U 3437 ]
+[e $ < -> _evIdx `i -> 252 `i 3440  ]
+[e $U 3441  ]
+[e :U 3440 ]
 {
-"886
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 886:         evs[evIdx] = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+5 +evIdx);
+"894
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 894:         evs[evIdx] = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+5 +evIdx);
 [e = *U + &U _evs * -> _evIdx `ux -> -> # *U &U _evs `ui `ux -> ( _readNVM (2 , . `E23277 1 -> + + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 5 `i `l -> _evIdx `l `um `uc ]
-"887
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 887:     }
+"895
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 895:     }
 }
 [e ++ _evIdx -> -> 1 `i `uc ]
-[e $ < -> _evIdx `i -> 252 `i 3437  ]
-[e :U 3438 ]
+[e $ < -> _evIdx `i -> 252 `i 3440  ]
+[e :U 3441 ]
 }
-"888
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 888:     return 0;
+"896
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 896:     return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 3435  ]
-"889
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 889: }
-[e :UE 3435 ]
+[e $UE 3438  ]
+"897
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 897: }
+[e :UE 3438 ]
 }
-"898
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 898: uint16_t getNN(uint8_t tableIndex) {
+"906
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 906: uint16_t getNN(uint8_t tableIndex) {
 [v _getNN `(us ~T0 @X0 1 ef1`uc ]
 {
 [e :U _getNN ]
 [v _tableIndex `uc ~T0 @X0 1 r1 ]
 [f ]
-"899
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 899:     uint16_t hi;
-[v _hi `us ~T0 @X0 1 a ]
-"900
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 900:     uint16_t lo;
-[v _lo `us ~T0 @X0 1 a ]
-"901
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 901:     uint8_t flags;
-[v _flags `uc ~T0 @X0 1 a ]
-"902
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 902:     if (tableIndex >= 255) {
-[e $ ! >= -> _tableIndex `i -> 255 `i 3441  ]
-{
-"903
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 903:         return CMDERR_INV_EN_IDX;
-[e ) -> . `E23098 7 `us ]
-[e $UE 3440  ]
-"904
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 904:     }
-}
-[e :U 3441 ]
-"906
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 906:     flags = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+4);
-[e = _flags -> ( _readNVM (2 , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 4 `i `l `um `uc ]
 "907
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 907:     if (flags & 1) {
-[e $ ! != & -> _flags `i -> 1 `i -> 0 `i 3442  ]
-{
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 907:     uint16_t hi;
+[v _hi `us ~T0 @X0 1 a ]
 "908
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 908:         return nn.word;
-[e ) . _nn 1 ]
-[e $UE 3440  ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 908:     uint16_t lo;
+[v _lo `us ~T0 @X0 1 a ]
 "909
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 909:     }
-}
-[e :U 3442 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 909:     uint8_t flags;
+[v _flags `uc ~T0 @X0 1 a ]
 "910
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 910:     lo = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+1);
-[e = _lo -> -> ( _readNVM (2 , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 1 `i `l `um `uc `us ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 910:     if (tableIndex >= 255) {
+[e $ ! >= -> _tableIndex `i -> 255 `i 3444  ]
+{
 "911
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 911:     hi = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+0);
-[e = _hi -> -> ( _readNVM (2 , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 0 `i `l `um `uc `us ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 911:         return CMDERR_INV_EN_IDX;
+[e ) -> . `E23098 7 `us ]
+[e $UE 3443  ]
 "912
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 912:     return lo | (hi << 8);
-[e ) -> | -> _lo `ui << -> _hi `ui -> 8 `i `us ]
-[e $UE 3440  ]
-"913
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 913: }
-[e :UE 3440 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 912:     }
 }
-"922
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 922: uint16_t getEN(uint8_t tableIndex) {
+[e :U 3444 ]
+"914
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 914:     flags = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+4);
+[e = _flags -> ( _readNVM (2 , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 4 `i `l `um `uc ]
+"915
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 915:     if (flags & 1) {
+[e $ ! != & -> _flags `i -> 1 `i -> 0 `i 3445  ]
+{
+"916
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 916:         return nn.word;
+[e ) . _nn 1 ]
+[e $UE 3443  ]
+"917
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 917:     }
+}
+[e :U 3445 ]
+"918
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 918:     lo = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+1);
+[e = _lo -> -> ( _readNVM (2 , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 1 `i `l `um `uc `us ]
+"919
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 919:     hi = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+0);
+[e = _hi -> -> ( _readNVM (2 , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 0 `i `l `um `uc `us ]
+"920
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 920:     return lo | (hi << 8);
+[e ) -> | -> _lo `ui << -> _hi `ui -> 8 `i `us ]
+[e $UE 3443  ]
+"921
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 921: }
+[e :UE 3443 ]
+}
+"930
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 930: uint16_t getEN(uint8_t tableIndex) {
 [v _getEN `(us ~T0 @X0 1 ef1`uc ]
 {
 [e :U _getEN ]
 [v _tableIndex `uc ~T0 @X0 1 r1 ]
 [f ]
-"923
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 923:     uint16_t hi;
+"931
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 931:     uint16_t hi;
 [v _hi `us ~T0 @X0 1 a ]
-"924
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 924:     uint16_t lo;
+"932
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 932:     uint16_t lo;
 [v _lo `us ~T0 @X0 1 a ]
-"926
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 926:     lo = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+3);
+"934
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 934:     lo = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+3);
 [e = _lo -> -> ( _readNVM (2 , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 3 `i `l `um `uc `us ]
-"927
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 927:     hi = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+2);
+"935
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 935:     hi = (uint8_t)readNVM(FLASH_NVM_TYPE, 0x10000 + (sizeof(Event) + 1 + 252)*tableIndex+2);
 [e = _hi -> -> ( _readNVM (2 , . `E23277 1 -> + + -> 65536 `l -> * + + -> # `S3301 `ui -> -> 1 `i `ui -> -> 252 `i `ui -> _tableIndex `ui `l -> -> 2 `i `l `um `uc `us ]
-"928
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 928:     return lo | (hi << 8);
+"936
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 936:     return lo | (hi << 8);
 [e ) -> | -> _lo `ui << -> _hi `ui -> 8 `i `us ]
-[e $UE 3443  ]
-"929
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 929: }
-[e :UE 3443 ]
+[e $UE 3446  ]
+"937
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 937: }
+[e :UE 3446 ]
 }
-"944
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 944: static uint8_t evtIdxToTableIndex(uint8_t evtIdx) {
+"952
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 952: static uint8_t evtIdxToTableIndex(uint8_t evtIdx) {
 [v _evtIdxToTableIndex `(uc ~T0 @X0 1 sf1`uc ]
 {
 [e :U _evtIdxToTableIndex ]
 [v _evtIdx `uc ~T0 @X0 1 r1 ]
 [f ]
-"945
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 945:     return evtIdx - 1;
+"953
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 953:     return evtIdx - 1;
 [e ) -> - -> _evtIdx `i -> 1 `i `uc ]
-[e $UE 3444  ]
-"946
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 946: }
-[e :UE 3444 ]
-}
+[e $UE 3447  ]
 "954
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 954: static uint8_t tableIndexToEvtIdx(uint8_t tableIndex) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 954: }
+[e :UE 3447 ]
+}
+"962
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 962: static uint8_t tableIndexToEvtIdx(uint8_t tableIndex) {
 [v _tableIndexToEvtIdx `(uc ~T0 @X0 1 sf1`uc ]
 {
 [e :U _tableIndexToEvtIdx ]
 [v _tableIndex `uc ~T0 @X0 1 r1 ]
 [f ]
-"955
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 955:     return tableIndex + 1;
+"963
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 963:     return tableIndex + 1;
 [e ) -> + -> _tableIndex `i -> 1 `i `uc ]
-[e $UE 3445  ]
-"956
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 956: }
-[e :UE 3445 ]
+[e $UE 3448  ]
+"964
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 964: }
+[e :UE 3448 ]
 }
-"976
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 976: uint8_t getHash(uint16_t nn, uint16_t en) {
+"984
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 984: uint8_t getHash(uint16_t nn, uint16_t en) {
 [v _getHash `(uc ~T0 @X0 1 ef2`us`us ]
 {
 [e :U _getHash ]
 [v _nn `us ~T0 @X0 1 r1 ]
 [v _en `us ~T0 @X0 1 r2 ]
 [f ]
-"977
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 977:     uint8_t hash;
+"985
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 985:     uint8_t hash;
 [v _hash `uc ~T0 @X0 1 a ]
-"979
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 979:     hash = (uint8_t)(nn ^ (nn >> 8U));
+"987
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 987:     hash = (uint8_t)(nn ^ (nn >> 8U));
 [e = _hash -> ^ -> _nn `ui >> -> _nn `ui -> 8 `ui `uc ]
-"980
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 980:     hash = (uint8_t)(7U*hash + (en ^ (en>>8U)));
+"988
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 988:     hash = (uint8_t)(7U*hash + (en ^ (en>>8U)));
 [e = _hash -> + * -> 7 `ui -> _hash `ui ^ -> _en `ui >> -> _en `ui -> 8 `ui `uc ]
-"982
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 982:     hash %= 32;
-[e =% _hash -> 32 `i ]
-"983
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 983:     return hash;
-[e ) _hash ]
-[e $UE 3446  ]
-"984
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 984: }
-[e :UE 3446 ]
-}
 "990
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 990: void rebuildHashtable(void) {
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 990:     hash %= 32;
+[e =% _hash -> 32 `i ]
+"991
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 991:     return hash;
+[e ) _hash ]
+[e $UE 3449  ]
+"992
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 992: }
+[e :UE 3449 ]
+}
+"998
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 998: void rebuildHashtable(void) {
 [v _rebuildHashtable `(v ~T0 @X0 1 ef ]
 {
 [e :U _rebuildHashtable ]
 [f ]
-"992
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 992:     uint8_t hash;
+"1000
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1000:     uint8_t hash;
 [v _hash `uc ~T0 @X0 1 a ]
-"993
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 993:     uint8_t chainIdx;
+"1001
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1001:     uint8_t chainIdx;
 [v _chainIdx `uc ~T0 @X0 1 a ]
-"994
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 994:     uint8_t tableIndex;
+"1002
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1002:     uint8_t tableIndex;
 [v _tableIndex `uc ~T0 @X0 1 a ]
-"995
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 995:     int a;
+"1003
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1003:     int a;
 [v _a `i ~T0 @X0 1 a ]
-"997
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 997:     for (hash=0; hash<32; hash++) {
+"1005
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1005:     for (hash=0; hash<32; hash++) {
 {
 [e = _hash -> -> 0 `i `uc ]
-[e $ < -> _hash `i -> 32 `i 3448  ]
-[e $U 3449  ]
-[e :U 3448 ]
-{
-"998
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 998:         for (chainIdx=0; chainIdx < 20; chainIdx++) {
-{
-[e = _chainIdx -> -> 0 `i `uc ]
-[e $ < -> _chainIdx `i -> 20 `i 3451  ]
+[e $ < -> _hash `i -> 32 `i 3451  ]
 [e $U 3452  ]
 [e :U 3451 ]
 {
-"999
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 999:             eventChains[hash][chainIdx] = 0xff;
-[e = *U + &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux * -> _chainIdx `ux -> -> # *U &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux `ui `ux -> -> 255 `i `uc ]
-"1000
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1000:         }
-}
-[e ++ _chainIdx -> -> 1 `i `uc ]
-[e $ < -> _chainIdx `i -> 20 `i 3451  ]
-[e :U 3452 ]
-}
-"1001
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1001:     }
-}
-[e ++ _hash -> -> 1 `i `uc ]
-[e $ < -> _hash `i -> 32 `i 3448  ]
-[e :U 3449 ]
-}
-"1003
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1003:     for (tableIndex=0; tableIndex<255; tableIndex++) {
+"1006
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1006:         for (chainIdx=0; chainIdx < 20; chainIdx++) {
 {
-[e = _tableIndex -> -> 0 `i `uc ]
-[e $ < -> _tableIndex `i -> 255 `i 3454  ]
+[e = _chainIdx -> -> 0 `i `uc ]
+[e $ < -> _chainIdx `i -> 20 `i 3454  ]
 [e $U 3455  ]
 [e :U 3454 ]
 {
-"1004
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1004:         if (getEN(tableIndex) != 0) {
-[e $ ! != -> ( _getEN (1 _tableIndex `ui -> -> 0 `i `ui 3457  ]
-{
-"1005
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1005:             int16_t ev;
-[v _ev `s ~T0 @X0 1 a ]
+"1007
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1007:             eventChains[hash][chainIdx] = 0xff;
+[e = *U + &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux * -> _chainIdx `ux -> -> # *U &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux `ui `ux -> -> 255 `i `uc ]
 "1008
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1008:             hash = getHash(getNN(tableIndex), getEN(tableIndex));
-[e = _hash ( _getHash (2 , ( _getNN (1 _tableIndex ( _getEN (1 _tableIndex ]
-"1009
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1009:             for (chainIdx=0; chainIdx<20; chainIdx++) {
-{
-[e = _chainIdx -> -> 0 `i `uc ]
-[e $ < -> _chainIdx `i -> 20 `i 3458  ]
-[e $U 3459  ]
-[e :U 3458 ]
-{
-"1010
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1010:                 if (eventChains[hash][chainIdx] == 0xff) {
-[e $ ! == -> *U + &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux * -> _chainIdx `ux -> -> # *U &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux `ui `ux `i -> 255 `i 3461  ]
-{
-"1012
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1012:                     eventChains[hash][chainIdx] = tableIndex;
-[e = *U + &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux * -> _chainIdx `ux -> -> # *U &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux `ui `ux _tableIndex ]
-"1013
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1013:                     break;
-[e $U 3459  ]
-"1014
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1014:                 }
-}
-[e :U 3461 ]
-"1015
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1015:             }
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1008:         }
 }
 [e ++ _chainIdx -> -> 1 `i `uc ]
-[e $ < -> _chainIdx `i -> 20 `i 3458  ]
-[e :U 3459 ]
-}
-"1016
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1016:         }
-}
-[e :U 3457 ]
-"1017
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1017:     }
-}
-[e ++ _tableIndex -> -> 1 `i `uc ]
-[e $ < -> _tableIndex `i -> 255 `i 3454  ]
+[e $ < -> _chainIdx `i -> 20 `i 3454  ]
 [e :U 3455 ]
 }
+"1009
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1009:     }
+}
+[e ++ _hash -> -> 1 `i `uc ]
+[e $ < -> _hash `i -> 32 `i 3451  ]
+[e :U 3452 ]
+}
+"1011
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1011:     for (tableIndex=0; tableIndex<255; tableIndex++) {
+{
+[e = _tableIndex -> -> 0 `i `uc ]
+[e $ < -> _tableIndex `i -> 255 `i 3457  ]
+[e $U 3458  ]
+[e :U 3457 ]
+{
+"1012
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1012:         if (getEN(tableIndex) != 0) {
+[e $ ! != -> ( _getEN (1 _tableIndex `ui -> -> 0 `i `ui 3460  ]
+{
+"1013
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1013:             int16_t ev;
+[v _ev `s ~T0 @X0 1 a ]
+"1016
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1016:             hash = getHash(getNN(tableIndex), getEN(tableIndex));
+[e = _hash ( _getHash (2 , ( _getNN (1 _tableIndex ( _getEN (1 _tableIndex ]
+"1017
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1017:             for (chainIdx=0; chainIdx<20; chainIdx++) {
+{
+[e = _chainIdx -> -> 0 `i `uc ]
+[e $ < -> _chainIdx `i -> 20 `i 3461  ]
+[e $U 3462  ]
+[e :U 3461 ]
+{
 "1018
-[; ;../../VLCBlib_PIC/event_teach_simple.c: 1018: }
-[e :UE 3447 ]
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1018:                 if (eventChains[hash][chainIdx] == 0xff) {
+[e $ ! == -> *U + &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux * -> _chainIdx `ux -> -> # *U &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux `ui `ux `i -> 255 `i 3464  ]
+{
+"1020
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1020:                     eventChains[hash][chainIdx] = tableIndex;
+[e = *U + &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux * -> _chainIdx `ux -> -> # *U &U *U + &U _eventChains * -> _hash `ux -> * -> # *U &U *U &U _eventChains `ui -> -> 20 `i `ui `ux `ui `ux _tableIndex ]
+"1021
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1021:                     break;
+[e $U 3462  ]
+"1022
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1022:                 }
+}
+[e :U 3464 ]
+"1023
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1023:             }
+}
+[e ++ _chainIdx -> -> 1 `i `uc ]
+[e $ < -> _chainIdx `i -> 20 `i 3461  ]
+[e :U 3462 ]
+}
+"1024
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1024:         }
+}
+[e :U 3460 ]
+"1025
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1025:     }
+}
+[e ++ _tableIndex -> -> 1 `i `uc ]
+[e $ < -> _tableIndex `i -> 255 `i 3457  ]
+[e :U 3458 ]
+}
+"1026
+[; ;../../VLCBlib_PIC/event_teach_simple.c: 1026: }
+[e :UE 3450 ]
 }

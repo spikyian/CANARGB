@@ -4202,8 +4202,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../canargb_leds.c: 205:         CLCnSEL3 = 0x14;
 [e = _CLCnSEL3 -> -> 20 `i `uc ]
 "206
-[; ;../canargb_leds.c: 206:         CLCnGLS0 = 0x01;
-[e = _CLCnGLS0 -> -> 1 `i `uc ]
+[; ;../canargb_leds.c: 206:         CLCnGLS0 = 0x02;
+[e = _CLCnGLS0 -> -> 2 `i `uc ]
 "207
 [; ;../canargb_leds.c: 207:         CLCnGLS1 = 0x00;
 [e = _CLCnGLS1 -> -> 0 `i `uc ]
@@ -4241,8 +4241,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../canargb_leds.c: 221:         CLCnSEL3 = 0x16;
 [e = _CLCnSEL3 -> -> 22 `i `uc ]
 "222
-[; ;../canargb_leds.c: 222:         CLCnGLS0 = 0x01;
-[e = _CLCnGLS0 -> -> 1 `i `uc ]
+[; ;../canargb_leds.c: 222:         CLCnGLS0 = 0x02;
+[e = _CLCnGLS0 -> -> 2 `i `uc ]
 "223
 [; ;../canargb_leds.c: 223:         CLCnGLS1 = 0x00;
 [e = _CLCnGLS1 -> -> 0 `i `uc ]
@@ -4265,11 +4265,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../canargb_leds.c: 231:         MD1CON1 = 0x00;
 [e = _MD1CON1 -> -> 0 `i `uc ]
 "232
-[; ;../canargb_leds.c: 232:         MD1CARH = 0x12;
-[e = _MD1CARH -> -> 18 `i `uc ]
+[; ;../canargb_leds.c: 232:         MD1CARH = 0x10;
+[e = _MD1CARH -> -> 16 `i `uc ]
 "233
-[; ;../canargb_leds.c: 233:         MD1CARL = 0x10;
-[e = _MD1CARL -> -> 16 `i `uc ]
+[; ;../canargb_leds.c: 233:         MD1CARL = 0x12;
+[e = _MD1CARL -> -> 18 `i `uc ]
 "234
 [; ;../canargb_leds.c: 234:         MD1SRC = 0x1F;
 [e = _MD1SRC -> -> 31 `i `uc ]

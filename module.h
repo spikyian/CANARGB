@@ -96,7 +96,7 @@
 #define PARAM_MODULE_ID         MTYP_CANARGB
 #define PARAM_MAJOR_VERSION     1
 #define PARAM_MINOR_VERSION     'a'
-#define PARAM_BUILD_VERSION     3
+#define PARAM_BUILD_VERSION     4
 // Module name - must be 7 characters
 #define NAME    "ARGB   "
 

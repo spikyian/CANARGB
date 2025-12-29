@@ -39455,7 +39455,7 @@ const uint8_t paramBlock[] __attribute__((address(0x820))) = {
     0,8,0,0,
     0,0,0,0,
     CPUM_MICROCHIP,
-    3,
+    4,
     0,
     0,
     0,
@@ -39466,8 +39466,8 @@ const uint8_t paramBlock[] __attribute__((address(0x820))) = {
     0x08,
     0,
     0,
-    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+3 +(20)+(0x48)+(0x08)+PF_CONSUMER+PB_CAN+P18F27Q83+PF_VLCB)&0xFF),
-    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+3 +(20)+(0x48)+(0x08)+PF_CONSUMER+PB_CAN+P18F27Q83+PF_VLCB)>>8)
+    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+4 +(20)+(0x48)+(0x08)+PF_CONSUMER+PB_CAN+P18F27Q83+PF_VLCB)&0xFF),
+    ((MANU_MERG+'a'+MTYP_CANARGB+255 +252 +49 +1 +(8) +(8)+CPUM_MICROCHIP+4 +(20)+(0x48)+(0x08)+PF_CONSUMER+PB_CAN+P18F27Q83+PF_VLCB)>>8)
 };
 
 

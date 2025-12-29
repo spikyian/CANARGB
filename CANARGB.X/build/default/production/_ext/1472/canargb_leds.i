@@ -39538,7 +39538,7 @@ void initARGB(void) {
         CLCnSEL1 = 0x14;
         CLCnSEL2 = 0x14;
         CLCnSEL3 = 0x14;
-        CLCnGLS0 = 0x01;
+        CLCnGLS0 = 0x02;
         CLCnGLS1 = 0x00;
         CLCnGLS2 = 0x00;
         CLCnGLS3 = 0x00;
@@ -39554,7 +39554,7 @@ void initARGB(void) {
         CLCnSEL1 = 0x16;
         CLCnSEL2 = 0x16;
         CLCnSEL3 = 0x16;
-        CLCnGLS0 = 0x01;
+        CLCnGLS0 = 0x02;
         CLCnGLS1 = 0x00;
         CLCnGLS2 = 0x00;
         CLCnGLS3 = 0x00;
@@ -39564,8 +39564,8 @@ void initARGB(void) {
     {
         MD1CON0 = 0;
         MD1CON1 = 0x00;
-        MD1CARH = 0x12;
-        MD1CARL = 0x10;
+        MD1CARH = 0x10;
+        MD1CARL = 0x12;
         MD1SRC = 0x1F;
     }
 

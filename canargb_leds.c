@@ -161,7 +161,7 @@ void initARGB(void) {
         CLCnSEL1 = 0x41;    // select SPI1 SCK
         CLCnSEL2 = 0x41;    // select SPI1 SCK
         CLCnSEL3 = 0x41;    // select SPI1 SCK
-        CLCnGLS0 = 1;       // Use Gate 1 non inverted
+        CLCnGLS0 = 1;       // Use Gate 1 inverted
         CLCnGLS1 = 0;       // Logic 0 requires polarity invert to make 1 to go into AND
         CLCnGLS2 = 0;       // Logic 0 requires polarity invert to make 1 to go into AND
         CLCnGLS3 = 0;       // Logic 0 requires polarity invert to make 1 to go into AND
@@ -203,7 +203,7 @@ void initARGB(void) {
         CLCnSEL1 = 0x14;    // select TMR2
         CLCnSEL2 = 0x14;    // select TMR2
         CLCnSEL3 = 0x14;    // select TMR2
-        CLCnGLS0 = 0x01;    // Use Gate 1 non inverted
+        CLCnGLS0 = 0x02;    // Use Gate 1 non inverted
         CLCnGLS1 = 0x00;    // Logic 0 requires polarity invert to make 1 to go into AND
         CLCnGLS2 = 0x00;    // Logic 0 requires polarity invert to make 1 to go into AND
         CLCnGLS3 = 0x00;    // Logic 0 requires polarity invert to make 1 to go into AND
@@ -219,7 +219,7 @@ void initARGB(void) {
         CLCnSEL1 = 0x16;    // select TMR4
         CLCnSEL2 = 0x16;    // select TMR4
         CLCnSEL3 = 0x16;    // select TMR4
-        CLCnGLS0 = 0x01;    // Use Gate 1 non inverted
+        CLCnGLS0 = 0x02;    // Use Gate 1 non inverted
         CLCnGLS1 = 0x00;    // Logic 0 requires polarity invert to make 1 to go into AND
         CLCnGLS2 = 0x00;    // Logic 0 requires polarity invert to make 1 to go into AND
         CLCnGLS3 = 0x00;    // Logic 0 requires polarity invert to make 1 to go into AND
@@ -229,8 +229,8 @@ void initARGB(void) {
     {
         MD1CON0 = 0;        // normal polarity
         MD1CON1 = 0x00;     // no synchronisation, Modulator signal inverted inversion
-        MD1CARH = 0x12;     // CLC2
-        MD1CARL = 0x10;     // CLC4
+        MD1CARH = 0x10;     // CLC4
+        MD1CARL = 0x12;     // CLC2
         MD1SRC = 0x1F;      // SPI1_SDO
     }
 
