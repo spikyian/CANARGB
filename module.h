@@ -15,7 +15,7 @@
 #define APP_NVM_VERSION 1
 #define NUM_SERVICES 6
 
-
+// Interrupts vector
 #if defined(_18FXXQ83_FAMILY_)
 #define IVT_BASE      0x900
 #define IVT_BASE_U    0x00
@@ -23,14 +23,25 @@
 #define IVT_BASE_L    0x00
 #endif
 
+// NVM
+// Ensure that supply has stabilised at power up
+#define VLCB_VDD_GUARD  0x0B
+// Check that supply is stable before doing a write
+#define VLCB_VDD_WRITE_GUARD
+
 //
 // NV service
 //
-#define NV_NUM          49
 #define NV_ADDRESS      0x200
 #define NV_NVM_TYPE     EEPROM_NVM_TYPE
-
 #define NV_CACHE
+
+// NVM
+// Buffer EEPROM write to be done asynchronously
+#define ASYNC_EEPROM BUFFER
+// Store the Buffer the NVs at 0x200
+#define EEPROM_BASE_ADDRESS NV_ADDRESS
+#define NUMBER_EEPROM (PARAM_NUM_NV+1)
 
 //
 // CAN service
@@ -41,6 +52,11 @@
 #define CAN_CLOCK_MHz   64
 // Number of buffers
 #define CAN_NUM_RXBUFFERS   8
+// After a factory reset (CANID 0) enumerate before the first transmission instead
+// of transmitting straight away as CANID 1, and never send a frame as CANID 0.
+#define CAN_ADDITIONAL_CANID_CHECKS
+// more checks waiting for TX queue to drain
+#define STRINGENT_TX_DRAIN_QUEUE_DRAIN
 
 //
 // BOOT service
@@ -53,11 +69,6 @@
 // EVENT TEACH SERVICE
 //
 //
-#define EVENT_TABLE_WIDTH   248  // This is also the number of EVs per event.
-#define NUM_EVENTS          255  // The number of rows in the event table. The
-                                 // actual number of events may be less than this
-                                 // if any events use more the 1 row.
-#define EVperEVT            248  // number of EVs per event
 #define EV_FILL             0
 #define NO_ACTION           0
 #define EVENT_HASH_TABLE
@@ -100,9 +111,9 @@
 // Module name - must be 7 characters
 #define NAME    "ARGB   "
 
-#define PARAM_NUM_NV            NV_NUM
-#define PARAM_NUM_EVENTS        NUM_EVENTS
-#define PARAM_NUM_EV_EVENT      252
+#define PARAM_NUM_NV            49
+#define PARAM_NUM_EVENTS        255
+#define PARAM_NUM_EV_EVENT      248
 
 // LEDs and PB                                 // GREEN is 0 YELLOW is 1
 #if defined(_18F66K80_FAMILY_)
@@ -111,8 +122,11 @@
 #if defined(_18FXXQ83_FAMILY_)
 #define APP_setPortDirections(){ANSELA=ANSELB=0; TRISBbits.TRISB6=TRISBbits.TRISB7=0,TRISAbits.TRISA2=1;}
 #endif
-#define APP_writeLED1(state)   (LATBbits.LATB7=state)   // GREEN true is on
-#define APP_writeLED2(state)   (LATBbits.LATB6=state)   // YELLOW true is on 
+// Written as if/else so that the compiler emits a single BSF/BCF. A multi-instruction
+// read-modify-write of LATB could be interrupted by the LED matrix interrupt, which
+// drives the row anodes on LATB4/5, and undo its change.
+#define APP_writeLED1(state)   do{ if (state) LATBbits.LATB7 = 1; else LATBbits.LATB7 = 0; }while(0)   // GREEN true is on
+#define APP_writeLED2(state)   do{ if (state) LATBbits.LATB6 = 1; else LATBbits.LATB6 = 0; }while(0)   // YELLOW true is on 
 #define APP_pbPressed()        (!(PORTAbits.RA2))       // where the push button is connected. True when pressed
 
 

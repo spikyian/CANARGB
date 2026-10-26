@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../main.c ../canargb_events.c ../canargb_leds.c ../canargb_nvs.c ../../VLCBlib_PIC/boot.c ../../VLCBlib_PIC/can18_can_2.c ../../VLCBlib_PIC/event_consumer_simple.c ../../VLCBlib_PIC/event_teach_simple.c ../../VLCBlib_PIC/messageQueue.c ../../VLCBlib_PIC/mns.c ../../VLCBlib_PIC/nv.c ../../VLCBlib_PIC/nvm.c ../../VLCBlib_PIC/statusLeds2.c ../../VLCBlib_PIC/ticktime.c ../../VLCBlib_PIC/timedResponse.c ../../VLCBlib_PIC/vlcb.c
+SOURCEFILES_QUOTED_IF_SPACED=../main.c ../canargb_events.c ../canargb_leds.c ../canargb_nvs.c ../../VLCBlib_PIC/boot.c ../../VLCBlib_PIC/can18_can_2.c ../../VLCBlib_PIC/event_consumer_simple.c ../../VLCBlib_PIC/event_teach_simple.c ../../VLCBlib_PIC/messageQueue.c ../../VLCBlib_PIC/mns.c ../../VLCBlib_PIC/nv.c ../../VLCBlib_PIC/nvm.c ../../VLCBlib_PIC/statusLeds2.c ../../VLCBlib_PIC/ticktime.c ../../VLCBlib_PIC/timedResponse.c ../../VLCBlib_PIC/vlcb.c ../../VLCBlib_PIC/asyncEEPROM_buffer.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/main.p1 ${OBJECTDIR}/_ext/1472/canargb_events.p1 ${OBJECTDIR}/_ext/1472/canargb_leds.p1 ${OBJECTDIR}/_ext/1472/canargb_nvs.p1 ${OBJECTDIR}/_ext/1954642981/boot.p1 ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1 ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1 ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1 ${OBJECTDIR}/_ext/1954642981/messageQueue.p1 ${OBJECTDIR}/_ext/1954642981/mns.p1 ${OBJECTDIR}/_ext/1954642981/nv.p1 ${OBJECTDIR}/_ext/1954642981/nvm.p1 ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1 ${OBJECTDIR}/_ext/1954642981/ticktime.p1 ${OBJECTDIR}/_ext/1954642981/timedResponse.p1 ${OBJECTDIR}/_ext/1954642981/vlcb.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/main.p1.d ${OBJECTDIR}/_ext/1472/canargb_events.p1.d ${OBJECTDIR}/_ext/1472/canargb_leds.p1.d ${OBJECTDIR}/_ext/1472/canargb_nvs.p1.d ${OBJECTDIR}/_ext/1954642981/boot.p1.d ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1.d ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1.d ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1.d ${OBJECTDIR}/_ext/1954642981/messageQueue.p1.d ${OBJECTDIR}/_ext/1954642981/mns.p1.d ${OBJECTDIR}/_ext/1954642981/nv.p1.d ${OBJECTDIR}/_ext/1954642981/nvm.p1.d ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1.d ${OBJECTDIR}/_ext/1954642981/ticktime.p1.d ${OBJECTDIR}/_ext/1954642981/timedResponse.p1.d ${OBJECTDIR}/_ext/1954642981/vlcb.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/main.p1 ${OBJECTDIR}/_ext/1472/canargb_events.p1 ${OBJECTDIR}/_ext/1472/canargb_leds.p1 ${OBJECTDIR}/_ext/1472/canargb_nvs.p1 ${OBJECTDIR}/_ext/1954642981/boot.p1 ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1 ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1 ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1 ${OBJECTDIR}/_ext/1954642981/messageQueue.p1 ${OBJECTDIR}/_ext/1954642981/mns.p1 ${OBJECTDIR}/_ext/1954642981/nv.p1 ${OBJECTDIR}/_ext/1954642981/nvm.p1 ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1 ${OBJECTDIR}/_ext/1954642981/ticktime.p1 ${OBJECTDIR}/_ext/1954642981/timedResponse.p1 ${OBJECTDIR}/_ext/1954642981/vlcb.p1 ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/main.p1.d ${OBJECTDIR}/_ext/1472/canargb_events.p1.d ${OBJECTDIR}/_ext/1472/canargb_leds.p1.d ${OBJECTDIR}/_ext/1472/canargb_nvs.p1.d ${OBJECTDIR}/_ext/1954642981/boot.p1.d ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1.d ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1.d ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1.d ${OBJECTDIR}/_ext/1954642981/messageQueue.p1.d ${OBJECTDIR}/_ext/1954642981/mns.p1.d ${OBJECTDIR}/_ext/1954642981/nv.p1.d ${OBJECTDIR}/_ext/1954642981/nvm.p1.d ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1.d ${OBJECTDIR}/_ext/1954642981/ticktime.p1.d ${OBJECTDIR}/_ext/1954642981/timedResponse.p1.d ${OBJECTDIR}/_ext/1954642981/vlcb.p1.d ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1472/main.p1 ${OBJECTDIR}/_ext/1472/canargb_events.p1 ${OBJECTDIR}/_ext/1472/canargb_leds.p1 ${OBJECTDIR}/_ext/1472/canargb_nvs.p1 ${OBJECTDIR}/_ext/1954642981/boot.p1 ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1 ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1 ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1 ${OBJECTDIR}/_ext/1954642981/messageQueue.p1 ${OBJECTDIR}/_ext/1954642981/mns.p1 ${OBJECTDIR}/_ext/1954642981/nv.p1 ${OBJECTDIR}/_ext/1954642981/nvm.p1 ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1 ${OBJECTDIR}/_ext/1954642981/ticktime.p1 ${OBJECTDIR}/_ext/1954642981/timedResponse.p1 ${OBJECTDIR}/_ext/1954642981/vlcb.p1
+OBJECTFILES=${OBJECTDIR}/_ext/1472/main.p1 ${OBJECTDIR}/_ext/1472/canargb_events.p1 ${OBJECTDIR}/_ext/1472/canargb_leds.p1 ${OBJECTDIR}/_ext/1472/canargb_nvs.p1 ${OBJECTDIR}/_ext/1954642981/boot.p1 ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1 ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1 ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1 ${OBJECTDIR}/_ext/1954642981/messageQueue.p1 ${OBJECTDIR}/_ext/1954642981/mns.p1 ${OBJECTDIR}/_ext/1954642981/nv.p1 ${OBJECTDIR}/_ext/1954642981/nvm.p1 ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1 ${OBJECTDIR}/_ext/1954642981/ticktime.p1 ${OBJECTDIR}/_ext/1954642981/timedResponse.p1 ${OBJECTDIR}/_ext/1954642981/vlcb.p1 ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1
 
 # Source Files
-SOURCEFILES=../main.c ../canargb_events.c ../canargb_leds.c ../canargb_nvs.c ../../VLCBlib_PIC/boot.c ../../VLCBlib_PIC/can18_can_2.c ../../VLCBlib_PIC/event_consumer_simple.c ../../VLCBlib_PIC/event_teach_simple.c ../../VLCBlib_PIC/messageQueue.c ../../VLCBlib_PIC/mns.c ../../VLCBlib_PIC/nv.c ../../VLCBlib_PIC/nvm.c ../../VLCBlib_PIC/statusLeds2.c ../../VLCBlib_PIC/ticktime.c ../../VLCBlib_PIC/timedResponse.c ../../VLCBlib_PIC/vlcb.c
+SOURCEFILES=../main.c ../canargb_events.c ../canargb_leds.c ../canargb_nvs.c ../../VLCBlib_PIC/boot.c ../../VLCBlib_PIC/can18_can_2.c ../../VLCBlib_PIC/event_consumer_simple.c ../../VLCBlib_PIC/event_teach_simple.c ../../VLCBlib_PIC/messageQueue.c ../../VLCBlib_PIC/mns.c ../../VLCBlib_PIC/nv.c ../../VLCBlib_PIC/nvm.c ../../VLCBlib_PIC/statusLeds2.c ../../VLCBlib_PIC/ticktime.c ../../VLCBlib_PIC/timedResponse.c ../../VLCBlib_PIC/vlcb.c ../../VLCBlib_PIC/asyncEEPROM_buffer.c
 
 
 
@@ -92,7 +92,7 @@ ${OBJECTDIR}/_ext/1472/main.p1: ../main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/main.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/main.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/main.p1 ../main.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/main.p1 ../main.c 
 	@-${MV} ${OBJECTDIR}/_ext/1472/main.d ${OBJECTDIR}/_ext/1472/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -100,7 +100,7 @@ ${OBJECTDIR}/_ext/1472/canargb_events.p1: ../canargb_events.c  nbproject/Makefil
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/canargb_events.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/canargb_events.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/canargb_events.p1 ../canargb_events.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/canargb_events.p1 ../canargb_events.c 
 	@-${MV} ${OBJECTDIR}/_ext/1472/canargb_events.d ${OBJECTDIR}/_ext/1472/canargb_events.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/canargb_events.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -108,7 +108,7 @@ ${OBJECTDIR}/_ext/1472/canargb_leds.p1: ../canargb_leds.c  nbproject/Makefile-${
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/canargb_leds.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/canargb_leds.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/canargb_leds.p1 ../canargb_leds.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/canargb_leds.p1 ../canargb_leds.c 
 	@-${MV} ${OBJECTDIR}/_ext/1472/canargb_leds.d ${OBJECTDIR}/_ext/1472/canargb_leds.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/canargb_leds.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -116,7 +116,7 @@ ${OBJECTDIR}/_ext/1472/canargb_nvs.p1: ../canargb_nvs.c  nbproject/Makefile-${CN
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/canargb_nvs.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/canargb_nvs.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/canargb_nvs.p1 ../canargb_nvs.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/canargb_nvs.p1 ../canargb_nvs.c 
 	@-${MV} ${OBJECTDIR}/_ext/1472/canargb_nvs.d ${OBJECTDIR}/_ext/1472/canargb_nvs.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/canargb_nvs.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -124,7 +124,7 @@ ${OBJECTDIR}/_ext/1954642981/boot.p1: ../../VLCBlib_PIC/boot.c  nbproject/Makefi
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/boot.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/boot.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/boot.p1 ../../VLCBlib_PIC/boot.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/boot.p1 ../../VLCBlib_PIC/boot.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/boot.d ${OBJECTDIR}/_ext/1954642981/boot.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/boot.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -132,7 +132,7 @@ ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1: ../../VLCBlib_PIC/can18_can_2.c  nb
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1 ../../VLCBlib_PIC/can18_can_2.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1 ../../VLCBlib_PIC/can18_can_2.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/can18_can_2.d ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/can18_can_2.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -140,7 +140,7 @@ ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1: ../../VLCBlib_PIC/event_c
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1 ../../VLCBlib_PIC/event_consumer_simple.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1 ../../VLCBlib_PIC/event_consumer_simple.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.d ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/event_consumer_simple.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -148,7 +148,7 @@ ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1: ../../VLCBlib_PIC/event_teac
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1 ../../VLCBlib_PIC/event_teach_simple.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1 ../../VLCBlib_PIC/event_teach_simple.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/event_teach_simple.d ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/event_teach_simple.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -156,7 +156,7 @@ ${OBJECTDIR}/_ext/1954642981/messageQueue.p1: ../../VLCBlib_PIC/messageQueue.c  
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/messageQueue.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/messageQueue.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/messageQueue.p1 ../../VLCBlib_PIC/messageQueue.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/messageQueue.p1 ../../VLCBlib_PIC/messageQueue.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/messageQueue.d ${OBJECTDIR}/_ext/1954642981/messageQueue.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/messageQueue.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -164,7 +164,7 @@ ${OBJECTDIR}/_ext/1954642981/mns.p1: ../../VLCBlib_PIC/mns.c  nbproject/Makefile
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/mns.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/mns.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/mns.p1 ../../VLCBlib_PIC/mns.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/mns.p1 ../../VLCBlib_PIC/mns.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/mns.d ${OBJECTDIR}/_ext/1954642981/mns.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/mns.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -172,7 +172,7 @@ ${OBJECTDIR}/_ext/1954642981/nv.p1: ../../VLCBlib_PIC/nv.c  nbproject/Makefile-$
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/nv.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/nv.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/nv.p1 ../../VLCBlib_PIC/nv.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/nv.p1 ../../VLCBlib_PIC/nv.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/nv.d ${OBJECTDIR}/_ext/1954642981/nv.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/nv.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -180,7 +180,7 @@ ${OBJECTDIR}/_ext/1954642981/nvm.p1: ../../VLCBlib_PIC/nvm.c  nbproject/Makefile
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/nvm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/nvm.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/nvm.p1 ../../VLCBlib_PIC/nvm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/nvm.p1 ../../VLCBlib_PIC/nvm.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/nvm.d ${OBJECTDIR}/_ext/1954642981/nvm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/nvm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -188,7 +188,7 @@ ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1: ../../VLCBlib_PIC/statusLeds2.c  nb
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1 ../../VLCBlib_PIC/statusLeds2.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1 ../../VLCBlib_PIC/statusLeds2.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/statusLeds2.d ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/statusLeds2.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -196,7 +196,7 @@ ${OBJECTDIR}/_ext/1954642981/ticktime.p1: ../../VLCBlib_PIC/ticktime.c  nbprojec
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/ticktime.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/ticktime.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/ticktime.p1 ../../VLCBlib_PIC/ticktime.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/ticktime.p1 ../../VLCBlib_PIC/ticktime.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/ticktime.d ${OBJECTDIR}/_ext/1954642981/ticktime.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/ticktime.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -204,7 +204,7 @@ ${OBJECTDIR}/_ext/1954642981/timedResponse.p1: ../../VLCBlib_PIC/timedResponse.c
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/timedResponse.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/timedResponse.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/timedResponse.p1 ../../VLCBlib_PIC/timedResponse.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/timedResponse.p1 ../../VLCBlib_PIC/timedResponse.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/timedResponse.d ${OBJECTDIR}/_ext/1954642981/timedResponse.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/timedResponse.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -212,9 +212,17 @@ ${OBJECTDIR}/_ext/1954642981/vlcb.p1: ../../VLCBlib_PIC/vlcb.c  nbproject/Makefi
 	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/vlcb.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1954642981/vlcb.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit5   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/vlcb.p1 ../../VLCBlib_PIC/vlcb.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/vlcb.p1 ../../VLCBlib_PIC/vlcb.c 
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/vlcb.d ${OBJECTDIR}/_ext/1954642981/vlcb.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/vlcb.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1: ../../VLCBlib_PIC/asyncEEPROM_buffer.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
+	@${RM} ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1 ../../VLCBlib_PIC/asyncEEPROM_buffer.c 
+	@-${MV} ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.d ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/_ext/1472/main.p1: ../main.c  nbproject/Makefile-${CND_CONF}.mk 
@@ -345,6 +353,14 @@ ${OBJECTDIR}/_ext/1954642981/vlcb.p1: ../../VLCBlib_PIC/vlcb.c  nbproject/Makefi
 	@-${MV} ${OBJECTDIR}/_ext/1954642981/vlcb.d ${OBJECTDIR}/_ext/1954642981/vlcb.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/vlcb.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1: ../../VLCBlib_PIC/asyncEEPROM_buffer.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1954642981" 
+	@${RM} ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1 ../../VLCBlib_PIC/asyncEEPROM_buffer.c 
+	@-${MV} ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.d ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1954642981/asyncEEPROM_buffer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -364,18 +380,18 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 ${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -mdebugger=pickit5  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto --CODEOFFSET=0x800        $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -mdebugger=none  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto --CODEOFFSET=0x800        $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	@${RM} ${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.hex 
 	
 	
 else
-${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../../../MPLABworkspace/CBUS_PIC_Bootloader.X/dist/PIC18F27Q83_canmio/production/CBUS_PIC_Bootloader.X.production.hex
+${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../../CBUS_PIC_Bootloader/CBUS_PIC_Bootloader.X/dist/PIC18F27Q83_canmio/production/CBUS_PIC_Bootloader.X.production.hex
 	@${MKDIR} ${DISTDIR} 
 	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=0800-FFFF -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../" -I"../../VLCB-defs" -I"../../VLCBlib_PIC" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto --CODEOFFSET=0x800     $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	
 	
 	@echo "Creating unified hex file"
-	@"C:/Program Files/Microchip/MPLABX/v6.20/mplab_platform/platform/../mplab_ide/modules/../../bin/hexmate" --edf="C:/Program Files/Microchip/MPLABX/v6.20/mplab_platform/platform/../mplab_ide/modules/../../dat/en_msgs.txt" ${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.hex ../../../MPLABworkspace/CBUS_PIC_Bootloader.X/dist/PIC18F27Q83_canmio/production/CBUS_PIC_Bootloader.X.production.hex -odist/${CND_CONF}/production/CANARGB.X.production.unified.hex
+	@"C:/Program Files/Microchip/MPLABX/v6.20/mplab_platform/platform/../mplab_ide/modules/../../bin/hexmate" --edf="C:/Program Files/Microchip/MPLABX/v6.20/mplab_platform/platform/../mplab_ide/modules/../../dat/en_msgs.txt" ${DISTDIR}/CANARGB.X.${IMAGE_TYPE}.hex ../../CBUS_PIC_Bootloader/CBUS_PIC_Bootloader.X/dist/PIC18F27Q83_canmio/production/CBUS_PIC_Bootloader.X.production.hex -odist/${CND_CONF}/production/CANARGB.X.production.unified.hex
 
 endif
 
@@ -383,15 +399,15 @@ endif
 # Subprojects
 .build-subprojects:
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-	cd ../../../MPLABworkspace/CBUS_PIC_Bootloader.X && ${MAKE}  -f Makefile CONF=PIC18F27Q83_canmio TYPE_IMAGE=DEBUG_RUN
+	cd ../../CBUS_PIC_Bootloader/CBUS_PIC_Bootloader.X && ${MAKE}  -f Makefile CONF=PIC18F27Q83_canmio TYPE_IMAGE=DEBUG_RUN
 else
-	cd ../../../MPLABworkspace/CBUS_PIC_Bootloader.X && ${MAKE}  -f Makefile CONF=PIC18F27Q83_canmio
+	cd ../../CBUS_PIC_Bootloader/CBUS_PIC_Bootloader.X && ${MAKE}  -f Makefile CONF=PIC18F27Q83_canmio
 endif
 
 
 # Subprojects
 .clean-subprojects:
-	cd ../../../MPLABworkspace/CBUS_PIC_Bootloader.X && rm -rf "build/PIC18F27Q83_canmio" "dist/PIC18F27Q83_canmio"
+	cd ../../CBUS_PIC_Bootloader/CBUS_PIC_Bootloader.X && rm -rf "build/PIC18F27Q83_canmio" "dist/PIC18F27Q83_canmio"
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}

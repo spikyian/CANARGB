@@ -112,7 +112,7 @@ Processed APP_processConsumedEvent(uint8_t tableIndex, Message *m) {
         return PROCESSED;
     }
 
-    for(ev=0; ev<EVperEVT; ev+=4) {
+    for(ev=0; ev<PARAM_NUM_EV_EVENT; ev+=4) {
         uint8_t action;
         uint8_t start_ledno;
         uint8_t end_ledno;

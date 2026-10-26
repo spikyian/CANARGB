@@ -72,7 +72,7 @@ uint8_t APP_nvDefault(uint8_t index) {
         return ORDER_GRB;
     }
     index--;
-    if (index < NV_NUM) {
+    if (index < PARAM_NUM_NV) {
         switch (index%3) {
             case 0:
                 return defaultColours[index/3].red;

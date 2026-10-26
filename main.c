@@ -207,6 +207,13 @@ void APP_testMode(void) {
 }
 
 /**
+ * Early init not required.
+ */
+void APP_earlyInit(void) {
+
+}
+
+/**
  * Called upon power up.
  */
 void setup(void) {
