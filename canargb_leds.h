@@ -30,7 +30,7 @@
     WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
  */
 /**
- *	The CANILED program.
+ *	The CANARGB program.
  *
  * @author Ian Hogg 
  * @date April 2025
@@ -61,3 +61,5 @@ extern void initARGB(void);
 extern void doFlash(void);
 extern void updateRGB(void);
 extern PaletteIndex ledPaletteIndexes[MAX_LEDS];
+extern uint8_t coloursUpdateRequired;
+extern void computeColours();

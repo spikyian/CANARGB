@@ -30,7 +30,7 @@
     WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
  */
 /**
- *	The CANILED program.
+ *	The CANARGB program.
  *
  * @author Ian Hogg 
  * @date April 2025

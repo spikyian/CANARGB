@@ -11,7 +11,7 @@
 //
 // VLCB Service options first
 //
-// The data version stored at NV#0
+// The data version stored at VERSION_ADDRESS
 #define APP_NVM_VERSION 1
 #define NUM_SERVICES 6
 
@@ -38,10 +38,10 @@
 
 // NVM
 // Buffer EEPROM write to be done asynchronously
-#define ASYNC_EEPROM BUFFER
+//define ASYNC_EEPROM BUFFER
 // Store the Buffer the NVs at 0x200
-#define EEPROM_BASE_ADDRESS NV_ADDRESS
-#define NUMBER_EEPROM (PARAM_NUM_NV+1)
+//#define EEPROM_BASE_ADDRESS NV_ADDRESS
+//#define NUMBER_EEPROM (PARAM_NUM_NV+1)
 
 //
 // CAN service
@@ -107,7 +107,7 @@
 #define PARAM_MODULE_ID         MTYP_CANARGB
 #define PARAM_MAJOR_VERSION     1
 #define PARAM_MINOR_VERSION     'a'
-#define PARAM_BUILD_VERSION     4
+#define PARAM_BUILD_VERSION     5
 // Module name - must be 7 characters
 #define NAME    "ARGB   "
 

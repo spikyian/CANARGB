@@ -13,7 +13,7 @@ PB RA2
  * Green LED RB7
  * Yellow LED RB6
  * CAN TX RB2
- * CAN RX RB7
+ * CAN RX RB3
  * String Output RC0
 
 NVs
@@ -34,11 +34,12 @@ NV37..39  Colour 12
 NV40..42  Colour 13
 NV43..45  Colour 14
 NV46..48  Colour 15
+NV49 colour order (RGB=1, RBG=2, GRB=3 default, GBR=4, BGR=5, BRG=6)
 
 EVs
-LED instructions are a sequence of up to 63 instructions, each of 4 EVs. I.e. a max of 252 EVs.
- * Start of range LED number (0-255)
- * End of range LED number (0-255)
- * On event Colour (flash off colour) << 4 | (flash on colour)
- * Off event Colour (flash off colour) << 4 | (flash on colour)
+LED instructions are a sequence of up to 62 instructions, each of 4 EVs. I.e. a max of 248 EVs.
+ * On/Off action
+ * Start of range LED number (0-254)
+ * End of range LED number (0-254)
+ * Colours - B in high nibble, A in low nibble
 

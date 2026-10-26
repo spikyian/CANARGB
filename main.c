@@ -52,7 +52,6 @@
 #include "boot.h"
 #include "event_teach.h"
 #include "event_consumer_simple.h"
-#include "event_acknowledge.h"
 
 // others
 #include "ticktime.h"
@@ -80,31 +79,21 @@
  * File:   main.c
  * Author: Ian Hogg
  * 
- * This is the main for the Intelligent LED (WS2811) driver module.
+ * This is the main for the Addressable RGB LED (WS2811) driver module.
  * 
  *
  * Created on 1 April 2025
  */
-/** TODOs
- *
- */
-
 
 // forward declarations
-//void __init(void);
-//uint8_t checkCBUS( void);
-//void ISRHigh(void);
 void initialise(void);
-//void configIO(uint8_t io);
-//void factoryReset(void);
-//void factoryResetEE(void);
-//void factoryResetFlash(void);
 void factoryResetGlobalEvents(void);
 
 
 static TickValue   flashTime;
 static TickValue   testTime;
 static TickValue   subtestTime;
+static TickValue   refreshTime;
 
 
 const Service * const services[] = {
@@ -123,8 +112,6 @@ const Service * const services[] = {
  * Also called as a result of a NNRSM request.
  */
 void APP_factoryReset(void) {
-    uint8_t io;
-    
     factoryResetGlobalEvents();
 }
 
@@ -153,7 +140,6 @@ void APP_testMode(void) {
     while (TRUE) {
         if (tickTimeSince(testTime) > (4 * ONE_SECOND)) {
             testTime.val = tickGet();
-            step++;
             if (step >= NUM_TESTS) step = 0;
             
             switch (step) {
@@ -168,7 +154,7 @@ void APP_testMode(void) {
                     break;
                 case 3:
                     updateLedRange(0, MAX_LEDS-1, (PaletteIndex)((uint8_t)0x00));   // all black
-                    for (i=0,c=1; i<255; i++) {     // each led a different colour
+                    for (i=0,c=1; i<MAX_LEDS; i++) {     // each led a different colour
                         ledPaletteIndexes[i].asByte = c;
                         c++;
                         if (c >= 0x10) c=1;
@@ -195,6 +181,9 @@ void APP_testMode(void) {
                     subtestTime.val = tickGet();
                     break;
             }
+            updateRGB();
+            refreshString();
+            step++;
         }
         if (step == 5) {    // animate
             if (tickTimeSince(subtestTime) > HUNDRED_MILI_SECOND) {
@@ -234,28 +223,30 @@ void setup(void) {
     // enable interrupts, all init now done
     ei(); 
     flashTime.val = tickGet();
-    if (0) {
-        updateLedRange(0, 2, (PaletteIndex)(uint8_t)0x00);  // black/off
-        updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);  // dark grey
-        updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x88);  // light grey
-        updateLedRange(9, 11, (PaletteIndex)(uint8_t)0xFF); // white
-        updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x22);    // dark red
-        updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x33);    // dark green
-        updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x44);    // dark blue
-        updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x55);    // orange
-        updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x66);    // dark magenta
-        updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x77);    // dark cyan
-        updateLedRange(30, 32, (PaletteIndex)(uint8_t)0x99);    // red
-        updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xAA);    // green
-        updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xBB);    // blue
-        updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xCC);    // yellow
-        updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xDD);    // magenta
-        updateLedRange(45, 47, (PaletteIndex)(uint8_t)0xEE);    // cyan
-        updateLedRange(48, 50, (PaletteIndex)(uint8_t)0x28);    // flash red/grey
-        updateLedRange(51, 53, (PaletteIndex)(uint8_t)0x40);    // flash blue/black
-        updateLedRange(54, 56, (PaletteIndex)(uint8_t)0x23);    // flash red/green
-        updateLedRange(57, 254, (PaletteIndex)(uint8_t)0x11);   // grey
-    }
+    refreshTime.val = flashTime.val;
+    
+#ifdef DEBUGGING
+    updateLedRange(0, 2, (PaletteIndex)(uint8_t)0x00);  // black/off
+    updateLedRange(3, 5, (PaletteIndex)(uint8_t)0x11);  // dark grey
+    updateLedRange(6, 8, (PaletteIndex)(uint8_t)0x88);  // light grey
+    updateLedRange(9, 11, (PaletteIndex)(uint8_t)0xFF); // white
+    updateLedRange(12, 14, (PaletteIndex)(uint8_t)0x22);    // dark red
+    updateLedRange(15, 17, (PaletteIndex)(uint8_t)0x33);    // dark green
+    updateLedRange(18, 20, (PaletteIndex)(uint8_t)0x44);    // dark blue
+    updateLedRange(21, 23, (PaletteIndex)(uint8_t)0x55);    // orange
+    updateLedRange(24, 26, (PaletteIndex)(uint8_t)0x66);    // dark magenta
+    updateLedRange(27, 29, (PaletteIndex)(uint8_t)0x77);    // dark cyan
+    updateLedRange(30, 32, (PaletteIndex)(uint8_t)0x99);    // red
+    updateLedRange(33, 35, (PaletteIndex)(uint8_t)0xAA);    // green
+    updateLedRange(36, 38, (PaletteIndex)(uint8_t)0xBB);    // blue
+    updateLedRange(39, 41, (PaletteIndex)(uint8_t)0xCC);    // yellow
+    updateLedRange(42, 44, (PaletteIndex)(uint8_t)0xDD);    // magenta
+    updateLedRange(45, 47, (PaletteIndex)(uint8_t)0xEE);    // cyan
+    updateLedRange(48, 50, (PaletteIndex)(uint8_t)0x28);    // flash red/grey
+    updateLedRange(51, 53, (PaletteIndex)(uint8_t)0x40);    // flash blue/black
+    updateLedRange(54, 56, (PaletteIndex)(uint8_t)0x23);    // flash red/green
+    updateLedRange(57, 254, (PaletteIndex)(uint8_t)0x11);   // grey
+#endif
 }
 
 void loop(void) {
@@ -264,8 +255,23 @@ void loop(void) {
         doFlash();
         flashTime.val = tickGet();
     }
+    if (coloursUpdateRequired) {
+            computeColours();
+    }
+#ifdef DMA
+    if (DMAnCON0bits.SIRQEN) {
+        // DMA is still in progress
+        refreshTime.val = tickGet();
+    } else {
+        if (tickTimeSince(refreshTime) > TEN_MILI_SECOND) {
+            refreshString();
+            refreshTime.val = tickGet();
+        }
+    }
+#else
     // Keep the LEDs up to date.
     refreshString();
+#endif
 }
 
 // Application functions required by VLCB library
@@ -273,7 +279,6 @@ void loop(void) {
 
 /**
  * Check to see if now is a good time to start a flash write.
- * It is a bad time if we are currently doing a servo pulse.
  * 
  * If a DMA transfer is currently in progress then it is a bad time. 
  * 
@@ -281,7 +286,7 @@ void loop(void) {
  */
 ValidTime APP_isSuitableTimeToWriteFlash(void){
 #ifdef DMA
-    if (DMAnCON0bits.DGO) return BAD_TIME;
+    if (DMAnCON0bits.SIRQEN) return BAD_TIME;
 #endif
     return GOOD_TIME;
 }

@@ -30,7 +30,7 @@
     WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
  */
 /**
- *	The CANILED program.
+ *	The CANARGB program.
  *
  * @author Ian Hogg 
  * @date April 2025
@@ -54,6 +54,7 @@ PaletteIndex ledPaletteIndexes[MAX_LEDS];
 
 static uint8_t flashState;
 static uint8_t refreshRequired;
+uint8_t coloursUpdateRequired;
 
 //#define FAST_MODE
 
@@ -61,6 +62,7 @@ void initARGB(void) {
     uint8_t ledno;
     
     flashState = 0;
+    di();
     
     for (ledno=0; ledno <MAX_LEDS; ledno++) {
         leds[ledno].r = 0;    // black (off)
@@ -115,12 +117,21 @@ void initARGB(void) {
     // Main Output on RC0 other to help debug
     TRISC = 0;
     RC0PPS = 0x43;      // DSM1
+#ifdef DEBUGGING
     RC1PPS = 0x32;      // SPI1_SDO
     RC2PPS = 0x31;      // SPI1_SCK
     RC3PPS = 0x01;      // CLC1
     RC4PPS = 0x02;      // CLC2 (TMR2)
     RC5PPS = 0x04;      // CLC4 (TMR4)
     RC6PPS = 0x00;      // LATC6 (flashState)
+#else
+    TRISCbits.TRISC1 = 0; LATCbits.LATC1 = 0; // unused
+    TRISCbits.TRISC2 = 0; LATCbits.LATC2 = 0; // unused
+    TRISCbits.TRISC3 = 0; LATCbits.LATC3 = 0; // unused
+    TRISCbits.TRISC4 = 0; LATCbits.LATC4 = 0; // unused
+    TRISCbits.TRISC5 = 0; LATCbits.LATC5 = 0; // unused
+    TRISCbits.TRISC6 = 0; LATCbits.LATC6 = 0; // unused
+#endif
     TRISCbits.TRISC7 = 0; LATCbits.LATC7 = 0; // unused
     
     // Set up SPI as host
@@ -262,8 +273,10 @@ void initARGB(void) {
     T2CONbits.ON = 1;
     T4CONbits.ON = 1;
     MD1CON0bits.EN = 1;
+    ei();
     
-    refreshRequired = 1;
+    coloursUpdateRequired = 1;
+    //refreshRequired = 1;
 }
 
 /** Update a range of LEDs in the leds array based upon the request range and colour index pair.
@@ -275,17 +288,97 @@ void updateLedRange(uint8_t start_ledno, uint8_t end_ledno, PaletteIndex colourI
     if (end_ledno >= MAX_LEDS) end_ledno = MAX_LEDS-1;
     if (start_ledno >= MAX_LEDS) start_ledno = MAX_LEDS-1;
     if (start_ledno > end_ledno) end_ledno = start_ledno;
-    // update the LED array using the 2 nibbles of the new colour. a value of 0 is no change
+    // update the LED array using the 2 nibbles of the new colour.
     for(ledno=start_ledno; ledno<=end_ledno; ledno++) {
         ledPaletteIndexes[ledno] = colourIndexPair;
     }
 }
 
 /**
- * Schedule a refresh of the LEDs.
+ * Update the leds array using the flashState and the pallette to create the
+ * colours to be sent to the LED string.
  */
-void updateRGB(void) {
-    refreshRequired = 1;
+void computeColours(void) {
+    uint8_t ledno;
+    uint8_t order;
+    
+    order = (uint8_t)getNV(NV_COLOUR_ORDER);
+    
+    if (coloursUpdateRequired) {
+        for (ledno=0; ledno < MAX_LEDS; ledno++) {
+            if (flashState) {
+                switch (order) {
+                    case ORDER_RGB:
+                        leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        break;
+                    case ORDER_RBG:
+                        leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        break;
+                    case ORDER_GBR:
+                        leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        break;
+                    case ORDER_BRG:
+                        leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        break;
+                    case ORDER_BGR:
+                        leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        break;
+                    default: // case ORDER_GRB:
+                        leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
+                        break;
+                }
+
+            } else {
+                switch (order) {
+                    case ORDER_RGB:
+                        leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        break;
+                    case ORDER_RBG:
+                        leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        break;
+                    case ORDER_GBR:
+                        leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        break;
+                    case ORDER_BRG:
+                        leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        break;
+                    case ORDER_BGR:
+                        leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        break;
+                    default: // case ORDER_GRB:
+                        leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
+                        break;
+                }
+
+            }
+        }
+        coloursUpdateRequired = 0;
+        refreshRequired = 1;
+    }
 }
 
 /**
@@ -293,84 +386,15 @@ void updateRGB(void) {
  * based by looking up from the palette. 
  */
 void doFlash(void) {
-    uint8_t ledno;
-    uint8_t order;
-    
     flashState = 1-flashState;
-    order = (uint8_t)getNV(NV_COLOUR_ORDER);
-    
-    for (ledno=0; ledno < MAX_LEDS; ledno++) {
-        if (flashState) {
-            switch (order) {
-                case ORDER_RGB:
-                    leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    break;
-                case ORDER_RBG:
-                    leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    break;
-                case ORDER_GBR:
-                    leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    break;
-                case ORDER_BRG:
-                    leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    break;
-                case ORDER_BGR:
-                    leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    break;
-                default: // case ORDER_GRB:
-                    leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOnPaletteIndex);
-                    break;
-            }
-            
-        } else {
-            switch (order) {
-                case ORDER_RGB:
-                    leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    break;
-                case ORDER_RBG:
-                    leds[ledno].r = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    break;
-                case ORDER_GBR:
-                    leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].g = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    break;
-                case ORDER_BRG:
-                    leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].b = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    break;
-                case ORDER_BGR:
-                    leds[ledno].b = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].g = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].r = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    break;
-                default: // case ORDER_GRB:
-                    leds[ledno].g = RED(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].r = GREEN(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    leds[ledno].b = BLUE(ledPaletteIndexes[ledno].asNibbles.flashOffPaletteIndex);
-                    break;
-            }
-            
-        }
-    }
-    refreshRequired = 1;
+    coloursUpdateRequired = 1;
+}
+
+/**
+ * Schedule a refresh of the LEDs.
+ */
+void updateRGB(void) {
+    coloursUpdateRequired = 1;
 }
 
 /**
@@ -385,8 +409,8 @@ void refreshString(void) {
     uint16_t offset;
     
     // if a transfer is already in progress then wait
-    //if (DMAnCON0bits.DGO) return;
-//    sendByte();
+    if (DMAnCON0bits.SIRQEN) return;
+
     if (refreshRequired) {
         refreshRequired = 0;
 #ifdef DMA
@@ -403,7 +427,8 @@ void refreshString(void) {
             }
         }
 #endif 
-
-LATCbits.LATC6 = flashState;
+#if DEBUGGING
+        LATCbits.LATC6 = flashState;
+#endif
     }
 }
