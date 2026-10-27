@@ -74,6 +74,9 @@
 #define EVENT_HASH_TABLE
 #define EVENT_HASH_LENGTH   32
 #define EVENT_CHAIN_LENGTH  20
+// Padding is needed since previous release had 252 EVs whereas this release has 248 EVs.
+// To maintain the same addresses in the event table we need to pad with 4 bytes.
+#define EVENTTABLE_PADDING  4
 
 #define EVENT_TABLE_ADDRESS               0x10000
 #define EVENT_TABLE_NVM_TYPE    FLASH_NVM_TYPE
